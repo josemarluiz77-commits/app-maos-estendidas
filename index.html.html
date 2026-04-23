@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comunidade Mãos Estendidas</title>
+
+<meta name="theme-color" content="#0d3b1e">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI', Arial;
+    background:linear-gradient(180deg,#0a0f0c,#111a14);
+    color:#f1f1f1;
+    padding-bottom:100px;
+}
+
+header{
+    padding:22px;
+    background:linear-gradient(90deg,#0d3b1e,#7a5c00);
+    text-align:center;
+}
+
+#aviso-live{
+    display:none;
+    background:#ff0000;
+    color:white;
+    text-align:center;
+    padding:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.section{
+    display:none;
+    padding:18px;
+    max-width:650px;
+    margin:auto;
+}
+.section.active{ display:block; }
+
+.card{
+    background:rgba(255,255,255,0.06);
+    padding:18px;
+    border-radius:16px;
+    margin-bottom:18px;
+}
+
+h2{
+    color:#d4af37;
+    margin-top:0;
+}
+
+.botao{
+    display:block;
+    text-align:center;
+    background:linear-gradient(90deg,#1ebe5d,#0d8f45);
+    color:white;
+    padding:14px;
+    border-radius:12px;
+    font-weight:bold;
+    margin-top:10px;
+    text-decoration:none;
+}
+
+audio{
+    width:100%;
+    margin-top:10px;
+}
+
+video{
+    width:100%;
+    border-radius:12px;
+    margin-top:10px;
+}
+
+.thumb{
+    width:100%;
+    border-radius:12px;
+    margin-top:10px;
+}
+
+.foto-ministerio{
+    width:130px;
+    border-radius:20px;
+    margin-bottom:10px;
+}
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    overflow-x:auto;
+    display:flex;
+    background:#0f0f0f;
+    padding:8px 0;
+}
+
+.bottom-nav button{
+    min-width:80px;
+    flex-shrink:0;
+    background:none;
+    border:none;
+    color:#888;
+    font-size:12px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.bottom-nav button.active{
+    color:#d4af37;
+}
+
+.bottom-nav i{
+    font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🙏 Comunidade Mãos Estendidas</h1>
+</header>
+
+<div id="aviso-live" onclick="show('live')">
+    🔴 AO VIVO AGORA - TOQUE PARA ASSISTIR
+</div>
+
+<!-- INÍCIO -->
+<div id="inicio" class="section active">
+    <div class="card">
+        <h2>📖 Devocional do Dia</h2>
+        <p id="devocional"></p>
+    </div>
+
+    <div class="card">
+        <h2>🔥 Vídeo em Destaque</h2>
+        <a href="#" target="_blank">
+            <img src="" class="thumb">
+        </a>
+    </div>
+</div>
+
+<!-- LIVE -->
+<div id="live" class="section">
+    <div class="card">
+        <h2>🔴 Manhã com Deus (AO VIVO)</h2>
+        <a href="https://www.facebook.com/Pastormissionariojosemar.pettenon" target="_blank" class="botao">
+            ▶ Assistir ao Vivo
+        </a>
+    </div>
+</div>
+
+<!-- ÁUDIO -->
+<div id="audio" class="section">
+    <div class="card">
+        <h2>🎧 Palavras do Dia</h2>
+        <div id="lista-audios"></div>
+    </div>
+</div>
+
+<!-- VÍDEOS -->
+<div id="videos" class="section">
+    <div class="card">
+        <h2>📺 Vídeos</h2>
+
+        <a href="https://www.youtube.com/watch?v=txW7x3CQSVg" target="_blank">
+            <img src="https://img.youtube.com/vi/txW7x3CQSVg/0.jpg" class="thumb">
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=WyKHQXk5ye8" target="_blank">
+            <img src="https://img.youtube.com/vi/WyKHQXk5ye8/0.jpg" class="thumb">
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=fJ1PVz3U96s" target="_blank">
+            <img src="https://img.youtube.com/vi/fJ1PVz3U96s/0.jpg" class="thumb">
+        </a>
+
+    </div>
+</div>
+
+<!-- RÁDIO -->
+<div id="radio" class="section">
+    <div class="card">
+        <h2>📻 Rádio Gospel</h2>
+        <a href="https://www.youtube.com/results?search_query=louvores+gospel+24h" target="_blank" class="botao">
+            ▶ Ouvir Rádio Gospel
+        </a>
+    </div>
+</div>
+
+<!-- ORAÇÃO -->
+<div id="oracao" class="section">
+    <div class="card">
+        <h2>🙏 Pedido de Oração</h2>
+        <a class="botao" href="https://wa.me/5555999157014" target="_blank">
+            Enviar Pedido
+        </a>
+    </div>
+</div>
+
+<!-- SOBRE -->
+<div id="sobre" class="section">
+
+    <div class="card" style="text-align:center;">
+        <img src="logo.png" class="foto-ministerio">
+        <h2>🙏 Comunidade Mãos Estendidas</h2>
+        <p><strong>Pastor Josemar Luiz</strong></p>
+    </div>
+
+    <!-- 🎥 VÍDEO -->
+    <div class="card">
+        <h2>🎥 Vídeo Institucional</h2>
+        <video controls>
+            <source src="https://files.catbox.moe/cz8d62.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- 🔊 ÁUDIO -->
+    <div class="card">
+        <h2>🔊 Palavra do Pastor</h2>
+        <audio controls>
+            <source src="https://files.catbox.moe/3cjpx1.m4a" type="audio/mp4">
+        </audio>
+    </div>
+
+    <div class="card">
+        <h2>🏛 Quem Somos</h2>
+        <p>
+        A Comunidade Mãos Estendidas é um ministério cristão online comprometido em levar a Palavra de Deus, promovendo fé, esperança e restauração de vidas através do amor de Cristo.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>📖 Versículo Base</h2>
+        <p>
+        “Ide por todo o mundo, pregai o evangelho a toda criatura.”<br><br>
+        <strong>Marcos 16:15</strong>
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>📅 Nossos Eventos</h2>
+        <p>
+        • Manhã com Deus (ao vivo)<br>
+        • Orações online<br>
+        • Campanhas proféticas<br>
+        • Ministrações digitais
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>📞 Fale Conosco</h2>
+        <a class="botao" href="https://wa.me/5555999157014" target="_blank">
+            💬 WhatsApp
+        </a>
+    </div>
+
+</div>
+
+<!-- MENU -->
+<div class="bottom-nav">
+    <button onclick="show('inicio',this)" class="active"><i class="fa fa-home"></i>Início</button>
+    <button onclick="show('live',this)"><i class="fa fa-broadcast-tower"></i>Live</button>
+    <button onclick="show('audio',this)"><i class="fa fa-headphones"></i>Áudio</button>
+    <button onclick="show('videos',this)"><i class="fa fa-video"></i>Vídeos</button>
+    <button onclick="show('radio',this)"><i class="fa fa-radio"></i>Rádio</button>
+    <button onclick="show('oracao',this)"><i class="fa fa-hands-praying"></i>Oração</button>
+    <button onclick="show('sobre',this)"><i class="fa fa-info"></i>Sobre</button>
+</div>
+
+<script>
+function show(id,btn){
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+
+    document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
+    if(btn) btn.classList.add('active');
+}
+
+// DEVOCIONAL
+const hoje = new Date().getDay();
+const devocionais = {
+0:"Domingo: Este é o dia que o Senhor fez.",
+1:"Segunda: Deus é teu refúgio.",
+2:"Terça: Entrega teu caminho ao Senhor.",
+3:"Quarta: Tudo posso.",
+4:"Quinta: O Senhor é meu pastor.",
+5:"Sexta: Nada é impossível.",
+6:"Sábado: A alegria vem pela manhã."
+};
+document.getElementById("devocional").innerText = devocionais[hoje];
+
+// CONTEÚDO DINÂMICO
+async function carregarConteudo(){
+    try{
+        const resposta = await fetch("dados.json");
+        const dados = await resposta.json();
+        renderizar(dados);
+        aplicarLive(dados);
+    }catch(e){
+        const dados = {
+            ao_vivo:true,
+            video_destaque:"txW7x3CQSVg",
+            audio:[{
+                titulo:"🔥 Palavra do Dia",
+                url:"https://files.catbox.moe/93kuf3.mp3"
+            }]
+        };
+        renderizar(dados);
+        aplicarLive(dados);
+    }
+}
+
+function renderizar(dados){
+    const lista = document.getElementById("lista-audios");
+    lista.innerHTML = "";
+
+    dados.audio.forEach(a => {
+        lista.innerHTML += `
+        <div class="card">
+            <p><strong>${a.titulo}</strong></p>
+            <audio controls>
+                <source src="${a.url}">
+            </audio>
+        </div>`;
+    });
+
+    const video = dados.video_destaque;
+    const thumb = document.querySelector("#inicio .thumb");
+    const link = document.querySelector("#inicio a");
+
+    if(thumb && link){
+        thumb.src = "https://img.youtube.com/vi/" + video + "/0.jpg";
+        link.href = "https://www.youtube.com/watch?v=" + video;
+    }
+}
+
+function aplicarLive(dados){
+    const aviso = document.getElementById("aviso-live");
+    aviso.style.display = dados.ao_vivo ? "block" : "none";
+}
+
+carregarConteudo();
+</script>
+
+</body>
+</html>
