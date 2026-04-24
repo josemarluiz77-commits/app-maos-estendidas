@@ -39,31 +39,46 @@ header{
     padding:18px;
     max-width:650px;
     margin:auto;
+    animation:fade 0.3s ease;
 }
-.section.active{ display:block; }
+
+.section.active{
+    display:block;
+}
+
+@keyframes fade{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
 
 .card{
     background:rgba(255,255,255,0.06);
     padding:18px;
-    border-radius:16px;
+    border-radius:18px;
     margin-bottom:18px;
+    box-shadow:0 4px 20px rgba(0,0,0,0.4);
+    transition:0.3s;
 }
 
-h2{
-    color:#d4af37;
-    margin-top:0;
+.card:active{
+    transform:scale(0.98);
 }
-
 .botao{
     display:block;
     text-align:center;
     background:linear-gradient(90deg,#1ebe5d,#0d8f45);
     color:white;
-    padding:14px;
-    border-radius:12px;
+    padding:15px;
+    border-radius:14px;
     font-weight:bold;
-    margin-top:10px;
+    margin-top:12px;
     text-decoration:none;
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
+    transition:0.3s;
+}
+
+.botao:active{
+    transform:scale(0.96);
 }
 
 audio, video{
@@ -129,18 +144,24 @@ audio, video{
 <!-- INÍCIO -->
 <div id="inicio" class="section active">
     <div class="card">
-        <h2>📖 Devocional do Dia</h2>
-        <p id="devocional"></p>
+    <h2>🔥 Ouça a Palavra de Hoje</h2>
+
+    <audio controls>
+        <source src="https://files.catbox.moe/3cjpx1.m4a">
+    </audio>
+</div>
     </div>
 
     <div class="card">
         <h2>🔥 Vídeo em Destaque</h2>
 
-        <iframe width="100%" height="220"
-        src="https://www.youtube.com/embed/LHI2DksDveY"
-        frameborder="0"
-        allowfullscreen>
-        </iframe>
+        <div style="border-radius:16px; overflow:hidden;">
+    <iframe width="100%" height="220"
+    src="https://www.youtube.com/embed/LHI2DksDveY"
+    frameborder="0"
+    allowfullscreen>
+    </iframe>
+</div>
     </div>
 </div>
 
