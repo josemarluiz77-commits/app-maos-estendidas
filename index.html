@@ -66,15 +66,10 @@ h2{
     text-decoration:none;
 }
 
-audio{
+audio, video{
     width:100%;
     margin-top:10px;
-}
-
-video{
-    width:100%;
     border-radius:12px;
-    margin-top:10px;
 }
 
 .thumb{
@@ -214,28 +209,20 @@ video{
     </div>
 
     <!-- 🎥 VÍDEO -->
-<div class="card">
-    <h2>🎥 Vídeo Institucional</h2>
+    <div class="card">
+        <h2>🎥 Vídeo Institucional</h2>
 
-    <video controls width="100%">
-        <source src="https://drive.google.com/uc?export=download&id=1_SYWyxX7hp3RNUQ-IZAHPkbpqP_-E9ZU" type="video/mp4">
-        Seu navegador não suporta vídeo.
-    </video>
-</div>
-            <source src="https://files.catbox.moe/cz8d62.mp4" type="video/mp4">
+        <video controls>
+            <source src="https://drive.google.com/uc?export=download&id=1_SYWyxX7hp3RNUQ-IZAHPkbpqP_-E9ZU" type="video/mp4">
         </video>
     </div>
 
-   <!-- 🔊 ÁUDIO -->
-<div class="card">
-    <h2>🔊 Áudio do Pastor</h2>
+    <!-- 🔊 ÁUDIO -->
+    <div class="card">
+        <h2>🔊 Áudio do Pastor</h2>
 
-    <audio controls>
-        <source src="https://drive.google.com/uc?export=download&id=1_xg_rTEysC5jUtbll7gGjWZMgWvWAHRB" type="audio/mpeg">
-        Seu navegador não suporta áudio.
-    </audio>
-</div>
-            <source src="https://files.catbox.moe/3cjpx1.m4a" type="audio/mp4">
+        <audio controls>
+            <source src="https://drive.google.com/uc?export=download&id=1_xg_rTEysC5jUtbll7gGjWZMgWvWAHRB" type="audio/mpeg">
         </audio>
     </div>
 
@@ -317,10 +304,7 @@ async function carregarConteudo(){
         const dados = {
             ao_vivo:true,
             video_destaque:"txW7x3CQSVg",
-            audio:[{
-                titulo:"🔥 Palavra do Dia",
-                url:"https://files.catbox.moe/93kuf3.mp3"
-            }]
+            audio:[]
         };
         renderizar(dados);
         aplicarLive(dados);
@@ -340,15 +324,6 @@ function renderizar(dados){
             </audio>
         </div>`;
     });
-
-    const video = dados.video_destaque;
-    const thumb = document.querySelector("#inicio .thumb");
-    const link = document.querySelector("#inicio a");
-
-    if(thumb && link){
-        thumb.src = "https://img.youtube.com/vi/" + video + "/0.jpg";
-        link.href = "https://www.youtube.com/watch?v=" + video;
-    }
 }
 
 function aplicarLive(dados){
