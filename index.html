@@ -283,6 +283,7 @@ function show(id,btn){
     if(btn) btn.classList.add('active');
 }
 
+// DEVOCIONAL
 const hoje = new Date().getDay();
 const devocionais = {
 0:"Domingo: Este é o dia que o Senhor fez.",
@@ -294,7 +295,42 @@ const devocionais = {
 6:"Sábado: A alegria vem pela manhã."
 };
 document.getElementById("devocional").innerText = devocionais[hoje];
-</script>
 
-</body>
-</html>
+// 🔊 CARREGAR ÁUDIOS DO JSON
+async function carregarConteudo(){
+    try{
+        const resposta = await fetch("dados.json");
+        const dados = await resposta.json();
+        renderizar(dados);
+        aplicarLive(dados);
+    }catch(e){
+        console.log("Erro ao carregar JSON");
+    }
+}
+
+function renderizar(dados){
+    const lista = document.getElementById("lista-audios");
+    lista.innerHTML = "";
+
+    if(dados.audio){
+        dados.audio.forEach(a => {
+            lista.innerHTML += `
+            <div class="card">
+                <p><strong>${a.titulo}</strong></p>
+                <audio controls>
+                    <source src="${a.url}">
+                </audio>
+            </div>`;
+        });
+    }
+}
+
+function aplicarLive(dados){
+    const aviso = document.getElementById("aviso-live");
+    if(dados.ao_vivo){
+        aviso.style.display = "block";
+    }
+}
+
+carregarConteudo();
+</script>
