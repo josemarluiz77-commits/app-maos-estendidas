@@ -136,11 +136,12 @@ audio, video{
     <div class="card">
         <h2>🔥 Vídeo em Destaque</h2>
 
-<iframe width="100%" height="220"
-src="https://www.youtube.com/embed/LHI2DksDveY"
-frameborder="0"
-allowfullscreen>
-</iframe>
+        <iframe width="100%" height="220"
+        src="https://www.youtube.com/embed/LHI2DksDveY"
+        frameborder="0"
+        allowfullscreen>
+        </iframe>
+    </div>
 </div>
 
 <!-- LIVE -->
@@ -210,26 +211,23 @@ allowfullscreen>
         <p><strong>Pastor Josemar Luiz</strong></p>
     </div>
 
-    <!-- 🎥 VÍDEO -->
-<div class="card">
-    <h2>🎥 Vídeo Institucional</h2>
+    <div class="card">
+        <h2>🎥 Vídeo Institucional</h2>
 
-    <iframe width="100%" height="220"
-    src="https://www.youtube.com/embed/LHI2DksDveY"
-    frameborder="0"
-    allowfullscreen>
-    </iframe>
-</div>
+        <iframe width="100%" height="220"
+        src="https://www.youtube.com/embed/LHI2DksDveY"
+        frameborder="0"
+        allowfullscreen>
+        </iframe>
+    </div>
 
-<!-- 🔊 ÁUDIO -->
-<div class="card">
-    <h2>🔊 Áudio do Pastor</h2>
+    <div class="card">
+        <h2>🔊 Áudio do Pastor</h2>
 
-    <audio controls preload="none">
-        <source src="https://files.catbox.moe/3cjpx1.m4a" type="audio/mp4">
-        Seu navegador não suporta áudio.
-    </audio>
-</div>
+        <audio controls preload="none">
+            <source src="https://files.catbox.moe/3cjpx1.m4a" type="audio/mp4">
+        </audio>
+    </div>
 
     <div class="card">
         <h2>🏛 Quem Somos</h2>
@@ -285,7 +283,6 @@ function show(id,btn){
     if(btn) btn.classList.add('active');
 }
 
-// DEVOCIONAL
 const hoje = new Date().getDay();
 const devocionais = {
 0:"Domingo: Este é o dia que o Senhor fez.",
@@ -297,46 +294,6 @@ const devocionais = {
 6:"Sábado: A alegria vem pela manhã."
 };
 document.getElementById("devocional").innerText = devocionais[hoje];
-
-// CONTEÚDO DINÂMICO
-async function carregarConteudo(){
-    try{
-        const resposta = await fetch("dados.json");
-        const dados = await resposta.json();
-        renderizar(dados);
-        aplicarLive(dados);
-    }catch(e){
-        const dados = {
-            ao_vivo:true,
-            video_destaque:"txW7x3CQSVg",
-            audio:[]
-        };
-        renderizar(dados);
-        aplicarLive(dados);
-    }
-}
-
-function renderizar(dados){
-    const lista = document.getElementById("lista-audios");
-    lista.innerHTML = "";
-
-    dados.audio.forEach(a => {
-        lista.innerHTML += `
-        <div class="card">
-            <p><strong>${a.titulo}</strong></p>
-            <audio controls>
-                <source src="${a.url}">
-            </audio>
-        </div>`;
-    });
-}
-
-function aplicarLive(dados){
-    const aviso = document.getElementById("aviso-live");
-    aviso.style.display = dados.ao_vivo ? "block" : "none";
-}
-
-carregarConteudo();
 </script>
 
 </body>
