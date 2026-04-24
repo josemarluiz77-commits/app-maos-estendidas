@@ -63,6 +63,7 @@ header{
 .card:active{
     transform:scale(0.98);
 }
+
 .botao{
     display:block;
     text-align:center;
@@ -143,26 +144,25 @@ audio, video{
 
 <!-- INÍCIO -->
 <div id="inicio" class="section active">
-    <div class="card">
-    <h2>🔥 Ouça a Palavra de Hoje</h2>
 
-    <audio controls>
-        <source src="https://files.catbox.moe/3cjpx1.m4a">
-    </audio>
-</div>
+    <div class="card">
+        <h2>🔥 Ouça a Palavra de Hoje</h2>
+        <audio controls>
+            <source src="https://files.catbox.moe/3cjpx1.m4a">
+        </audio>
     </div>
 
     <div class="card">
         <h2>🔥 Vídeo em Destaque</h2>
-
         <div style="border-radius:16px; overflow:hidden;">
-    <iframe width="100%" height="220"
-    src="https://www.youtube.com/embed/LHI2DksDveY"
-    frameborder="0"
-    allowfullscreen>
-    </iframe>
-</div>
+            <iframe width="100%" height="220"
+            src="https://www.youtube.com/embed/LHI2DksDveY"
+            frameborder="0"
+            allowfullscreen>
+            </iframe>
+        </div>
     </div>
+
 </div>
 
 <!-- LIVE -->
@@ -226,17 +226,14 @@ audio, video{
 <!-- SOBRE -->
 <div id="sobre" class="section">
 
-    <!-- IDENTIDADE -->
     <div class="card" style="text-align:center;">
         <img src="logo.png" class="foto-ministerio">
         <h2>🙏 Comunidade Mãos Estendidas</h2>
         <p><strong>Pastor Josemar Luiz</strong></p>
     </div>
 
-    <!-- VÍDEO INSTITUCIONAL -->
     <div class="card">
         <h2>🎥 Vídeo Institucional</h2>
-
         <div style="border-radius:16px; overflow:hidden;">
             <iframe width="100%" height="220"
             src="https://www.youtube.com/embed/LHI2DksDveY"
@@ -246,17 +243,13 @@ audio, video{
         </div>
     </div>
 
-    <!-- ÁUDIO DO PASTOR -->
     <div class="card">
         <h2>🔊 Áudio do Pastor</h2>
-
         <audio controls preload="none">
             <source src="https://files.catbox.moe/3cjpx1.m4a" type="audio/mp4">
-            Seu navegador não suporta áudio.
         </audio>
     </div>
 
-    <!-- QUEM SOMOS -->
     <div class="card">
         <h2>🏛 Quem Somos</h2>
         <p>
@@ -264,7 +257,6 @@ audio, video{
         </p>
     </div>
 
-    <!-- VERSÍCULO -->
     <div class="card">
         <h2>📖 Versículo Base</h2>
         <p>
@@ -273,7 +265,6 @@ audio, video{
         </p>
     </div>
 
-    <!-- EVENTOS -->
     <div class="card">
         <h2>📅 Nossos Eventos</h2>
         <p>
@@ -284,7 +275,6 @@ audio, video{
         </p>
     </div>
 
-    <!-- CONTATO -->
     <div class="card">
         <h2>📞 Fale Conosco</h2>
         <a class="botao" href="https://wa.me/5555999157014" target="_blank">
@@ -314,36 +304,14 @@ function show(id,btn){
     if(btn) btn.classList.add('active');
 }
 
-// DEVOCIONAL
-const hoje = new Date().getDay();
-const devocionais = {
-0:"Domingo: Este é o dia que o Senhor fez.",
-1:"Segunda: Deus é teu refúgio.",
-2:"Terça: Entrega teu caminho ao Senhor.",
-3:"Quarta: Tudo posso.",
-4:"Quinta: O Senhor é meu pastor.",
-5:"Sexta: Nada é impossível.",
-6:"Sábado: A alegria vem pela manhã."
-};
-document.getElementById("devocional").innerText = devocionais[hoje];
-
-// 🔊 CARREGAR ÁUDIOS DO JSON
 async function carregarConteudo(){
     try{
-        const resposta = await fetch("https://josemarluiz77-commits.github.io/app-maos-estendidas/dados.json")
+        const resposta = await fetch("https://josemarluiz77-commits.github.io/app-maos-estendidas/dados.json");
         const dados = await resposta.json();
-        renderizar(dados);
-        aplicarLive(dados);
-    }catch(e){
-        console.log("Erro ao carregar JSON");
-    }
-}
 
-function renderizar(dados){
-    const lista = document.getElementById("lista-audios");
-    lista.innerHTML = "";
+        const lista = document.getElementById("lista-audios");
+        lista.innerHTML = "";
 
-    if(dados.audio){
         dados.audio.forEach(a => {
             lista.innerHTML += `
             <div class="card">
@@ -353,15 +321,18 @@ function renderizar(dados){
                 </audio>
             </div>`;
         });
-    }
-}
 
-function aplicarLive(dados){
-    const aviso = document.getElementById("aviso-live");
-    if(dados.ao_vivo){
-        aviso.style.display = "block";
+        if(dados.ao_vivo){
+            document.getElementById("aviso-live").style.display = "block";
+        }
+
+    }catch(e){
+        console.log("Erro ao carregar JSON");
     }
 }
 
 carregarConteudo();
 </script>
+
+</body>
+</html>
