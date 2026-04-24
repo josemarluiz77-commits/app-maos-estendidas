@@ -299,7 +299,7 @@ document.getElementById("devocional").innerText = devocionais[hoje];
 // 🔊 CARREGAR ÁUDIOS DO JSON
 async function carregarConteudo(){
     try{
-        const resposta = await fetch("dados.json");
+        const resposta = await fetch("https://josemarluiz77-commits.github.io/app-maos-estendidas/dados.json")
         const dados = await resposta.json();
         renderizar(dados);
         aplicarLive(dados);
