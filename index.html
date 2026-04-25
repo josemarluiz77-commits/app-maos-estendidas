@@ -393,14 +393,34 @@ try{
 const resposta = await fetch("dados.json");
 const dados = await resposta.json();
 
-const lista = document.getElementById("lista-audios");
-if(lista && dados.audio){
+if(dados.audio){
+
 dados.audio.forEach(a=>{
-lista.innerHTML += `
+
+let html = `
 <div class="card">
 <p><strong>${a.titulo}</strong></p>
-<audio controls><source src="${a.url}"></audio>
+<audio controls>
+<source src="${a.url}">
+</audio>
 </div>`;
+
+if(a.tipo === "pastor"){
+document.getElementById("lista-pastor").innerHTML += html;
+}
+
+if(a.tipo === "oracao"){
+document.getElementById("lista-oracoes").innerHTML += html;
+}
+
+if(a.tipo === "devocional"){
+document.getElementById("lista-devocionais").innerHTML += html;
+}
+
+if(a.tipo === "campanha"){
+document.getElementById("lista-campanhas").innerHTML += html;
+}
+
 });
 }
 }catch(e){}
