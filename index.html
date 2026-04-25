@@ -134,20 +134,33 @@ audio, video, iframe{
 <!-- INÍCIO -->
 <div id="inicio" class="section active">
 
-    <div class="card">
-        <img src="banner.jpg" style="width:100%; border-radius:12px;">
-        <h2 style="color:#d4af37;">Comunidade Mãos Estendidas</h2>
-        <p>Levando fé, esperança e restauração todos os dias 🙏</p>
+    <div class="card" style="text-align:center;">
+        <img src="banner.jpg" style="width:100%; border-radius:12px; margin-bottom:10px;">
+
+        <h2 style="color:#d4af37;">Versículo do Dia</h2>
+
+        <p style="font-size:16px; font-style:italic;">
+            “Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele.”
+        </p>
+
+        <strong>Salmos 118:24</strong>
     </div>
 
-    <div class="card">
-        <h2>🎧 Áudio do Dia</h2>
-        <audio controls>
+    <div class="card" style="text-align:center;">
+        <h2>🎧 Palavra de Hoje</h2>
+
+        <p style="opacity:0.8; font-size:14px;">
+            Toque abaixo para ouvir a mensagem do dia
+        </p>
+
+        <audio id="audioDia" controls style="width:100%; margin-top:10px;">
             <source src="https://files.catbox.moe/3cjpx1.m4a">
         </audio>
-    </div>
 
-   
+        <button class="botao" onclick="document.getElementById('audioDia').play()">
+            ▶ Ouvir Palavra
+        </button>
+    </div>
 
 </div>
 
