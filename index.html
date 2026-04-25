@@ -57,11 +57,6 @@ header{
     border-radius:18px;
     margin-bottom:18px;
     box-shadow:0 4px 20px rgba(0,0,0,0.4);
-    transition:0.3s;
-}
-
-.card:active{
-    transform:scale(0.98);
 }
 
 .botao{
@@ -74,15 +69,9 @@ header{
     font-weight:bold;
     margin-top:12px;
     text-decoration:none;
-    box-shadow:0 4px 15px rgba(0,0,0,0.3);
-    transition:0.3s;
 }
 
-.botao:active{
-    transform:scale(0.96);
-}
-
-audio, video{
+audio, video, iframe{
     width:100%;
     margin-top:10px;
     border-radius:12px;
@@ -146,20 +135,13 @@ audio, video{
 <div id="inicio" class="section active">
 
     <div class="card">
-        <h2><div class="card" style="padding:0; overflow:hidden;">
-
-    <img src="banner.jpg" style="width:100%; display:block;">
-
-    <div style="padding:15px;">
-        <h2 style="margin:0; color:#d4af37;">
-            Comunidade Mãos Estendidas
-        </h2>
-        <p style="margin-top:8px;">
-            Levando fé, esperança e restauração todos os dias 🙏
-        </p>
+        <img src="banner.jpg" style="width:100%; border-radius:12px;">
+        <h2 style="color:#d4af37;">Comunidade Mãos Estendidas</h2>
+        <p>Levando fé, esperança e restauração todos os dias 🙏</p>
     </div>
 
-</div></h2>
+    <div class="card">
+        <h2>🎧 Áudio do Dia</h2>
         <audio controls>
             <source src="https://files.catbox.moe/3cjpx1.m4a">
         </audio>
@@ -167,17 +149,13 @@ audio, video{
 
     <div class="card">
         <h2>🔥 Vídeo em Destaque</h2>
-
-        <div style="border-radius:16px; overflow:hidden;">
-            <iframe width="100%" height="220"
-            src="https://www.youtube.com/embed/LHI2DksDveY"
-            frameborder="0"
-            allowfullscreen>
-            </iframe>
-        </div>
+        <iframe height="220"
+        src="https://www.youtube.com/embed/LHI2DksDveY"
+        allowfullscreen></iframe>
     </div>
 
 </div>
+
 <!-- LIVE -->
 <div id="live" class="section">
     <div class="card">
@@ -236,7 +214,7 @@ audio, video{
     </div>
 </div>
 
-<!-- SOBRE -->
+<!-- SOBRE (100% PRESERVADO E ORGANIZADO) -->
 <div id="sobre" class="section">
 
     <div class="card" style="text-align:center;">
@@ -247,13 +225,9 @@ audio, video{
 
     <div class="card">
         <h2>🎥 Vídeo Institucional</h2>
-        <div style="border-radius:16px; overflow:hidden;">
-            <iframe width="100%" height="220"
-            src="https://www.youtube.com/embed/LHI2DksDveY"
-            frameborder="0"
-            allowfullscreen>
-            </iframe>
-        </div>
+        <iframe height="220"
+        src="https://www.youtube.com/embed/LHI2DksDveY"
+        allowfullscreen></iframe>
     </div>
 
     <div class="card">
@@ -319,21 +293,23 @@ function show(id,btn){
 
 async function carregarConteudo(){
     try{
-        const resposta = await fetch("https://josemarluiz77-commits.github.io/app-maos-estendidas/dados.json");
+        const resposta = await fetch("dados.json");
         const dados = await resposta.json();
 
         const lista = document.getElementById("lista-audios");
         lista.innerHTML = "";
 
-        dados.audio.forEach(a => {
-            lista.innerHTML += `
-            <div class="card">
-                <p><strong>${a.titulo}</strong></p>
-                <audio controls>
-                    <source src="${a.url}">
-                </audio>
-            </div>`;
-        });
+        if(dados.audio){
+            dados.audio.forEach(a => {
+                lista.innerHTML += `
+                <div class="card">
+                    <p><strong>${a.titulo}</strong></p>
+                    <audio controls>
+                        <source src="${a.url}">
+                    </audio>
+                </div>`;
+            });
+        }
 
         if(dados.ao_vivo){
             document.getElementById("aviso-live").style.display = "block";
