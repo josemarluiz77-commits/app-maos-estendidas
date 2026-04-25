@@ -131,25 +131,53 @@ left:0;
 
 </div>
 
-<!-- INÍCIO -->
+<!-- INICIO -->
 <div id="inicio" class="section active">
 
-<div class="card">
-<img src="banner.jpg" style="width:100%; border-radius:12px;">
+<!-- HERO -->
+<div class="card" style="text-align:center; padding:25px;">
+<h2 style="color:#d4af37; font-size:22px;">🙏 Bem-vindo à Comunidade</h2>
+<p style="font-size:14px; opacity:0.8;">
+Um lugar de fé, restauração e presença de Deus
+</p>
 </div>
 
+<!-- BANNER -->
+<div class="card">
+<img src="banner.jpg" style="width:100%; border-radius:14px;">
+</div>
+
+<!-- VERSÍCULO -->
 <div class="card" style="text-align:center;">
-<h2 style="color:#d4af37;">Versículo do Dia</h2>
-<p><em>“Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele.”</em></p>
+<h2 style="color:#d4af37;">📖 Versículo do Dia</h2>
+<p style="font-size:18px;">
+<em>“Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele.”</em>
+</p>
 <strong>Salmos 118:24</strong>
 </div>
 
+<!-- PALAVRA DO DIA (DESTAQUE) -->
 <div class="card" style="text-align:center;">
-<h2>🎧 Palavra de Hoje</h2>
+<h2>🎧 Palavra do Dia</h2>
+
 <audio id="audioDia" controls>
 <source src="https://files.catbox.moe/3cjpx1.m4a">
 </audio>
-<button class="botao" onclick="document.getElementById('audioDia').play()">▶ Ouvir Palavra</button>
+
+<button class="botao" onclick="document.getElementById('audioDia').play()">
+▶ Ouvir Mensagem
+</button>
+</div>
+
+<!-- ATALHOS RÁPIDOS -->
+<div class="card">
+<h2 style="text-align:center;">⚡ Acessos Rápidos</h2>
+
+<a class="botao" onclick="show('audio')">🎧 Áudios</a>
+<a class="botao" onclick="show('palavra')">📖 Palavra do Pastor</a>
+<a class="botao" onclick="show('live')">📡 Live</a>
+<a class="botao" onclick="show('oracao')">🙏 Oração</a>
+
 </div>
 
 </div>
