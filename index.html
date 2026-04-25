@@ -306,16 +306,22 @@ audio, iframe, video{
         </p>
     </div>
 
+    <!-- SOBRE (FECHAMENTO CORRETO) -->
+<div id="sobre" class="section">
+
     <div class="card">
         <h2>📞 Contato</h2>
         <a class="botao" href="https://wa.me/5555999157014">WhatsApp</a>
     </div>
+
+</div>
+
+<!-- PRESENÇA -->
 <div id="presenca" class="section">
     <div class="card">
         <h2>⭐ Presença</h2>
         <p>Registre sua presença e participe conosco!</p>
     </div>
-
 </div>
 
 <!-- MENU -->
@@ -382,7 +388,7 @@ async function carregarConteudo(){
 
 carregarConteudo();
 
-// SERVICE WORKER (modo app)
+// SERVICE WORKER
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');
 }
