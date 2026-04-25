@@ -15,14 +15,31 @@ margin:0;
 font-family:'Segoe UI', Arial;
 background:linear-gradient(180deg,#0a0f0c,#111a14);
 color:#f1f1f1;
-padding-bottom:100px;
+padding-bottom:60px;
 }
+
 header{
 padding:22px;
 background:linear-gradient(90deg,#0d3b1e,#7a5c00);
 text-align:center;
+position:relative;
 }
-.section{display:none;padding:18px;max-width:650px;margin:auto;}
+
+header span{
+position:absolute;
+left:15px;
+top:18px;
+font-size:26px;
+cursor:pointer;
+}
+
+.section{
+display:none;
+padding:18px;
+max-width:650px;
+margin:auto;
+}
+
 .section.active{display:block;}
 
 .card{
@@ -43,39 +60,78 @@ margin-top:12px;
 text-decoration:none;
 }
 
-audio, iframe{width:100%;margin-top:10px;border-radius:12px;}
-
-.thumb{width:100%;border-radius:12px;margin-top:10px;}
-
-.foto-ministerio{width:130px;border-radius:20px;margin-bottom:10px;}
-
-.bottom-nav{
-position:fixed;
-bottom:0;
+audio, iframe{
 width:100%;
-display:flex;
-background:#0f0f0f;
+margin-top:10px;
+border-radius:12px;
 }
 
-.bottom-nav button{
-flex:1;
-background:none;
-border:none;
-color:#888;
-font-size:12px;
+.thumb{
+width:100%;
+border-radius:12px;
+margin-top:10px;
 }
 
-.bottom-nav button.active{color:#d4af37;}
+.foto-ministerio{
+width:130px;
+border-radius:20px;
+margin-bottom:10px;
+}
+
+/* MENU LATERAL */
+.menu{
+position:fixed;
+top:0;
+left:-260px;
+width:260px;
+height:100%;
+background:#0b1a13;
+padding-top:60px;
+transition:0.3s;
+z-index:999;
+}
+
+.menu a{
+display:block;
+color:#fff;
+padding:15px;
+text-decoration:none;
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.menu a:hover{
+background:#1ebe5d;
+}
+
+.menu.ativo{
+left:0;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
+<span onclick="toggleMenu()">☰</span>
 <h1>🙏 Comunidade Mãos Estendidas</h1>
 </header>
 
-<!-- INICIO -->
+<!-- MENU LATERAL -->
+<div id="menuLateral" class="menu">
+
+  <a href="#" onclick="show('inicio')">🏠 Início</a>
+  <a href="#" onclick="show('live')">📡 Live</a>
+  <a href="#" onclick="show('audio')">🎧 Áudio</a>
+  <a href="#" onclick="show('videos')">🎥 Vídeos</a>
+  <a href="#" onclick="show('radio')">📻 Rádio</a>
+  <a href="#" onclick="show('oracao')">🙏 Oração</a>
+  <a href="#" onclick="show('palavra')">📖 Palavra do Pastor</a>
+  <a href="#" onclick="show('sobre')">ℹ️ Sobre</a>
+
+</div>
+
+<!-- INÍCIO -->
 <div id="inicio" class="section active">
 
 <div class="card">
@@ -102,11 +158,13 @@ font-size:12px;
 <div id="live" class="section">
 <div class="card">
 <h2>🔴 Manhã com Deus</h2>
-<a href="https://www.facebook.com/Pastormissionariojosemar.pettenon" target="_blank" class="botao">Assistir ao Vivo</a>
+<a href="https://www.facebook.com/Pastormissionariojosemar.pettenon" target="_blank" class="botao">
+Assistir ao Vivo
+</a>
 </div>
 </div>
 
-<!-- AUDIO -->
+<!-- ÁUDIO -->
 <div id="audio" class="section">
 <div class="card">
 <h2>🎧 Palavras do Dia</h2>
@@ -114,7 +172,7 @@ font-size:12px;
 </div>
 </div>
 
-<!-- VIDEOS -->
+<!-- VÍDEOS -->
 <div id="videos" class="section">
 <div class="card">
 <h2>📺 Vídeos</h2>
@@ -134,11 +192,13 @@ font-size:12px;
 </div>
 </div>
 
-<!-- RADIO -->
+<!-- RÁDIO -->
 <div id="radio" class="section">
 <div class="card">
 <h2>📻 Rádio Gospel</h2>
-<a href="https://www.youtube.com/results?search_query=louvores+gospel+24h" target="_blank" class="botao">Ouvir Rádio</a>
+<a href="https://www.youtube.com/results?search_query=louvores+gospel+24h" target="_blank" class="botao">
+Ouvir Rádio
+</a>
 </div>
 </div>
 
@@ -146,22 +206,36 @@ font-size:12px;
 <div id="oracao" class="section">
 <div class="card">
 <h2>🙏 Pedido de Oração</h2>
-<a href="https://wa.me/5555999157014" class="botao">Enviar Pedido</a>
+<a href="https://wa.me/5555999157014" class="botao">
+Enviar Pedido
+</a>
 </div>
 </div>
 
-<!-- PRESENÇA -->
-<div id="presenca" class="section">
+<!-- PALAVRA DO PASTOR -->
+<div id="palavra" class="section">
+
 <div class="card" style="text-align:center;">
-<h2 style="color:#d4af37;">🙏 Presença de Deus</h2>
-<p>Feche os olhos… Deus está falando com você agora.</p>
-<audio controls>
-<source src="https://files.catbox.moe/3cjpx1.m4a">
-</audio>
-</div>
+<h2 style="color:#d4af37;">📖 Palavra do Pastor</h2>
+<p><em>Direção espiritual diária do Pastor Josemar Luiz.</em></p>
 </div>
 
-<!-- SOBRE COMPLETO -->
+<div class="card">
+<p>
+Aqui será liberada diariamente a palavra profética do Pastor, trazendo direção para famílias, igreja e vida espiritual.
+</p>
+</div>
+
+<div class="card">
+<h2>🙏 Oração do Pastor</h2>
+<p>
+Oração forte, profética e abrangente será colocada aqui.
+</p>
+</div>
+
+</div>
+
+<!-- SOBRE COMPLETO RESTAURADO -->
 <div id="sobre" class="section">
 
 <div class="card" style="text-align:center;">
@@ -173,22 +247,19 @@ font-size:12px;
 <div class="card">
 <h2>🔥 Nossa Visão</h2>
 <p>
-Não somos apenas uma comunidade online. Somos um movimento espiritual levantado para alcançar vidas, restaurar famílias e reacender a fé.
-<br><br>
+Não somos apenas uma comunidade online. Somos um movimento espiritual levantado para alcançar vidas, restaurar famílias e reacender a fé.<br><br>
 Onde muitos veem fim, Deus está escrevendo recomeço.
 </p>
 </div>
 
 <div class="card">
-<h2>🎥 Mensagem Institucional</h2>
-<iframe src="https://www.youtube.com/embed/LHI2DksDveY" allowfullscreen></iframe>
-</div>
-
-<div class="card">
-<h2>🔊 Palavra do Pastor</h2>
-<audio controls>
-<source src="https://files.catbox.moe/3cjpx1.m4a">
-</audio>
+<h2>🎯 Nossa Missão</h2>
+<p>
+Levar fé onde existe vazio.<br>
+Levar esperança onde existe dor.<br>
+Levar Deus onde parece não haver saída.<br><br>
+Ser instrumento de transformação espiritual para esta geração.
+</p>
 </div>
 
 <div class="card">
@@ -197,21 +268,6 @@ Onde muitos veem fim, Deus está escrevendo recomeço.
 Cremos em um Deus vivo, presente e transformador.<br>
 Cremos na Palavra como direção para a vida.<br>
 Cremos que nenhuma história está perdida quando Deus entra em ação.
-</p>
-</div>
-
-<div class="card">
-<h2>📖 Palavra Base</h2>
-<p><em>“Ide por todo o mundo e pregai o evangelho a toda criatura.”</em></p>
-<strong>Marcos 16:15</strong>
-</div>
-
-<div class="card">
-<h2>🌍 Nossa Missão</h2>
-<p>
-Levar fé onde existe vazio.<br>
-Levar esperança onde existe dor.<br>
-Levar Deus onde parece não haver saída.
 </p>
 </div>
 
@@ -226,31 +282,32 @@ Levar Deus onde parece não haver saída.
 </div>
 
 <div class="card">
+<h2>🎥 Mensagem Institucional</h2>
+<iframe src="https://www.youtube.com/embed/LHI2DksDveY" allowfullscreen></iframe>
+</div>
+
+<div class="card">
+<h2>📖 Palavra Base</h2>
+<p><em>“Ide por todo o mundo e pregai o evangelho a toda criatura.”</em></p>
+<strong>Marcos 16:15</strong>
+</div>
+
+<div class="card">
 <h2>📞 Contato</h2>
 <a href="https://wa.me/5555999157014" class="botao">WhatsApp</a>
 </div>
 
 </div>
 
-<!-- MENU -->
-<div class="bottom-nav">
-<button onclick="show('inicio',this)" class="active">Início</button>
-<button onclick="show('live',this)">Live</button>
-<button onclick="show('audio',this)">Áudio</button>
-<button onclick="show('videos',this)">Vídeos</button>
-<button onclick="show('radio',this)">Rádio</button>
-<button onclick="show('oracao',this)">Oração</button>
-<button onclick="show('presenca',this)">Presença</button>
-<button onclick="show('sobre',this)">Sobre</button>
-</div>
-
 <script>
-function show(id,btn){
+function show(id){
 document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
 document.getElementById(id).classList.add('active');
+document.getElementById("menuLateral").classList.remove("ativo");
+}
 
-document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
+function toggleMenu(){
+document.getElementById("menuLateral").classList.toggle("ativo");
 }
 
 async function carregarConteudo(){
