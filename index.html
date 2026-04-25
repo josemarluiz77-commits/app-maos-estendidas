@@ -1,4 +1,3 @@
-<!-- INÍCIO DO ARQUIVO FINAL -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -76,6 +75,19 @@ audio, iframe, video{
     margin-top:10px;
 }
 
+.thumb{
+    width:100%;
+    border-radius:12px;
+    margin-top:10px;
+}
+
+.foto-ministerio{
+    width:130px;
+    border-radius:20px;
+    margin-bottom:10px;
+}
+
+/* MENU */
 .bottom-nav{
     position:fixed;
     bottom:0;
@@ -114,27 +126,39 @@ audio, iframe, video{
 
 <!-- INÍCIO -->
 <div id="inicio" class="section active">
+
     <div class="card" style="text-align:center;">
-        <img src="banner.jpg" style="width:100%; border-radius:12px;">
+        <img src="banner.jpg" style="width:100%; border-radius:12px; margin-bottom:10px;">
+
         <h2 style="color:#d4af37;">Versículo do Dia</h2>
-        <p style="font-style:italic;">“Este é o dia que o Senhor fez...”</p>
+
+        <p style="font-style:italic;">
+            “Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele.”
+        </p>
+
         <strong>Salmos 118:24</strong>
     </div>
 
-    <div class="card">
+    <div class="card" style="text-align:center;">
         <h2>🎧 Palavra de Hoje</h2>
-        <audio controls>
+
+        <audio id="audioDia" controls>
             <source src="https://files.catbox.moe/3cjpx1.m4a">
         </audio>
+
+        <button class="botao" onclick="document.getElementById('audioDia').play()">
+            ▶ Ouvir Palavra
+        </button>
     </div>
+
 </div>
 
 <!-- LIVE -->
 <div id="live" class="section">
     <div class="card">
-        <h2>🔴 AO VIVO</h2>
+        <h2>🔴 Manhã com Deus</h2>
         <a class="botao" href="https://www.facebook.com/Pastormissionariojosemar.pettenon">
-            Assistir
+            Assistir Ao Vivo
         </a>
     </div>
 </div>
@@ -142,7 +166,7 @@ audio, iframe, video{
 <!-- ÁUDIO -->
 <div id="audio" class="section">
     <div class="card">
-        <h2>🎧 Áudios</h2>
+        <h2>🎧 Palavras do Dia</h2>
         <div id="lista-audios"></div>
     </div>
 </div>
@@ -151,23 +175,49 @@ audio, iframe, video{
 <div id="videos" class="section">
     <div class="card">
         <h2>📺 Vídeos</h2>
-        <iframe src="https://www.youtube.com/embed/LHI2DksDveY"></iframe>
+
+        <a href="https://www.youtube.com/watch?v=txW7x3CQSVg" target="_blank">
+            <img src="https://img.youtube.com/vi/txW7x3CQSVg/0.jpg" class="thumb">
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=WyKHQXk5ye8" target="_blank">
+            <img src="https://img.youtube.com/vi/WyKHQXk5ye8/0.jpg" class="thumb">
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=fJ1PVz3U96s" target="_blank">
+            <img src="https://img.youtube.com/vi/fJ1PVz3U96s/0.jpg" class="thumb">
+        </a>
+
+    </div>
+</div>
+
+<!-- RÁDIO -->
+<div id="radio" class="section">
+    <div class="card">
+        <h2>📻 Rádio Gospel</h2>
+        <a class="botao" href="https://www.youtube.com/results?search_query=louvores+gospel+24h">
+            Ouvir Rádio
+        </a>
     </div>
 </div>
 
 <!-- ORAÇÃO -->
 <div id="oracao" class="section">
     <div class="card">
-        <h2>🙏 Oração</h2>
-        <a class="botao" href="https://wa.me/5555999157014">Enviar Pedido</a>
+        <h2>🙏 Pedido de Oração</h2>
+        <a class="botao" href="https://wa.me/5555999157014">
+            Enviar Pedido
+        </a>
     </div>
 </div>
 
 <!-- 🔥 PRESENÇA DE DEUS (FASE 2) -->
 <div id="presenca" class="section">
     <div class="card" style="text-align:center;background:rgba(0,0,0,0.6);">
+
         <h2 style="color:#d4af37;">🙏 Presença de Deus</h2>
-        <p>Respire fundo… entre em oração.</p>
+
+        <p>Respire fundo… Deus está com você agora.</p>
 
         <audio id="audioPresenca" controls>
             <source src="https://files.catbox.moe/3cjpx1.m4a">
@@ -176,27 +226,56 @@ audio, iframe, video{
         <button class="botao" onclick="document.getElementById('audioPresenca').play()">
             Entrar em Oração
         </button>
+
     </div>
 </div>
 
-<!-- SOBRE -->
+<!-- SOBRE (COMPLETO MANTIDO) -->
 <div id="sobre" class="section">
+
     <div class="card" style="text-align:center;">
-        <img src="logo.png" style="width:120px;border-radius:20px;">
+        <img src="logo.png" class="foto-ministerio">
         <h2>Comunidade Mãos Estendidas</h2>
         <p>Pastor Josemar Luiz</p>
     </div>
+
+    <div class="card">
+        <h2>🔥 Nossa Visão</h2>
+        <p>Movimento espiritual de restauração...</p>
+    </div>
+
+    <div class="card">
+        <h2>🎥 Mensagem Institucional</h2>
+        <iframe src="https://www.youtube.com/embed/LHI2DksDveY"></iframe>
+    </div>
+
+    <div class="card">
+        <h2>⚡ O Que Cremos</h2>
+        <p>Cremos em um Deus vivo e transformador...</p>
+    </div>
+
+    <div class="card">
+        <h2>🌍 Nossa Missão</h2>
+        <p>Levar fé, esperança e vida...</p>
+    </div>
+
+    <div class="card">
+        <h2>📞 Conexão Direta</h2>
+        <a class="botao" href="https://wa.me/5555999157014">WhatsApp</a>
+    </div>
+
 </div>
 
 <!-- MENU -->
 <div class="bottom-nav">
-<button onclick="show('inicio',this)" class="active"><i class="fa fa-home"></i>Início</button>
-<button onclick="show('live',this)"><i class="fa fa-broadcast-tower"></i>Live</button>
-<button onclick="show('audio',this)"><i class="fa fa-headphones"></i>Áudio</button>
-<button onclick="show('videos',this)"><i class="fa fa-video"></i>Vídeos</button>
-<button onclick="show('oracao',this)"><i class="fa fa-hands-praying"></i>Oração</button>
-<button onclick="show('presenca',this)"><i class="fa fa-star"></i>Presença</button>
-<button onclick="show('sobre',this)"><i class="fa fa-info"></i>Sobre</button>
+<button onclick="show('inicio',this)" class="active">Início</button>
+<button onclick="show('live',this)">Live</button>
+<button onclick="show('audio',this)">Áudio</button>
+<button onclick="show('videos',this)">Vídeos</button>
+<button onclick="show('radio',this)">Rádio</button>
+<button onclick="show('oracao',this)">Oração</button>
+<button onclick="show('presenca',this)">Presença</button>
+<button onclick="show('sobre',this)">Sobre</button>
 </div>
 
 <script>
@@ -215,7 +294,7 @@ async function carregarConteudo(){
 
         const lista = document.getElementById("lista-audios");
         if(lista && d.audio){
-            lista.innerHTML = "";
+            lista.innerHTML="";
             d.audio.forEach(a=>{
                 lista.innerHTML += `
                 <div class="card">
@@ -239,4 +318,3 @@ carregarConteudo();
 
 </body>
 </html>
-<!-- FIM -->
