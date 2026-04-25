@@ -72,7 +72,7 @@ box-shadow:0 8px 18px rgba(0,0,0,0.35);
 .botao:active{
 transform:scale(0.98);
 }
-  
+
 .botao-secundario{
 background:#1a1a1a;
 color:#d4af37;
@@ -83,7 +83,7 @@ margin-top:12px;
 text-align:center;
 display:block;
 }
-  
+
 audio, iframe{
 width:100%;
 margin-top:10px;
@@ -130,7 +130,6 @@ background:#1ebe5d;
 .menu.ativo{
 left:0;
 }
-
 </style>
 </head>
 
@@ -144,64 +143,49 @@ left:0;
 <!-- MENU LATERAL -->
 <div id="menuLateral" class="menu">
 
-  <a href="#" onclick="show('inicio')">🏠 Início</a>
-  <a href="#" onclick="show('live')">📡 Live</a>
-  <a href="#" onclick="show('audio')">🎧 Áudio</a>
-  <a href="#" onclick="show('videos')">🎥 Vídeos</a>
-  <a href="#" onclick="show('radio')">📻 Rádio</a>
-  <a href="#" onclick="show('oracao')">🙏 Oração</a>
-  <a href="#" onclick="show('palavra')">📖 Palavra do Pastor</a>
-  <a href="#" onclick="show('sobre')">ℹ️ Sobre</a>
+<a href="#" onclick="show('inicio')">🏠 Início</a>
+<a href="#" onclick="show('live')">📡 Live</a>
+<a href="#" onclick="show('audio')">🎧 Áudio</a>
+<a href="#" onclick="show('videos')">🎥 Vídeos</a>
+<a href="#" onclick="show('radio')">📻 Rádio</a>
+<a href="#" onclick="show('oracao')">🙏 Oração</a>
+<a href="#" onclick="show('palavra')">📖 Palavra do Pastor</a>
+<a href="#" onclick="show('sobre')">ℹ️ Sobre</a>
 
 </div>
 
 <!-- INICIO -->
 <div id="inicio" class="section active">
 
-<!-- HERO -->
 <div class="card" style="text-align:center; padding:25px;">
-<h2 style="color:#d4af37; font-size:22px;">🙏 Bem-vindo à Comunidade</h2>
-<p style="font-size:14px; opacity:0.8;">
-Um lugar de fé, restauração e presença de Deus
-</p>
+<h2 style="color:#d4af37;">🙏 Bem-vindo à Comunidade</h2>
+<p style="opacity:0.8;">Um lugar de fé, restauração e presença de Deus</p>
 </div>
 
-<!-- BANNER -->
 <div class="card">
 <img src="banner.jpg" style="width:100%; border-radius:14px;">
 </div>
 
-<!-- VERSÍCULO -->
 <div class="card" style="text-align:center;">
 <h2 style="color:#d4af37;">📖 Versículo do Dia</h2>
-<p style="font-size:18px;">
-<em>“Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele.”</em>
-</p>
+<p><em>“Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele.”</em></p>
 <strong>Salmos 118:24</strong>
 </div>
 
-<!-- PALAVRA DO DIA (DESTAQUE) -->
 <div class="card" style="text-align:center;">
 <h2>🎧 Palavra do Dia</h2>
-
 <audio id="audioDia" controls>
 <source src="https://files.catbox.moe/3cjpx1.m4a">
 </audio>
-
-<button class="botao" onclick="document.getElementById('audioDia').play()">
-▶ Ouvir Mensagem
-</button>
+<button class="botao" onclick="document.getElementById('audioDia').play()">▶ Ouvir Mensagem</button>
 </div>
 
-<!-- ATALHOS RÁPIDOS -->
 <div class="card">
 <h2 style="text-align:center;">⚡ Acessos Rápidos</h2>
-
 <a class="botao" onclick="show('audio')">🎧 Áudios</a>
 <a class="botao" onclick="show('palavra')">📖 Palavra do Pastor</a>
 <a class="botao" onclick="show('live')">📡 Live</a>
 <a class="botao" onclick="show('oracao')">🙏 Oração</a>
-
 </div>
 
 </div>
@@ -210,41 +194,35 @@ Um lugar de fé, restauração e presença de Deus
 <div id="live" class="section">
 <div class="card">
 <h2>🔴 Manhã com Deus</h2>
-<a href="https://www.facebook.com/Pastormissionariojosemar.pettenon" target="_blank" class="botao">
-Assistir ao Vivo
-</a>
+<a href="https://www.facebook.com/Pastormissionariojosemar.pettenon" target="_blank" class="botao">Assistir ao Vivo</a>
 </div>
 </div>
 
+<!-- ÁUDIO -->
 <div id="audio" class="section">
 
-<!-- TITÚLO -->
 <div class="card" style="text-align:center;">
 <h2 style="color:#d4af37;">🎧 Central de Áudios</h2>
-<p>Mensagens, orações e palavras para sua edificação diária</p>
+<p>Mensagens e conteúdos espirituais</p>
 </div>
 
-<!-- PALAVRA DO PASTOR -->
 <div class="card">
 <h2>📖 Palavra do Pastor</h2>
 <div id="lista-pastor"></div>
 </div>
 
-<!-- ORAÇÕES -->
 <div class="card">
 <h2>🙏 Orações</h2>
 <div id="lista-oracoes"></div>
 </div>
 
-<!-- DEVOCIONAIS -->
 <div class="card">
 <h2>🌅 Devocionais</h2>
 <div id="lista-devocionais"></div>
 </div>
 
-<!-- CAMPANHAS -->
 <div class="card">
-<h2>🔥 Campanhas e Propósitos</h2>
+<h2>🔥 Campanhas</h2>
 <div id="lista-campanhas"></div>
 </div>
 
@@ -274,9 +252,7 @@ Assistir ao Vivo
 <div id="radio" class="section">
 <div class="card">
 <h2>📻 Rádio Gospel</h2>
-<a href="https://www.youtube.com/results?search_query=louvores+gospel+24h" target="_blank" class="botao">
-Ouvir Rádio
-</a>
+<a href="https://www.youtube.com/results?search_query=louvores+gospel+24h" class="botao">Ouvir Rádio</a>
 </div>
 </div>
 
@@ -284,38 +260,20 @@ Ouvir Rádio
 <div id="oracao" class="section">
 <div class="card">
 <h2>🙏 Pedido de Oração</h2>
-<a href="https://wa.me/5555999157014" class="botao">
-Enviar Pedido
-</a>
+<a href="https://wa.me/5555999157014" class="botao">Enviar Pedido</a>
 </div>
 </div>
 
-<!-- PALAVRA DO PASTOR -->
+<!-- PALAVRA -->
 <div id="palavra" class="section">
-
 <div class="card" style="text-align:center;">
 <h2 style="color:#d4af37;">📖 Palavra do Pastor</h2>
-<p><em>Direção espiritual diária do Pastor Josemar Luiz.</em></p>
+<p>Direção espiritual diária</p>
+</div>
 </div>
 
-<div class="card">
-<p>
-Aqui será liberada diariamente a palavra profética do Pastor, trazendo direção para famílias, igreja e vida espiritual.
-</p>
-</div>
-
-<div class="card">
-<h2>🙏 Oração do Pastor</h2>
-<p>
-Oração forte, profética e abrangente será colocada aqui.
-</p>
-</div>
-
-</div>
-
-<!-- SOBRE COMPLETO RESTAURADO -->
+<!-- SOBRE -->
 <div id="sobre" class="section">
-
 <div class="card" style="text-align:center;">
 <img src="logo.png" class="foto-ministerio">
 <h2 style="color:#d4af37;">Comunidade Mãos Estendidas</h2>
@@ -324,57 +282,13 @@ Oração forte, profética e abrangente será colocada aqui.
 
 <div class="card">
 <h2>🔥 Nossa Visão</h2>
-<p>
-Não somos apenas uma comunidade online. Somos um movimento espiritual levantado para alcançar vidas, restaurar famílias e reacender a fé.<br><br>
-Onde muitos veem fim, Deus está escrevendo recomeço.
-</p>
-</div>
-
-<div class="card">
-<h2>🎯 Nossa Missão</h2>
-<p>
-Levar fé onde existe vazio.<br>
-Levar esperança onde existe dor.<br>
-Levar Deus onde parece não haver saída.<br><br>
-Ser instrumento de transformação espiritual para esta geração.
-</p>
-</div>
-
-<div class="card">
-<h2>⚡ O Que Cremos</h2>
-<p>
-Cremos em um Deus vivo, presente e transformador.<br>
-Cremos na Palavra como direção para a vida.<br>
-Cremos que nenhuma história está perdida quando Deus entra em ação.
-</p>
-</div>
-
-<div class="card">
-<h2>📅 Nossos Encontros</h2>
-<p>
-• Manhã com Deus<br>
-• Orações online<br>
-• Campanhas proféticas<br>
-• Ministrações digitais
-</p>
-</div>
-
-<div class="card">
-<h2>🎥 Mensagem Institucional</h2>
-<iframe src="https://www.youtube.com/embed/LHI2DksDveY" allowfullscreen></iframe>
-</div>
-
-<div class="card">
-<h2>📖 Palavra Base</h2>
-<p><em>“Ide por todo o mundo e pregai o evangelho a toda criatura.”</em></p>
-<strong>Marcos 16:15</strong>
+<p>Movimento espiritual de restauração e fé.</p>
 </div>
 
 <div class="card">
 <h2>📞 Contato</h2>
 <a href="https://wa.me/5555999157014" class="botao">WhatsApp</a>
 </div>
-
 </div>
 
 <script>
@@ -405,25 +319,22 @@ let html = `
 </audio>
 </div>`;
 
-if(a.tipo === "pastor"){
-document.getElementById("lista-pastor").innerHTML += html;
+function add(id){
+const el = document.getElementById(id);
+if(el) el.innerHTML += html;
 }
 
-if(a.tipo === "oracao"){
-document.getElementById("lista-oracoes").innerHTML += html;
-}
-
-if(a.tipo === "devocional"){
-document.getElementById("lista-devocionais").innerHTML += html;
-}
-
-if(a.tipo === "campanha"){
-document.getElementById("lista-campanhas").innerHTML += html;
-}
+if(a.tipo === "pastor") add("lista-pastor");
+else if(a.tipo === "oracao") add("lista-oracoes");
+else if(a.tipo === "devocional") add("lista-devocionais");
+else if(a.tipo === "campanha") add("lista-campanhas");
 
 });
 }
-}catch(e){}
+
+}catch(e){
+console.log(e);
+}
 }
 carregarConteudo();
 
