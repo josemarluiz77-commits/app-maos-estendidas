@@ -11,386 +11,269 @@
 
 <style>
 body{
-    margin:0;
-    font-family:'Segoe UI', Arial;
-    background:linear-gradient(180deg,#0a0f0c,#111a14);
-    color:#f1f1f1;
-    padding-bottom:100px;
+margin:0;
+font-family:'Segoe UI', Arial;
+background:linear-gradient(180deg,#0a0f0c,#111a14);
+color:#f1f1f1;
+padding-bottom:100px;
 }
-
 header{
-    padding:22px;
-    background:linear-gradient(90deg,#0d3b1e,#7a5c00);
-    text-align:center;
+padding:22px;
+background:linear-gradient(90deg,#0d3b1e,#7a5c00);
+text-align:center;
 }
-
-#aviso-live{
-    display:none;
-    background:#ff0000;
-    color:white;
-    text-align:center;
-    padding:12px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.section{
-    display:none;
-    padding:18px;
-    max-width:650px;
-    margin:auto;
-    animation:fade 0.3s ease;
-}
-
+.section{display:none;padding:18px;max-width:650px;margin:auto;}
 .section.active{display:block;}
 
-@keyframes fade{
-    from{opacity:0; transform:translateY(10px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
 .card{
-    background:rgba(255,255,255,0.06);
-    padding:18px;
-    border-radius:18px;
-    margin-bottom:18px;
-    box-shadow:0 4px 20px rgba(0,0,0,0.4);
+background:rgba(255,255,255,0.06);
+padding:18px;
+border-radius:18px;
+margin-bottom:18px;
 }
 
 .botao{
-    display:block;
-    text-align:center;
-    background:linear-gradient(90deg,#1ebe5d,#0d8f45);
-    color:white;
-    padding:15px;
-    border-radius:14px;
-    font-weight:bold;
-    margin-top:12px;
-    text-decoration:none;
+display:block;
+text-align:center;
+background:linear-gradient(90deg,#1ebe5d,#0d8f45);
+color:white;
+padding:15px;
+border-radius:14px;
+margin-top:12px;
+text-decoration:none;
 }
 
-audio, iframe, video{
-    width:100%;
-    margin-top:10px;
-    border-radius:12px;
-}
+audio, iframe{width:100%;margin-top:10px;border-radius:12px;}
 
-.thumb{
-    width:100%;
-    border-radius:12px;
-    margin-top:10px;
-}
+.thumb{width:100%;border-radius:12px;margin-top:10px;}
 
-.foto-ministerio{
-    width:130px;
-    border-radius:20px;
-    margin-bottom:10px;
-}
+.foto-ministerio{width:130px;border-radius:20px;margin-bottom:10px;}
 
 .bottom-nav{
-    position:fixed;
-    bottom:0;
-    width:100%;
-    overflow-x:auto;
-    display:flex;
-    background:#0f0f0f;
-    padding:8px 0;
+position:fixed;
+bottom:0;
+width:100%;
+display:flex;
+background:#0f0f0f;
 }
 
 .bottom-nav button{
-    min-width:80px;
-    flex-shrink:0;
-    background:none;
-    border:none;
-    color:#888;
-    font-size:12px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+flex:1;
+background:none;
+border:none;
+color:#888;
+font-size:12px;
 }
 
-.bottom-nav button.active{
-    color:#d4af37;
-}
-
-.bottom-nav i{
-    font-size:18px;
-}
+.bottom-nav button.active{color:#d4af37;}
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>🙏 Comunidade Mãos Estendidas</h1>
+<h1>🙏 Comunidade Mãos Estendidas</h1>
 </header>
 
-<div id="aviso-live" onclick="show('live')">
-    🔴 AO VIVO AGORA - TOQUE PARA ASSISTIR
-</div>
-
-<!-- INÍCIO -->
+<!-- INICIO -->
 <div id="inicio" class="section active">
 
-    <!-- BANNER -->
-    <div class="card" style="padding:0; overflow:hidden;">
-        <img src="banner.jpg" style="
-        width:100%;
-        display:block;
-        border-radius:12px;
-        box-shadow:0 6px 25px rgba(0,0,0,0.6);">
-    </div>
+<div class="card">
+<img src="banner.jpg" style="width:100%; border-radius:12px;">
+</div>
 
-    <div class="card" style="text-align:center;">
-        <h2 style="color:#d4af37;">Versículo do Dia</h2>
+<div class="card" style="text-align:center;">
+<h2 style="color:#d4af37;">Versículo do Dia</h2>
+<p><em>“Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele.”</em></p>
+<strong>Salmos 118:24</strong>
+</div>
 
-        <p style="font-size:16px; font-style:italic;">
-            “Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele.”
-        </p>
-
-        <strong>Salmos 118:24</strong>
-    </div>
-
-    <div class="card" style="text-align:center;">
-        <h2>🎧 Palavra de Hoje</h2>
-
-        <p style="opacity:0.8; font-size:14px;">
-            Toque abaixo para ouvir a mensagem do dia
-        </p>
-
-        <audio id="audioDia" controls>
-            <source src="https://files.catbox.moe/3cjpx1.m4a">
-        </audio>
-
-        <button class="botao" onclick="document.getElementById('audioDia').play()">
-            ▶ Ouvir Palavra
-        </button>
-    </div>
+<div class="card" style="text-align:center;">
+<h2>🎧 Palavra de Hoje</h2>
+<audio id="audioDia" controls>
+<source src="https://files.catbox.moe/3cjpx1.m4a">
+</audio>
+<button class="botao" onclick="document.getElementById('audioDia').play()">▶ Ouvir Palavra</button>
+</div>
 
 </div>
 
 <!-- LIVE -->
 <div id="live" class="section">
-    <div class="card">
-        <h2>🔴 Manhã com Deus (AO VIVO)</h2>
-        <a href="https://www.facebook.com/Pastormissionariojosemar.pettenon" target="_blank" class="botao">
-            ▶ Assistir ao Vivo
-        </a>
-    </div>
+<div class="card">
+<h2>🔴 Manhã com Deus</h2>
+<a href="https://www.facebook.com/Pastormissionariojosemar.pettenon" target="_blank" class="botao">Assistir ao Vivo</a>
+</div>
 </div>
 
-<!-- ÁUDIO -->
+<!-- AUDIO -->
 <div id="audio" class="section">
-    <div class="card">
-        <h2>🎧 Palavras do Dia</h2>
-        <div id="lista-audios"></div>
-    </div>
+<div class="card">
+<h2>🎧 Palavras do Dia</h2>
+<div id="lista-audios"></div>
+</div>
 </div>
 
-<!-- VÍDEOS -->
+<!-- VIDEOS -->
 <div id="videos" class="section">
-    <div class="card">
-        <h2>📺 Vídeos</h2>
+<div class="card">
+<h2>📺 Vídeos</h2>
 
-        <a href="https://www.youtube.com/watch?v=txW7x3CQSVg" target="_blank">
-            <img src="https://img.youtube.com/vi/txW7x3CQSVg/0.jpg" class="thumb">
-        </a>
+<a href="https://www.youtube.com/watch?v=txW7x3CQSVg" target="_blank">
+<img src="https://img.youtube.com/vi/txW7x3CQSVg/0.jpg" class="thumb">
+</a>
 
-        <a href="https://www.youtube.com/watch?v=WyKHQXk5ye8" target="_blank">
-            <img src="https://img.youtube.com/vi/WyKHQXk5ye8/0.jpg" class="thumb">
-        </a>
+<a href="https://www.youtube.com/watch?v=WyKHQXk5ye8" target="_blank">
+<img src="https://img.youtube.com/vi/WyKHQXk5ye8/0.jpg" class="thumb">
+</a>
 
-        <a href="https://www.youtube.com/watch?v=fJ1PVz3U96s" target="_blank">
-            <img src="https://img.youtube.com/vi/fJ1PVz3U96s/0.jpg" class="thumb">
-        </a>
+<a href="https://www.youtube.com/watch?v=fJ1PVz3U96s" target="_blank">
+<img src="https://img.youtube.com/vi/fJ1PVz3U96s/0.jpg" class="thumb">
+</a>
 
-    </div>
+</div>
 </div>
 
-<!-- RÁDIO -->
+<!-- RADIO -->
 <div id="radio" class="section">
-    <div class="card">
-        <h2>📻 Rádio Gospel</h2>
-        <a href="https://www.youtube.com/results?search_query=louvores+gospel+24h" target="_blank" class="botao">
-            ▶ Ouvir Rádio Gospel
-        </a>
-    </div>
+<div class="card">
+<h2>📻 Rádio Gospel</h2>
+<a href="https://www.youtube.com/results?search_query=louvores+gospel+24h" target="_blank" class="botao">Ouvir Rádio</a>
+</div>
 </div>
 
 <!-- ORAÇÃO -->
 <div id="oracao" class="section">
-    <div class="card">
-        <h2>🙏 Pedido de Oração</h2>
-        <a class="botao" href="https://wa.me/5555999157014" target="_blank">
-            Enviar Pedido
-        </a>
-    </div>
+<div class="card">
+<h2>🙏 Pedido de Oração</h2>
+<a href="https://wa.me/5555999157014" class="botao">Enviar Pedido</a>
 </div>
-
-<!-- PRESENÇA DE DEUS -->
-<div id="presenca" class="section">
-    <div class="card" style="text-align:center;background:rgba(0,0,0,0.6);">
-
-        <h2 style="color:#d4af37;">🙏 Presença de Deus</h2>
-
-        <p>Feche os olhos… Deus está falando com você agora.</p>
-
-        <audio controls>
-            <source src="https://files.catbox.moe/3cjpx1.m4a">
-        </audio>
-
-        <button class="botao">Entrar em Oração</button>
-
-    </div>
-</div>
-
-<!-- SOBRE COMPLETO ORIGINAL -->
-<div id="sobre" class="section">
-
-    <div class="card" style="text-align:center;">
-        <img src="logo.png" class="foto-ministerio">
-        <h2 style="color:#d4af37;">Comunidade Mãos Estendidas</h2>
-        <p><strong>Pastor Josemar Luiz</strong></p>
-    </div>
-
-    <div class="card">
-        <h2>🔥 Nossa Visão</h2>
-        <p>
-            Não somos apenas uma comunidade online. Somos um movimento espiritual levantado para alcançar vidas, restaurar famílias e reacender a fé daqueles que estavam cansados e sem direção.
-            <br><br>
-            Onde muitos veem fim, Deus está escrevendo recomeço.
-        </p>
-    </div>
-
-    <div class="card">
-        <h2>🎥 Mensagem Institucional</h2>
-        <iframe src="https://www.youtube.com/embed/LHI2DksDveY"></iframe>
-    </div>
-
-    <div class="card">
-        <h2>🔊 Palavra do Pastor</h2>
-        <audio controls>
-            <source src="https://files.catbox.moe/3cjpx1.m4a">
-        </audio>
-    </div>
-
-    <div class="card">
-        <h2>⚡ O Que Cremos</h2>
-        <p>
-            Cremos em um Deus vivo, presente e transformador.<br>
-            Cremos na Palavra como direção para a vida.<br>
-            Cremos que nenhuma história está perdida quando Deus entra em ação.
-        </p>
-    </div>
-
-    <div class="card">
-        <h2>📖 Palavra Base</h2>
-        <p><em>Marcos 16:15</em></p>
-    </div>
-
-    <div class="card">
-        <h2>🌍 Nossa Missão</h2>
-        <p>
-            Levar fé onde existe vazio.<br>
-            Levar esperança onde existe dor.<br>
-            Levar Deus onde parece não haver saída.
-        </p>
-    </div>
-
-    <div class="card">
-        <h2>📅 Eventos</h2>
-        <p>
-            • Manhã com Deus<br>
-            • Orações online<br>
-            • Campanhas proféticas
-        </p>
-    </div>
-
-    <!-- SOBRE (FECHAMENTO CORRETO) -->
-<div id="sobre" class="section">
-
-    <div class="card">
-        <h2>📞 Contato</h2>
-        <a class="botao" href="https://wa.me/5555999157014">WhatsApp</a>
-    </div>
-
 </div>
 
 <!-- PRESENÇA -->
 <div id="presenca" class="section">
-    <div class="card">
-        <h2>⭐ Presença</h2>
-        <p>Registre sua presença e participe conosco!</p>
-    </div>
+<div class="card" style="text-align:center;">
+<h2 style="color:#d4af37;">🙏 Presença de Deus</h2>
+<p>Feche os olhos… Deus está falando com você agora.</p>
+<audio controls>
+<source src="https://files.catbox.moe/3cjpx1.m4a">
+</audio>
+</div>
+</div>
+
+<!-- SOBRE COMPLETO -->
+<div id="sobre" class="section">
+
+<div class="card" style="text-align:center;">
+<img src="logo.png" class="foto-ministerio">
+<h2 style="color:#d4af37;">Comunidade Mãos Estendidas</h2>
+<p><strong>Pastor Josemar Luiz</strong></p>
+</div>
+
+<div class="card">
+<h2>🔥 Nossa Visão</h2>
+<p>
+Não somos apenas uma comunidade online. Somos um movimento espiritual levantado para alcançar vidas, restaurar famílias e reacender a fé.
+<br><br>
+Onde muitos veem fim, Deus está escrevendo recomeço.
+</p>
+</div>
+
+<div class="card">
+<h2>🎥 Mensagem Institucional</h2>
+<iframe src="https://www.youtube.com/embed/LHI2DksDveY" allowfullscreen></iframe>
+</div>
+
+<div class="card">
+<h2>🔊 Palavra do Pastor</h2>
+<audio controls>
+<source src="https://files.catbox.moe/3cjpx1.m4a">
+</audio>
+</div>
+
+<div class="card">
+<h2>⚡ O Que Cremos</h2>
+<p>
+Cremos em um Deus vivo, presente e transformador.<br>
+Cremos na Palavra como direção para a vida.<br>
+Cremos que nenhuma história está perdida quando Deus entra em ação.
+</p>
+</div>
+
+<div class="card">
+<h2>📖 Palavra Base</h2>
+<p><em>“Ide por todo o mundo e pregai o evangelho a toda criatura.”</em></p>
+<strong>Marcos 16:15</strong>
+</div>
+
+<div class="card">
+<h2>🌍 Nossa Missão</h2>
+<p>
+Levar fé onde existe vazio.<br>
+Levar esperança onde existe dor.<br>
+Levar Deus onde parece não haver saída.
+</p>
+</div>
+
+<div class="card">
+<h2>📅 Nossos Encontros</h2>
+<p>
+• Manhã com Deus<br>
+• Orações online<br>
+• Campanhas proféticas<br>
+• Ministrações digitais
+</p>
+</div>
+
+<div class="card">
+<h2>📞 Contato</h2>
+<a href="https://wa.me/5555999157014" class="botao">WhatsApp</a>
+</div>
+
 </div>
 
 <!-- MENU -->
 <div class="bottom-nav">
-<button onclick="show('inicio', this)" class="active"><i class="fa fa-home"></i>Início</button>
-<button onclick="show('live', this)"><i class="fa fa-broadcast-tower"></i>Live</button>
-<button onclick="show('audio', this)"><i class="fa fa-headphones"></i>Áudio</button>
-<button onclick="show('videos', this)"><i class="fa fa-video"></i>Vídeos</button>
-<button onclick="show('radio', this)"><i class="fa fa-radio"></i>Rádio</button>
-<button onclick="show('oracao', this)"><i class="fa fa-hands-praying"></i>Oração</button>
-<button onclick="show('presenca', this)"><i class="fa fa-star"></i>Presença</button>
-<button onclick="show('sobre', this)"><i class="fa fa-info"></i>Sobre</button>
+<button onclick="show('inicio',this)" class="active">Início</button>
+<button onclick="show('live',this)">Live</button>
+<button onclick="show('audio',this)">Áudio</button>
+<button onclick="show('videos',this)">Vídeos</button>
+<button onclick="show('radio',this)">Rádio</button>
+<button onclick="show('oracao',this)">Oração</button>
+<button onclick="show('presenca',this)">Presença</button>
+<button onclick="show('sobre',this)">Sobre</button>
 </div>
 
 <script>
-function show(id, element){
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+function show(id,btn){
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
 
-    const secao = document.getElementById(id);
-    if(secao){
-        secao.classList.add('active');
-    }
-
-    document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
-
-    if(element){
-        element.classList.add('active');
-    }
+document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
 }
 
 async function carregarConteudo(){
-    try{
-        const resposta = await fetch("dados.json");
-        const dados = await resposta.json();
+try{
+const resposta = await fetch("dados.json");
+const dados = await resposta.json();
 
-        const lista = document.getElementById("lista-audios");
-        if(lista){
-            lista.innerHTML = "";
-
-            if(dados.audio){
-                dados.audio.forEach(a => {
-                    lista.innerHTML += `
-                    <div class="card">
-                        <p><strong>${a.titulo}</strong></p>
-                        <audio controls>
-                            <source src="${a.url}">
-                        </audio>
-                    </div>`;
-                });
-            }
-        }
-
-        if(dados.ao_vivo){
-            const aviso = document.getElementById("aviso-live");
-            if(aviso){
-                aviso.style.display = "block";
-            }
-        }
-
-    }catch(e){
-        console.log("Erro ao carregar dados");
-    }
+const lista = document.getElementById("lista-audios");
+if(lista && dados.audio){
+dados.audio.forEach(a=>{
+lista.innerHTML += `
+<div class="card">
+<p><strong>${a.titulo}</strong></p>
+<audio controls><source src="${a.url}"></audio>
+</div>`;
+});
 }
-
+}catch(e){}
+}
 carregarConteudo();
 
-// SERVICE WORKER
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
+navigator.serviceWorker.register('sw.js');
 }
 </script>
 
