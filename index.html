@@ -310,28 +310,40 @@ audio, iframe, video{
         <h2>📞 Contato</h2>
         <a class="botao" href="https://wa.me/5555999157014">WhatsApp</a>
     </div>
+<div id="presenca" class="section">
+    <div class="card">
+        <h2>⭐ Presença</h2>
+        <p>Registre sua presença e participe conosco!</p>
+    </div>
 
 </div>
 
 <!-- MENU -->
 <div class="bottom-nav">
-<button onclick="show('inicio',this)" class="active"><i class="fa fa-home"></i>Início</button>
-<button onclick="show('live',this)"><i class="fa fa-broadcast-tower"></i>Live</button>
-<button onclick="show('audio',this)"><i class="fa fa-headphones"></i>Áudio</button>
-<button onclick="show('videos',this)"><i class="fa fa-video"></i>Vídeos</button>
-<button onclick="show('radio',this)"><i class="fa fa-radio"></i>Rádio</button>
-<button onclick="show('oracao',this)"><i class="fa fa-hands-praying"></i>Oração</button>
-<button onclick="show('presenca',this)"><i class="fa fa-star"></i>Presença</button>
-<button onclick="show('sobre',this)"><i class="fa fa-info"></i>Sobre</button>
+<button onclick="show('inicio', this)" class="active"><i class="fa fa-home"></i>Início</button>
+<button onclick="show('live', this)"><i class="fa fa-broadcast-tower"></i>Live</button>
+<button onclick="show('audio', this)"><i class="fa fa-headphones"></i>Áudio</button>
+<button onclick="show('videos', this)"><i class="fa fa-video"></i>Vídeos</button>
+<button onclick="show('radio', this)"><i class="fa fa-radio"></i>Rádio</button>
+<button onclick="show('oracao', this)"><i class="fa fa-hands-praying"></i>Oração</button>
+<button onclick="show('presenca', this)"><i class="fa fa-star"></i>Presença</button>
+<button onclick="show('sobre', this)"><i class="fa fa-info"></i>Sobre</button>
 </div>
 
 <script>
-function show(id,btn){
-    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+function show(id, element){
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
 
-    document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
-    if(btn) btn.classList.add('active');
+    const secao = document.getElementById(id);
+    if(secao){
+        secao.classList.add('active');
+    }
+
+    document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
+
+    if(element){
+        element.classList.add('active');
+    }
 }
 
 async function carregarConteudo(){
@@ -340,33 +352,41 @@ async function carregarConteudo(){
         const dados = await resposta.json();
 
         const lista = document.getElementById("lista-audios");
-        lista.innerHTML = "";
+        if(lista){
+            lista.innerHTML = "";
 
-        if(dados.audio){
-            dados.audio.forEach(a => {
-                lista.innerHTML += `
-                <div class="card">
-                    <p><strong>${a.titulo}</strong></p>
-                    <audio controls>
-                        <source src="${a.url}">
-                    </audio>
-                </div>`;
-            });
+            if(dados.audio){
+                dados.audio.forEach(a => {
+                    lista.innerHTML += `
+                    <div class="card">
+                        <p><strong>${a.titulo}</strong></p>
+                        <audio controls>
+                            <source src="${a.url}">
+                        </audio>
+                    </div>`;
+                });
+            }
         }
 
         if(dados.ao_vivo){
-            document.getElementById("aviso-live").style.display = "block";
+            const aviso = document.getElementById("aviso-live");
+            if(aviso){
+                aviso.style.display = "block";
+            }
         }
 
-    }catch(e){}
+    }catch(e){
+        console.log("Erro ao carregar dados");
+    }
 }
-<script>
+
 carregarConteudo();
 
-<script>
+// SERVICE WORKER (modo app)
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');
 }
 </script>
+
 </body>
 </html>
