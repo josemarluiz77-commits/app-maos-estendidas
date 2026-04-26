@@ -17,14 +17,12 @@ background:linear-gradient(180deg,#0a0f0c,#111a14);
 color:#f1f1f1;
 padding-bottom:60px;
 }
-
 header{
 padding:22px;
 background:linear-gradient(90deg,#0d3b1e,#7a5c00);
 text-align:center;
 position:relative;
 }
-
 header span{
 position:absolute;
 left:15px;
@@ -32,23 +30,14 @@ top:18px;
 font-size:26px;
 cursor:pointer;
 }
-
-.section{
-display:none;
-padding:18px;
-max-width:650px;
-margin:auto;
-}
-
+.section{display:none;padding:18px;max-width:650px;margin:auto;}
 .section.active{display:block;}
-
 .card{
 background:rgba(255,255,255,0.06);
 padding:18px;
 border-radius:18px;
 margin-bottom:18px;
 }
-
 .botao{
 display:block;
 text-align:center;
@@ -59,50 +48,10 @@ border-radius:16px;
 margin-top:12px;
 text-decoration:none;
 font-weight:600;
-letter-spacing:0.3px;
-box-shadow:0 6px 15px rgba(0,0,0,0.25);
-transition:0.2s ease;
 }
-
-.botao:hover{
-transform:scale(1.02);
-box-shadow:0 8px 18px rgba(0,0,0,0.35);
-}
-
-.botao:active{
-transform:scale(0.98);
-}
-
-.botao-secundario{
-background:#1a1a1a;
-color:#d4af37;
-border:1px solid #d4af37;
-padding:14px 16px;
-border-radius:16px;
-margin-top:12px;
-text-align:center;
-display:block;
-}
-
-audio, iframe{
-width:100%;
-margin-top:10px;
-border-radius:12px;
-}
-
-.thumb{
-width:100%;
-border-radius:12px;
-margin-top:10px;
-}
-
-.foto-ministerio{
-width:130px;
-border-radius:20px;
-margin-bottom:10px;
-}
-
-/* MENU LATERAL */
+audio, iframe{width:100%;margin-top:10px;border-radius:12px;}
+.thumb{width:100%;border-radius:12px;margin-top:10px;}
+.foto-ministerio{width:130px;border-radius:20px;margin-bottom:10px;}
 .menu{
 position:fixed;
 top:0;
@@ -114,7 +63,6 @@ padding-top:60px;
 transition:0.3s;
 z-index:999;
 }
-
 .menu a{
 display:block;
 color:#fff;
@@ -122,14 +70,8 @@ padding:15px;
 text-decoration:none;
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
-
-.menu a:hover{
-background:#1ebe5d;
-}
-
-.menu.ativo{
-left:0;
-}
+.menu a:hover{background:#1ebe5d;}
+.menu.ativo{left:0;}
 </style>
 </head>
 
@@ -140,52 +82,41 @@ left:0;
 <h1>🙏 Comunidade Mãos Estendidas</h1>
 </header>
 
-<!-- MENU LATERAL -->
+<!-- MENU -->
 <div id="menuLateral" class="menu">
-
-<a href="#" onclick="show('inicio')">🏠 Início</a>
-<a href="#" onclick="show('live')">📡 Live</a>
-<a href="#" onclick="show('audio')">🎧 Áudio</a>
-<a href="#" onclick="show('videos')">🎥 Vídeos</a>
-<a href="#" onclick="show('radio')">📻 Rádio</a>
-<a href="#" onclick="show('oracao')">🙏 Oração</a>
-<a href="#" onclick="show('palavra')">📖 Palavra do Pastor</a>
-<a href="#" onclick="show('sobre')">ℹ️ Sobre</a>
-
+<a onclick="show('inicio')">🏠 Início</a>
+<a onclick="show('live')">📡 Live</a>
+<a onclick="show('audio')">🎧 Áudio</a>
+<a onclick="show('videos')">🎥 Vídeos</a>
+<a onclick="show('radio')">📻 Rádio</a>
+<a onclick="show('oracao')">🙏 Oração</a>
+<a onclick="show('palavra')">📖 Palavra do Pastor</a>
+<a onclick="show('sobre')">ℹ️ Sobre</a>
 </div>
 
 <!-- INICIO -->
 <div id="inicio" class="section active">
 
-<div class="card" style="text-align:center; padding:25px;">
-<h2 style="color:#d4af37;">🙏 Bem-vindo à Comunidade</h2>
-<p style="opacity:0.8;">Um lugar de fé, restauração e presença de Deus</p>
-</div>
-
-<div class="card">
-<img src="banner.jpg" style="width:100%; border-radius:14px;">
-</div>
-
 <div class="card" style="text-align:center;">
 <h2 style="color:#d4af37;">📖 Versículo do Dia</h2>
-<p><em>“Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele.”</em></p>
-<strong>Salmos 118:24</strong>
+<p id="versiculoTexto"><em>Carregando...</em></p>
+<strong id="versiculoRef"></strong>
 </div>
 
 <div class="card" style="text-align:center;">
 <h2>🎧 Palavra do Dia</h2>
-<audio id="audioDia" controls>
-<source src="https://files.catbox.moe/3cjpx1.m4a">
-</audio>
-<button class="botao" onclick="document.getElementById('audioDia').play()">▶ Ouvir Mensagem</button>
+<audio id="audioDia" controls></audio>
+<button class="botao" onclick="audioDia.play()">▶ Ouvir Mensagem</button>
 </div>
 
 <div class="card">
-<h2 style="text-align:center;">⚡ Acessos Rápidos</h2>
-<a class="botao" onclick="show('audio')">🎧 Áudios</a>
-<a class="botao" onclick="show('palavra')">📖 Palavra do Pastor</a>
-<a class="botao" onclick="show('live')">📡 Live</a>
-<a class="botao" onclick="show('oracao')">🙏 Oração</a>
+<h2>💬 Mensagem do Dia</h2>
+<p id="mensagemDia">Carregando...</p>
+</div>
+
+<div class="card">
+<h2>📺 Vídeo do Dia</h2>
+<iframe id="videoDia" allowfullscreen></iframe>
 </div>
 
 </div>
@@ -200,55 +131,23 @@ left:0;
 
 <!-- ÁUDIO -->
 <div id="audio" class="section">
-
-<div class="card" style="text-align:center;">
-<h2 style="color:#d4af37;">🎧 Central de Áudios</h2>
-<p>Mensagens e conteúdos espirituais</p>
+<div class="card"><h2>📖 Palavra do Pastor</h2><div id="lista-pastor"></div></div>
+<div class="card"><h2>🙏 Orações</h2><div id="lista-oracoes"></div></div>
+<div class="card"><h2>🌅 Devocionais</h2><div id="lista-devocionais"></div></div>
+<div class="card"><h2>🔥 Campanhas</h2><div id="lista-campanhas"></div></div>
 </div>
 
-<div class="card">
-<h2>📖 Palavra do Pastor</h2>
-<div id="lista-pastor"></div>
-</div>
-
-<div class="card">
-<h2>🙏 Orações</h2>
-<div id="lista-oracoes"></div>
-</div>
-
-<div class="card">
-<h2>🌅 Devocionais</h2>
-<div id="lista-devocionais"></div>
-</div>
-
-<div class="card">
-<h2>🔥 Campanhas</h2>
-<div id="lista-campanhas"></div>
-</div>
-
-</div>
-
-<!-- VÍDEOS -->
+<!-- VIDEOS -->
 <div id="videos" class="section">
 <div class="card">
 <h2>📺 Vídeos</h2>
-
-<a href="https://www.youtube.com/watch?v=txW7x3CQSVg" target="_blank">
-<img src="https://img.youtube.com/vi/txW7x3CQSVg/0.jpg" class="thumb">
-</a>
-
-<a href="https://www.youtube.com/watch?v=WyKHQXk5ye8" target="_blank">
-<img src="https://img.youtube.com/vi/WyKHQXk5ye8/0.jpg" class="thumb">
-</a>
-
-<a href="https://www.youtube.com/watch?v=fJ1PVz3U96s" target="_blank">
-<img src="https://img.youtube.com/vi/fJ1PVz3U96s/0.jpg" class="thumb">
-</a>
-
+<a href="https://www.youtube.com/watch?v=txW7x3CQSVg" target="_blank"><img src="https://img.youtube.com/vi/txW7x3CQSVg/0.jpg" class="thumb"></a>
+<a href="https://www.youtube.com/watch?v=WyKHQXk5ye8" target="_blank"><img src="https://img.youtube.com/vi/WyKHQXk5ye8/0.jpg" class="thumb"></a>
+<a href="https://www.youtube.com/watch?v=fJ1PVz3U96s" target="_blank"><img src="https://img.youtube.com/vi/fJ1PVz3U96s/0.jpg" class="thumb"></a>
 </div>
 </div>
 
-<!-- RÁDIO -->
+<!-- RADIO -->
 <div id="radio" class="section">
 <div class="card">
 <h2>📻 Rádio Gospel</h2>
@@ -272,7 +171,7 @@ left:0;
 </div>
 </div>
 
-<!-- SOBRE COMPLETO RESTAURADO -->
+<!-- SOBRE -->
 <div id="sobre" class="section">
 
 <div class="card" style="text-align:center;">
@@ -283,51 +182,27 @@ left:0;
 
 <div class="card">
 <h2>🔥 Nossa Visão</h2>
-<p>
-Não somos apenas uma comunidade online. Somos um movimento espiritual levantado para alcançar vidas, restaurar famílias e reacender a fé.
-<br><br>
-Onde muitos veem fim, Deus está escrevendo recomeço.
-</p>
+<p>Não somos apenas uma comunidade online... Deus está escrevendo recomeço.</p>
 </div>
 
 <div class="card">
 <h2>🎯 Nossa Missão</h2>
-<p>
-Levar fé onde existe vazio.<br>
-Levar esperança onde existe dor.<br>
-Levar Deus onde parece não haver saída.<br><br>
-Ser instrumento de transformação espiritual para esta geração.
-</p>
+<p>Levar fé, esperança e transformação espiritual.</p>
 </div>
 
 <div class="card">
 <h2>⚡ O Que Cremos</h2>
-<p>
-Cremos em um Deus vivo, presente e transformador.<br>
-Cremos na Palavra como direção para a vida.<br>
-Cremos que nenhuma história está perdida quando Deus entra em ação.
-</p>
-</div>
-
-<div class="card">
-<h2>📅 Nossos Encontros</h2>
-<p>
-• Manhã com Deus<br>
-• Orações online<br>
-• Campanhas proféticas<br>
-• Ministrações digitais
-</p>
+<p>Cremos em um Deus vivo, presente e transformador.</p>
 </div>
 
 <div class="card">
 <h2>🎥 Mensagem Institucional</h2>
-<iframe src="https://www.youtube.com/embed/LHI2DksDveY" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/LHI2DksDveY"></iframe>
 </div>
 
 <div class="card">
 <h2>📖 Palavra Base</h2>
-<p><em>“Ide por todo o mundo e pregai o evangelho a toda criatura.”</em></p>
-<strong>Marcos 16:15</strong>
+<p><em>Marcos 16:15</em></p>
 </div>
 
 <div class="card">
@@ -337,56 +212,59 @@ Cremos que nenhuma história está perdida quando Deus entra em ação.
 
 </div>
 
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
 <script>
+const firebaseConfig = {
+apiKey: "SUA_API_KEY",
+authDomain: "SEU_PROJETO.firebaseapp.com",
+databaseURL: "https://SEU_PROJETO-default-rtdb.firebaseio.com",
+projectId: "SEU_PROJETO",
+storageBucket: "SEU_PROJETO.appspot.com",
+messagingSenderId: "XXXX",
+appId: "XXXX"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
 function show(id){
 document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
 document.getElementById(id).classList.add('active');
-document.getElementById("menuLateral").classList.remove("ativo");
+menuLateral.classList.remove("ativo");
 }
 
 function toggleMenu(){
-document.getElementById("menuLateral").classList.toggle("ativo");
+menuLateral.classList.toggle("ativo");
 }
 
-async function carregarConteudo(){
-try{
-const resposta = await fetch("dados.json");
-const dados = await resposta.json();
+function carregarFirebase(){
 
-if(dados.audio){
+db.ref("versiculoDoDia").on("value", s=>{
+let d=s.val(); if(d){
+versiculoTexto.innerHTML="<em>"+d.texto+"</em>";
+versiculoRef.innerText=d.referencia;
+}});
 
-dados.audio.forEach(a=>{
-
-let html = `
-<div class="card">
-<p><strong>${a.titulo}</strong></p>
-<audio controls>
-<source src="${a.url}">
-</audio>
-</div>`;
-
-function add(id){
-const el = document.getElementById(id);
-if(el) el.innerHTML += html;
-}
-
-if(a.tipo === "pastor") add("lista-pastor");
-else if(a.tipo === "oracao") add("lista-oracoes");
-else if(a.tipo === "devocional") add("lista-devocionais");
-else if(a.tipo === "campanha") add("lista-campanhas");
-
+db.ref("audioDoDia").on("value", s=>{
+let d=s.val(); if(d){audioDia.src=d.url;}
 });
+
+db.ref("mensagemDoDia").on("value", s=>{
+let d=s.val(); if(d){mensagemDia.innerText=d.texto;}
+});
+
+db.ref("videoDoDia").on("value", s=>{
+let d=s.val(); if(d){
+videoDia.src="https://www.youtube.com/embed/"+d.url;
+}
+});
+
 }
 
-}catch(e){
-console.log(e);
-}
-}
-carregarConteudo();
-
-if ('serviceWorker' in navigator) {
-navigator.serviceWorker.register('sw.js');
-}
+carregarFirebase();
 </script>
 
 </body>
