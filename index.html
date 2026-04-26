@@ -389,5 +389,69 @@ navigator.serviceWorker.register('sw.js');
 }
 </script>
 
+<!-- 🔥 FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyChFlUeEs9OPtb8g-lhTiiNoDp_YegEI-s",
+  authDomain: "comunidademaosestendidas.firebaseapp.com",
+  databaseURL: "https://comunidademaosestendidas-default-rtdb.firebaseio.com",
+  projectId: "comunidademaosestendidas",
+  storageBucket: "comunidademaosestendidas.firebasestorage.app",
+  messagingSenderId: "115001016227",
+  appId: "1:115001016227:web:0df485d449944fea496416"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+/* VERSÍCULO */
+db.ref("versiculoDoDia").on("value", snap=>{
+let d = snap.val();
+if(d){
+document.querySelector("#inicio em").innerText = d.texto;
+document.querySelector("#inicio strong").innerText = d.referencia;
+}
+});
+
+/* ÁUDIO */
+db.ref("audioDoDia").on("value", snap=>{
+let d = snap.val();
+if(d){
+document.getElementById("audioDia").src = d.url;
+}
+});
+
+/* MENSAGEM */
+db.ref("mensagemDoDia").on("value", snap=>{
+let d = snap.val();
+if(d){
+if(!document.getElementById("mensagemDia")){
+let div = document.createElement("div");
+div.className="card";
+div.innerHTML="<h2>💬 Mensagem do Dia</h2><p id='mensagemDia'></p>";
+document.getElementById("inicio").appendChild(div);
+}
+document.getElementById("mensagemDia").innerText = d.texto;
+}
+});
+
+/* VÍDEO */
+db.ref("videoDoDia").on("value", snap=>{
+let d = snap.val();
+if(d){
+if(!document.getElementById("videoDia")){
+let div = document.createElement("div");
+div.className="card";
+div.innerHTML="<h2>📺 Vídeo do Dia</h2><iframe id='videoDia' allowfullscreen></iframe>";
+document.getElementById("inicio").appendChild(div);
+}
+document.getElementById("videoDia").src = "https://www.youtube.com/embed/"+d.url;
+}
+});
+</script>
+
 </body>
 </html>
