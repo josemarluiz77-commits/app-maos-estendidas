@@ -407,7 +407,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-/* VERSÍCULO */
+/* 📖 VERSÍCULO */
 db.ref("versiculoDoDia").on("value", snap=>{
 let d = snap.val();
 if(d){
@@ -416,39 +416,43 @@ document.querySelector("#inicio strong").innerText = d.referencia;
 }
 });
 
-/* ÁUDIO */
+/* 🎧 ÁUDIO (CORRIGIDO) */
 db.ref("audioDoDia").on("value", snap=>{
 let d = snap.val();
 if(d){
-document.getElementById("audioDia").src = d.url;
+let audio = document.getElementById("audioDia");
+if(audio){
+audio.querySelector("source").src = d.url;
+audio.load();
+}
 }
 });
 
-/* MENSAGEM */
+/* 💬 MENSAGEM */
 db.ref("mensagemDoDia").on("value", snap=>{
 let d = snap.val();
 if(d){
 if(!document.getElementById("mensagemDia")){
 let div = document.createElement("div");
 div.className="card";
-div.innerHTML="<h2>💬 Mensagem do Dia</h2><p id='mensagemDia'></p>";
+div.innerHTML = "<h2>💬 Mensagem do Dia</h2><p id='mensagemDia'></p>";
 document.getElementById("inicio").appendChild(div);
 }
 document.getElementById("mensagemDia").innerText = d.texto;
 }
 });
 
-/* VÍDEO */
+/* 📺 VÍDEO */
 db.ref("videoDoDia").on("value", snap=>{
 let d = snap.val();
 if(d){
 if(!document.getElementById("videoDia")){
 let div = document.createElement("div");
 div.className="card";
-div.innerHTML="<h2>📺 Vídeo do Dia</h2><iframe id='videoDia' allowfullscreen></iframe>";
+div.innerHTML = "<h2>📺 Vídeo do Dia</h2><iframe id='videoDia' allowfullscreen></iframe>";
 document.getElementById("inicio").appendChild(div);
 }
-document.getElementById("videoDia").src = "https://www.youtube.com/embed/"+d.url;
+document.getElementById("videoDia").src = "https://www.youtube.com/embed/" + d.url;
 }
 });
 </script>
