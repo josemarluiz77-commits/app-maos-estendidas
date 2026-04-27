@@ -348,14 +348,21 @@ function toggleMenu(){
 document.getElementById("menuLateral").classList.toggle("ativo");
 }
 
-async function carregarConteudo(){
-try{
-const resposta = await fetch("dados.json");
-const dados = await resposta.json();
+/* 🎧 BIBLIOTECA DE ÁUDIOS */
+db.ref("audios").on("value", snap=>{
 
-if(dados.audio){
+let dados = snap.val();
 
-dados.audio.forEach(a=>{
+if(!dados) return; // 🔥 evita erro se estiver vazio
+
+document.getElementById("lista-pastor").innerHTML = "";
+document.getElementById("lista-oracoes").innerHTML = "";
+document.getElementById("lista-devocionais").innerHTML = "";
+document.getElementById("lista-campanhas").innerHTML = "";
+
+for(let id in dados){
+
+let a = dados[id];
 
 let html = `
 <div class="card">
@@ -365,24 +372,17 @@ let html = `
 </audio>
 </div>`;
 
-function add(id){
-const el = document.getElementById(id);
+function add(el){
 if(el) el.innerHTML += html;
 }
 
-if(a.tipo === "pastor") add("lista-pastor");
-else if(a.tipo === "oracao") add("lista-oracoes");
-else if(a.tipo === "devocional") add("lista-devocionais");
-else if(a.tipo === "campanha") add("lista-campanhas");
+if(a.tipo === "pastor") add(document.getElementById("lista-pastor"));
+else if(a.tipo === "oracao") add(document.getElementById("lista-oracoes"));
+else if(a.tipo === "devocional") add(document.getElementById("lista-devocionais"));
+else if(a.tipo === "campanha") add(document.getElementById("lista-campanhas"));
 
+}
 });
-}
-
-}catch(e){
-console.log(e);
-}
-}
-carregarConteudo();
 
 if ('serviceWorker' in navigator) {
 navigator.serviceWorker.register('sw.js');
