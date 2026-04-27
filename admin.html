@@ -138,5 +138,48 @@ document.getElementById("status").innerText="✔ Salvo!";
 }
 </script>
 
+ <div class="card">
+<h2>🎧 Adicionar Áudio</h2>
+
+<input id="tituloAudio" placeholder="Título do áudio">
+<input id="linkAudio" placeholder="Link do áudio (MP3)">
+
+<select id="tipoAudio">
+<option value="pastor">Palavra do Pastor</option>
+<option value="oracao">Oração</option>
+<option value="devocional">Devocional</option>
+<option value="campanha">Campanha</option>
+</select>
+
+<button onclick="salvarAudioLista()">Salvar na Biblioteca</button>
+</div>
+
+<script>
+function salvarAudioLista(){
+
+let titulo = document.getElementById("tituloAudio").value;
+let url = document.getElementById("linkAudio").value;
+let tipo = document.getElementById("tipoAudio").value;
+
+if(!titulo || !url){
+document.getElementById("status").innerText = "⚠️ Preencha tudo!";
+return;
+}
+
+let novo = db.ref("audios").push();
+
+novo.set({
+titulo: titulo,
+url: url,
+tipo: tipo
+});
+
+document.getElementById("status").innerText = "🔥 Áudio adicionado!";
+
+document.getElementById("tituloAudio").value = "";
+document.getElementById("linkAudio").value = "";
+}
+</script>
+
 </body>
 </html>
