@@ -24,7 +24,7 @@ padding:20px;
 margin:15px;
 border-radius:10px;
 }
-input, textarea{
+input, textarea, select{
 width:100%;
 padding:10px;
 margin-top:10px;
@@ -41,6 +41,15 @@ background:gold;
 border:none;
 border-radius:8px;
 font-weight:bold;
+cursor:pointer;
+}
+button:hover{
+opacity:0.9;
+}
+.excluir{
+background:#8b0000;
+color:white;
+margin-top:5px;
 }
 #status{
 margin-top:10px;
@@ -51,33 +60,64 @@ color:#aaa;
 
 <body>
 
+<script>
+// 🔐 PROTEÇÃO SIMPLES
+let senha = prompt("Digite a senha do Painel Admin:");
+
+if(senha !== "1234"){
+document.body.innerHTML = "<h1 style='color:red;margin-top:50px;'>Acesso negado</h1>";
+throw new Error("Acesso bloqueado");
+}
+</script>
+
 <header>
 <h1>Painel Admin</h1>
 </header>
 
 <div class="card">
-<h2>Versículo</h2>
-<input id="versiculo">
-<input id="referencia">
+<h2>📖 Versículo</h2>
+<input id="versiculo" placeholder="Texto">
+<input id="referencia" placeholder="Referência">
 <button onclick="salvarVersiculo()">Salvar</button>
 </div>
 
 <div class="card">
-<h2>Áudio</h2>
-<input id="audio">
+<h2>🎧 Áudio do Dia</h2>
+<input id="audio" placeholder="Link MP3">
 <button onclick="salvarAudio()">Salvar</button>
 </div>
 
 <div class="card">
-<h2>Vídeo</h2>
-<input id="video">
+<h2>📺 Vídeo</h2>
+<input id="video" placeholder="Link YouTube">
 <button onclick="salvarVideo()">Salvar</button>
 </div>
 
 <div class="card">
-<h2>Mensagem</h2>
-<textarea id="mensagem"></textarea>
+<h2>💬 Mensagem</h2>
+<textarea id="mensagem" placeholder="Mensagem do dia"></textarea>
 <button onclick="salvarMensagem()">Salvar</button>
+</div>
+
+<div class="card">
+<h2>🎧 Adicionar Áudio</h2>
+
+<input id="tituloAudio" placeholder="Título do áudio">
+<input id="linkAudio" placeholder="Link do áudio (MP3)">
+
+<select id="tipoAudio">
+<option value="pastor">Palavra do Pastor</option>
+<option value="oracao">Oração</option>
+<option value="devocional">Devocional</option>
+<option value="campanha">Campanha</option>
+</select>
+
+<button onclick="salvarAudioLista()">Salvar na Biblioteca</button>
+</div>
+
+<div class="card">
+<h2>📋 Áudios Cadastrados</h2>
+<div id="listaAudios"></div>
 </div>
 
 <p id="status"></p>
@@ -99,23 +139,35 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
+// STATUS
+function status(msg){
+document.getElementById("status").innerText = msg;
+setTimeout(()=>{document.getElementById("status").innerText=""},3000);
+}
+
+// SALVAR VERSÍCULO
 function salvarVersiculo(){
 db.ref("versiculoDoDia").set({
-texto: document.getElementById("versiculo").value,
-referencia: document.getElementById("referencia").value
+texto: versiculo.value,
+referencia: referencia.value
 });
-document.getElementById("status").innerText="✔ Salvo!";
+versiculo.value="";
+referencia.value="";
+status("✔ Versículo salvo!");
 }
 
+// ÁUDIO DO DIA
 function salvarAudio(){
 db.ref("audioDoDia").set({
-url: document.getElementById("audio").value
+url: audio.value
 });
-document.getElementById("status").innerText="✔ Salvo!";
+audio.value="";
+status("✔ Áudio do dia salvo!");
 }
 
+// VÍDEO
 function salvarVideo(){
-let link = document.getElementById("video").value;
+let link = video.value;
 let id = "";
 
 if(link.includes("v=")){
@@ -127,42 +179,28 @@ id = link;
 }
 
 db.ref("videoDoDia").set({url:id});
-document.getElementById("status").innerText="✔ Salvo!";
+video.value="";
+status("✔ Vídeo salvo!");
 }
 
+// MENSAGEM
 function salvarMensagem(){
 db.ref("mensagemDoDia").set({
-texto: document.getElementById("mensagem").value
+texto: mensagem.value
 });
-document.getElementById("status").innerText="✔ Salvo!";
+mensagem.value="";
+status("✔ Mensagem salva!");
 }
-</script>
 
- <div class="card">
-<h2>🎧 Adicionar Áudio</h2>
-
-<input id="tituloAudio" placeholder="Título do áudio">
-<input id="linkAudio" placeholder="Link do áudio (MP3)">
-
-<select id="tipoAudio">
-<option value="pastor">Palavra do Pastor</option>
-<option value="oracao">Oração</option>
-<option value="devocional">Devocional</option>
-<option value="campanha">Campanha</option>
-</select>
-
-<button onclick="salvarAudioLista()">Salvar na Biblioteca</button>
-</div>
-
-<script>
+// ADICIONAR ÁUDIO
 function salvarAudioLista(){
 
-let titulo = document.getElementById("tituloAudio").value;
-let url = document.getElementById("linkAudio").value;
-let tipo = document.getElementById("tipoAudio").value;
+let titulo = tituloAudio.value;
+let url = linkAudio.value;
+let tipo = tipoAudio.value;
 
 if(!titulo || !url){
-document.getElementById("status").innerText = "⚠️ Preencha tudo!";
+status("⚠️ Preencha tudo!");
 return;
 }
 
@@ -174,10 +212,39 @@ url: url,
 tipo: tipo
 });
 
-document.getElementById("status").innerText = "🔥 Áudio adicionado!";
+tituloAudio.value="";
+linkAudio.value="";
 
-document.getElementById("tituloAudio").value = "";
-document.getElementById("linkAudio").value = "";
+status("🔥 Áudio adicionado!");
+}
+
+// LISTAR ÁUDIOS + EXCLUIR
+db.ref("audios").on("value", snap=>{
+
+let dados = snap.val();
+let lista = document.getElementById("listaAudios");
+
+lista.innerHTML = "";
+
+for(let id in dados){
+
+let a = dados[id];
+
+lista.innerHTML += `
+<div class="card">
+<p><strong>${a.titulo}</strong> (${a.tipo})</p>
+<button class="excluir" onclick="excluirAudio('${id}')">Excluir</button>
+</div>
+`;
+}
+});
+
+// EXCLUIR
+function excluirAudio(id){
+if(confirm("Deseja excluir este áudio?")){
+db.ref("audios/"+id).remove();
+status("❌ Áudio removido!");
+}
 }
 </script>
 
