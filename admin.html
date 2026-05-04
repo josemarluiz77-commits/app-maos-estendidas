@@ -43,9 +43,7 @@ border-radius:8px;
 font-weight:bold;
 cursor:pointer;
 }
-button:hover{
-opacity:0.9;
-}
+button:hover{opacity:0.9;}
 .excluir{
 background:#8b0000;
 color:white;
@@ -61,9 +59,8 @@ color:#aaa;
 <body>
 
 <script>
-// 🔐 PROTEÇÃO SIMPLES
+// 🔐 PROTEÇÃO
 let senha = prompt("Digite a senha do Painel Admin:");
-
 if(senha !== "1234"){
 document.body.innerHTML = "<h1 style='color:red;margin-top:50px;'>Acesso negado</h1>";
 throw new Error("Acesso bloqueado");
@@ -145,7 +142,7 @@ document.getElementById("status").innerText = msg;
 setTimeout(()=>{document.getElementById("status").innerText=""},3000);
 }
 
-// SALVAR VERSÍCULO
+// VERSÍCULO
 function salvarVersiculo(){
 db.ref("versiculoDoDia").set({
 texto: versiculo.value,
@@ -156,7 +153,7 @@ referencia.value="";
 status("✔ Versículo salvo!");
 }
 
-// ÁUDIO DO DIA
+// ÁUDIO DIA
 function salvarAudio(){
 db.ref("audioDoDia").set({
 url: audio.value
@@ -209,7 +206,7 @@ let novo = db.ref("audios").push();
 novo.set({
 titulo: titulo,
 url: url,
-tipo: tipo
+tipo: tipo.toLowerCase() // 🔥 correção importante
 });
 
 tituloAudio.value="";
@@ -218,13 +215,19 @@ linkAudio.value="";
 status("🔥 Áudio adicionado!");
 }
 
-// LISTAR ÁUDIOS + EXCLUIR
+// LISTAR ÁUDIOS (CORRIGIDO)
 db.ref("audios").on("value", snap=>{
 
 let dados = snap.val();
 let lista = document.getElementById("listaAudios");
 
 lista.innerHTML = "";
+
+// 🔥 evita erro quando vazio
+if(!dados){
+lista.innerHTML = "<p>Nenhum áudio cadastrado</p>";
+return;
+}
 
 for(let id in dados){
 
