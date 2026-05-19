@@ -19,6 +19,24 @@ background:#000;
 padding:20px;
 color:gold;
 font-weight:bold;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.header-title{
+font-size:20px;
+}
+
+.logout-btn{
+background:#8b0000;
+color:white;
+padding:10px 15px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+width:auto;
+font-weight:bold;
 }
 
 .card{
@@ -43,6 +61,7 @@ color:white;
 border:none;
 border-radius:8px;
 outline:none;
+box-sizing:border-box;
 }
 
 button{
@@ -56,7 +75,9 @@ font-weight:bold;
 cursor:pointer;
 }
 
-button:hover{opacity:0.9;}
+button:hover{
+opacity:0.9;
+}
 
 .excluir{
 background:#8b0000;
@@ -74,18 +95,12 @@ min-height:20px;
 
 <body>
 
-<script>
-// 🔐 proteção simples (Fase 1)
-let senha = prompt("Digite a senha do Painel Admin:");
-
-if(senha !== "maosestendidas@2026"){
-document.body.innerHTML = "<h1 style='color:red;margin-top:50px;'>Acesso negado</h1>";
-throw new Error("Bloqueado");
-}
-</script>
-
 <header>
-PAINEL ADMIN
+<div class="header-title">PAINEL ADMIN</div>
+
+<button class="logout-btn" onclick="logout()">
+Sair
+</button>
 </header>
 
 <div class="status" id="status"></div>
@@ -144,6 +159,7 @@ PAINEL ADMIN
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
 <script>
 const firebaseConfig = {
@@ -157,6 +173,15 @@ appId: "1:115001016227:web:0df485d449944fea496416"
 };
 
 firebase.initializeApp(firebaseConfig);
+
+firebase.auth().onAuthStateChanged(user => {
+
+if(!user){
+window.location.href = "login.html";
+}
+
+});
+
 const db = firebase.database();
 
 // STATUS
@@ -286,6 +311,16 @@ if(confirm("Excluir este áudio?")){
 db.ref("audios/"+id).remove();
 setStatus("❌ Áudio removido");
 }
+}
+
+/* 🚪 LOGOUT */
+function logout(){
+
+firebase.auth().signOut()
+.then(()=>{
+window.location.href = "login.html";
+});
+
 }
 </script>
 
