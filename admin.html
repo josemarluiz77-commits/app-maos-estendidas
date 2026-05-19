@@ -3,36 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel Admin</title>
+<title>Painel Admin - Comunidade Mãos Estendidas</title>
 
 <style>
 body{
 margin:0;
 font-family:Arial;
 background:#0b0b0b;
-color:white;
+color:#fff;
 text-align:center;
 }
+
 header{
 background:#000;
 padding:20px;
 color:gold;
+font-weight:bold;
 }
+
 .card{
 background:#121212;
-padding:20px;
+padding:18px;
 margin:15px;
-border-radius:10px;
+border-radius:12px;
+text-align:left;
 }
+
+h2{
+color:gold;
+font-size:18px;
+}
+
 input, textarea, select{
 width:100%;
 padding:10px;
-margin-top:10px;
+margin-top:8px;
 background:#1c1c1c;
 color:white;
 border:none;
 border-radius:8px;
+outline:none;
 }
+
 button{
 margin-top:10px;
 padding:12px;
@@ -43,15 +55,19 @@ border-radius:8px;
 font-weight:bold;
 cursor:pointer;
 }
+
 button:hover{opacity:0.9;}
+
 .excluir{
 background:#8b0000;
 color:white;
-margin-top:5px;
+margin-top:6px;
 }
-#status{
-margin-top:10px;
+
+.status{
+margin:10px;
 color:#aaa;
+min-height:20px;
 }
 </style>
 </head>
@@ -59,48 +75,56 @@ color:#aaa;
 <body>
 
 <script>
-// 🔐 PROTEÇÃO
+// 🔐 proteção simples (Fase 1)
 let senha = prompt("Digite a senha do Painel Admin:");
-if(senha != "maosestendidas@2026"){
+
+if(senha !== "maosestendidas@2026"){
 document.body.innerHTML = "<h1 style='color:red;margin-top:50px;'>Acesso negado</h1>";
-throw new Error("Acesso bloqueado");
+throw new Error("Bloqueado");
 }
 </script>
 
 <header>
-<h1>Painel Admin</h1>
+PAINEL ADMIN
 </header>
 
+<div class="status" id="status"></div>
+
+<!-- VERSÍCULO -->
 <div class="card">
-<h2>📖 Versículo</h2>
-<input id="versiculo" placeholder="Texto">
-<input id="referencia" placeholder="Referência">
+<h2>📖 Versículo do Dia</h2>
+<input id="versiculoTexto" placeholder="Texto bíblico">
+<input id="versiculoRef" placeholder="Referência">
 <button onclick="salvarVersiculo()">Salvar</button>
 </div>
 
+<!-- ÁUDIO DO DIA -->
 <div class="card">
 <h2>🎧 Áudio do Dia</h2>
-<input id="audio" placeholder="Link MP3">
-<button onclick="salvarAudio()">Salvar</button>
+<input id="audioDia" placeholder="Link MP3">
+<button onclick="salvarAudioDia()">Salvar</button>
 </div>
 
+<!-- VÍDEO -->
 <div class="card">
-<h2>📺 Vídeo</h2>
-<input id="video" placeholder="Link YouTube">
-<button onclick="salvarVideo()">Salvar</button>
+<h2>📺 Vídeo do Dia</h2>
+<input id="videoDia" placeholder="Link YouTube">
+<button onclick="salvarVideoDia()">Salvar</button>
 </div>
 
+<!-- MENSAGEM -->
 <div class="card">
-<h2>💬 Mensagem</h2>
-<textarea id="mensagem" placeholder="Mensagem do dia"></textarea>
+<h2>💬 Mensagem do Dia</h2>
+<textarea id="mensagemDia" placeholder="Escreva a mensagem"></textarea>
 <button onclick="salvarMensagem()">Salvar</button>
 </div>
 
+<!-- ÁUDIO LISTA -->
 <div class="card">
-<h2>🎧 Adicionar Áudio</h2>
+<h2>🎧 Adicionar Áudio na Biblioteca</h2>
 
-<input id="tituloAudio" placeholder="Título do áudio">
-<input id="linkAudio" placeholder="Link do áudio (MP3)">
+<input id="tituloAudio" placeholder="Título">
+<input id="linkAudio" placeholder="Link MP3">
 
 <select id="tipoAudio">
 <option value="pastor">Palavra do Pastor</option>
@@ -109,62 +133,68 @@ throw new Error("Acesso bloqueado");
 <option value="campanha">Campanha</option>
 </select>
 
-<button onclick="salvarAudioLista()">Salvar na Biblioteca</button>
+<button onclick="adicionarAudio()">Adicionar</button>
 </div>
 
+<!-- LISTA -->
 <div class="card">
 <h2>📋 Áudios Cadastrados</h2>
 <div id="listaAudios"></div>
 </div>
-
-<p id="status"></p>
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 
 <script>
 const firebaseConfig = {
-  apiKey: "AIzaSyChFlUeEs9OPtb8g-lhTiiNoDp_YegEI-s",
-  authDomain: "comunidademaosestendidas.firebaseapp.com",
-  databaseURL: "https://comunidademaosestendidas-default-rtdb.firebaseio.com",
-  projectId: "comunidademaosestendidas",
-  storageBucket: "comunidademaosestendidas.firebasestorage.app",
-  messagingSenderId: "115001016227",
-  appId: "1:115001016227:web:0df485d449944fea496416"
+apiKey: "AIzaSyChFlUeEs9OPtb8g-lhTiiNoDp_YegEI-s",
+authDomain: "comunidademaosestendidas.firebaseapp.com",
+databaseURL: "https://comunidademaosestendidas-default-rtdb.firebaseio.com",
+projectId: "comunidademaosestendidas",
+storageBucket: "comunidademaosestendidas.firebasestorage.app",
+messagingSenderId: "115001016227",
+appId: "1:115001016227:web:0df485d449944fea496416"
 };
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
 // STATUS
-function status(msg){
-document.getElementById("status").innerText = msg;
-setTimeout(()=>{document.getElementById("status").innerText=""},3000);
+function setStatus(msg){
+const el = document.getElementById("status");
+el.innerText = msg;
+setTimeout(()=> el.innerText = "", 3000);
 }
 
-// VERSÍCULO
+/* 📖 VERSÍCULO */
 function salvarVersiculo(){
+const texto = document.getElementById("versiculoTexto").value;
+const ref = document.getElementById("versiculoRef").value;
+
 db.ref("versiculoDoDia").set({
-texto: versiculo.value,
-referencia: referencia.value
+texto,
+referencia: ref,
+data: Date.now()
 });
-versiculo.value="";
-referencia.value="";
-status("✔ Versículo salvo!");
+
+setStatus("✔ Versículo salvo!");
 }
 
-// ÁUDIO DIA
-function salvarAudio(){
+/* 🎧 ÁUDIO DO DIA */
+function salvarAudioDia(){
+const url = document.getElementById("audioDia").value;
+
 db.ref("audioDoDia").set({
-url: audio.value
+url,
+data: Date.now()
 });
-audio.value="";
-status("✔ Áudio do dia salvo!");
+
+setStatus("✔ Áudio do dia salvo!");
 }
 
-// VÍDEO
-function salvarVideo(){
-let link = video.value;
+/* 📺 VÍDEO */
+function salvarVideoDia(){
+let link = document.getElementById("videoDia").value;
 let id = "";
 
 if(link.includes("v=")){
@@ -175,78 +205,86 @@ id = link.split("youtu.be/")[1];
 id = link;
 }
 
-db.ref("videoDoDia").set({url:id});
-video.value="";
-status("✔ Vídeo salvo!");
-}
-
-// MENSAGEM
-function salvarMensagem(){
-db.ref("mensagemDoDia").set({
-texto: mensagem.value
+db.ref("videoDoDia").set({
+url:id,
+data: Date.now()
 });
-mensagem.value="";
-status("✔ Mensagem salva!");
+
+setStatus("✔ Vídeo salvo!");
 }
 
-// ADICIONAR ÁUDIO
-function salvarAudioLista(){
+/* 💬 MENSAGEM */
+function salvarMensagem(){
+const msg = document.getElementById("mensagemDia").value;
 
-let titulo = tituloAudio.value;
-let url = linkAudio.value;
-let tipo = tipoAudio.value;
+db.ref("mensagemDoDia").set({
+texto: msg,
+data: Date.now()
+});
+
+setStatus("✔ Mensagem salva!");
+}
+
+/* 🎧 ADICIONAR ÁUDIO */
+function adicionarAudio(){
+
+const titulo = document.getElementById("tituloAudio").value;
+const url = document.getElementById("linkAudio").value;
+const tipo = document.getElementById("tipoAudio").value;
 
 if(!titulo || !url){
-status("⚠️ Preencha tudo!");
+setStatus("⚠ Preencha todos os campos");
 return;
 }
 
-let novo = db.ref("audios").push();
+const novo = db.ref("audios").push();
 
 novo.set({
-titulo: titulo,
-url: url,
-tipo: tipo.toLowerCase() // 🔥 correção importante
+titulo,
+url,
+tipo,
+data: Date.now()
 });
 
-tituloAudio.value="";
-linkAudio.value="";
+document.getElementById("tituloAudio").value = "";
+document.getElementById("linkAudio").value = "";
 
-status("🔥 Áudio adicionado!");
+setStatus("🔥 Áudio adicionado!");
 }
 
-// LISTAR ÁUDIOS (CORRIGIDO)
+/* 📋 LISTAR ÁUDIOS */
 db.ref("audios").on("value", snap=>{
 
-let dados = snap.val();
-let lista = document.getElementById("listaAudios");
-
+const lista = document.getElementById("listaAudios");
 lista.innerHTML = "";
 
-// 🔥 evita erro quando vazio
+const dados = snap.val();
+
 if(!dados){
-lista.innerHTML = "<p>Nenhum áudio cadastrado</p>";
+lista.innerHTML = "<p style='color:#aaa'>Nenhum áudio cadastrado</p>";
 return;
 }
 
 for(let id in dados){
 
-let a = dados[id];
+const a = dados[id];
 
 lista.innerHTML += `
-<div class="card">
-<p><strong>${a.titulo}</strong> (${a.tipo})</p>
+<div style="padding:10px;border-bottom:1px solid #222">
+<strong>${a.titulo}</strong> <br>
+<small>${a.tipo}</small>
+
 <button class="excluir" onclick="excluirAudio('${id}')">Excluir</button>
 </div>
 `;
 }
 });
 
-// EXCLUIR
+/* ❌ EXCLUIR */
 function excluirAudio(id){
-if(confirm("Deseja excluir este áudio?")){
+if(confirm("Excluir este áudio?")){
 db.ref("audios/"+id).remove();
-status("❌ Áudio removido!");
+setStatus("❌ Áudio removido");
 }
 }
 </script>
