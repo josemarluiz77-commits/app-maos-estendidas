@@ -6,6 +6,7 @@
 <title>Painel Admin - Comunidade Mãos Estendidas</title>
 
 <style>
+
 body{
 margin:0;
 font-family:Arial;
@@ -22,6 +23,9 @@ font-weight:bold;
 display:flex;
 justify-content:space-between;
 align-items:center;
+position:sticky;
+top:0;
+z-index:999;
 }
 
 .header-title{
@@ -45,16 +49,18 @@ padding:18px;
 margin:15px;
 border-radius:12px;
 text-align:left;
+box-shadow:0 0 10px rgba(0,0,0,0.3);
 }
 
 h2{
 color:gold;
 font-size:18px;
+margin-top:0;
 }
 
 input, textarea, select{
 width:100%;
-padding:10px;
+padding:12px;
 margin-top:8px;
 background:#1c1c1c;
 color:white;
@@ -62,6 +68,12 @@ border:none;
 border-radius:8px;
 outline:none;
 box-sizing:border-box;
+font-size:14px;
+}
+
+textarea{
+resize:vertical;
+min-height:120px;
 }
 
 button{
@@ -73,6 +85,7 @@ border:none;
 border-radius:8px;
 font-weight:bold;
 cursor:pointer;
+font-size:15px;
 }
 
 button:hover{
@@ -89,72 +102,154 @@ margin-top:6px;
 margin:10px;
 color:#aaa;
 min-height:20px;
+font-weight:bold;
 }
+
+.audio-item{
+padding:12px;
+border-bottom:1px solid #222;
+}
+
+small{
+color:#aaa;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="header-title">PAINEL ADMIN</div>
+
+<div class="header-title">
+🔥 PAINEL ADMIN
+</div>
 
 <button class="logout-btn" onclick="logout()">
 Sair
 </button>
+
 </header>
 
 <div class="status" id="status"></div>
 
 <!-- VERSÍCULO -->
 <div class="card">
+
 <h2>📖 Versículo do Dia</h2>
+
 <input id="versiculoTexto" placeholder="Texto bíblico">
+
 <input id="versiculoRef" placeholder="Referência">
-<button onclick="salvarVersiculo()">Salvar</button>
+
+<button onclick="salvarVersiculo()">
+Salvar Versículo
+</button>
+
 </div>
 
 <!-- ÁUDIO DO DIA -->
 <div class="card">
+
 <h2>🎧 Áudio do Dia</h2>
+
 <input id="audioDia" placeholder="Link MP3">
-<button onclick="salvarAudioDia()">Salvar</button>
+
+<button onclick="salvarAudioDia()">
+Salvar Áudio
+</button>
+
 </div>
 
 <!-- VÍDEO -->
 <div class="card">
+
 <h2>📺 Vídeo do Dia</h2>
-<input id="videoDia" placeholder="Link YouTube">
-<button onclick="salvarVideoDia()">Salvar</button>
+
+<input id="videoDia" placeholder="Link do YouTube">
+
+<button onclick="salvarVideoDia()">
+Salvar Vídeo
+</button>
+
 </div>
 
 <!-- MENSAGEM -->
 <div class="card">
+
 <h2>💬 Mensagem do Dia</h2>
-<textarea id="mensagemDia" placeholder="Escreva a mensagem"></textarea>
-<button onclick="salvarMensagem()">Salvar</button>
+
+<textarea id="mensagemDia"
+placeholder="Escreva a mensagem do dia"></textarea>
+
+<button onclick="salvarMensagem()">
+Salvar Mensagem
+</button>
+
+</div>
+
+<!-- PALAVRA DO PASTOR -->
+<div class="card">
+
+<h2>📖 Palavra do Pastor</h2>
+
+<input id="tituloPalavra"
+placeholder="Título da Palavra">
+
+<textarea id="textoPalavra"
+placeholder="Escreva a Palavra do Pastor"
+style="height:220px;"></textarea>
+
+<button onclick="salvarPalavra()">
+Publicar Palavra
+</button>
+
 </div>
 
 <!-- ÁUDIO LISTA -->
 <div class="card">
+
 <h2>🎧 Adicionar Áudio na Biblioteca</h2>
 
-<input id="tituloAudio" placeholder="Título">
-<input id="linkAudio" placeholder="Link MP3">
+<input id="tituloAudio"
+placeholder="Título do áudio">
+
+<input id="linkAudio"
+placeholder="Link MP3 do Catbox">
 
 <select id="tipoAudio">
-<option value="pastor">Palavra do Pastor</option>
-<option value="oracao">Oração</option>
-<option value="devocional">Devocional</option>
-<option value="campanha">Campanha</option>
+
+<option value="pastor">
+Palavra do Pastor
+</option>
+
+<option value="oracao">
+Oração
+</option>
+
+<option value="devocional">
+Devocional
+</option>
+
+<option value="campanha">
+Campanha
+</option>
+
 </select>
 
-<button onclick="adicionarAudio()">Adicionar</button>
+<button onclick="adicionarAudio()">
+Adicionar Áudio
+</button>
+
 </div>
 
 <!-- LISTA -->
 <div class="card">
+
 <h2>📋 Áudios Cadastrados</h2>
+
 <div id="listaAudios"></div>
+
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -162,14 +257,23 @@ Sair
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
 <script>
+
 const firebaseConfig = {
-apiKey: "AIzaSyChFlUeEs9OPtb8g-lhTiiNoDp_YegEI-s",
+
+apiKey: "SUA_API_KEY",
+
 authDomain: "comunidademaosestendidas.firebaseapp.com",
+
 databaseURL: "https://comunidademaosestendidas-default-rtdb.firebaseio.com",
+
 projectId: "comunidademaosestendidas",
+
 storageBucket: "comunidademaosestendidas.firebasestorage.app",
+
 messagingSenderId: "115001016227",
+
 appId: "1:115001016227:web:0df485d449944fea496416"
+
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -177,117 +281,199 @@ firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(user => {
 
 if(!user){
+
 window.location.href = "login.html";
+
 }
 
 });
 
 const db = firebase.database();
 
-// STATUS
+/* STATUS */
 function setStatus(msg){
+
 const el = document.getElementById("status");
+
 el.innerText = msg;
-setTimeout(()=> el.innerText = "", 3000);
+
+setTimeout(()=>{
+
+el.innerText = "";
+
+},3000);
+
 }
 
 /* 📖 VERSÍCULO */
 function salvarVersiculo(){
-const texto = document.getElementById("versiculoTexto").value;
-const ref = document.getElementById("versiculoRef").value;
+
+const texto =
+document.getElementById("versiculoTexto").value;
+
+const ref =
+document.getElementById("versiculoRef").value;
 
 db.ref("versiculoDoDia").set({
+
 texto,
 referencia: ref,
 data: Date.now()
+
 });
 
 setStatus("✔ Versículo salvo!");
+
 }
 
 /* 🎧 ÁUDIO DO DIA */
 function salvarAudioDia(){
-const url = document.getElementById("audioDia").value;
+
+const url =
+document.getElementById("audioDia").value;
 
 db.ref("audioDoDia").set({
+
 url,
 data: Date.now()
+
 });
 
 setStatus("✔ Áudio do dia salvo!");
+
 }
 
 /* 📺 VÍDEO */
 function salvarVideoDia(){
-let link = document.getElementById("videoDia").value;
+
+let link =
+document.getElementById("videoDia").value;
+
 let id = "";
 
 if(link.includes("v=")){
+
 id = link.split("v=")[1].split("&")[0];
+
 }else if(link.includes("youtu.be/")){
+
 id = link.split("youtu.be/")[1];
+
 }else{
+
 id = link;
+
 }
 
 db.ref("videoDoDia").set({
+
 url:id,
 data: Date.now()
+
 });
 
 setStatus("✔ Vídeo salvo!");
+
 }
 
 /* 💬 MENSAGEM */
 function salvarMensagem(){
-const msg = document.getElementById("mensagemDia").value;
+
+const msg =
+document.getElementById("mensagemDia").value;
 
 db.ref("mensagemDoDia").set({
+
 texto: msg,
 data: Date.now()
+
 });
 
 setStatus("✔ Mensagem salva!");
+
+}
+
+/* 📖 PALAVRA DO PASTOR */
+function salvarPalavra(){
+
+const titulo =
+document.getElementById("tituloPalavra").value;
+
+const texto =
+document.getElementById("textoPalavra").value;
+
+db.ref("palavraPastor").set({
+
+titulo,
+texto,
+data: Date.now()
+
+});
+
+document.getElementById("tituloPalavra").value = "";
+
+document.getElementById("textoPalavra").value = "";
+
+setStatus("📖 Palavra publicada!");
+
 }
 
 /* 🎧 ADICIONAR ÁUDIO */
 function adicionarAudio(){
 
-const titulo = document.getElementById("tituloAudio").value;
-const url = document.getElementById("linkAudio").value;
-const tipo = document.getElementById("tipoAudio").value;
+const titulo =
+document.getElementById("tituloAudio").value;
+
+const url =
+document.getElementById("linkAudio").value;
+
+const tipo =
+document.getElementById("tipoAudio").value;
 
 if(!titulo || !url){
+
 setStatus("⚠ Preencha todos os campos");
+
 return;
+
 }
 
 const novo = db.ref("audios").push();
 
 novo.set({
+
 titulo,
 url,
 tipo,
 data: Date.now()
+
 });
 
 document.getElementById("tituloAudio").value = "";
+
 document.getElementById("linkAudio").value = "";
 
 setStatus("🔥 Áudio adicionado!");
+
 }
 
 /* 📋 LISTAR ÁUDIOS */
 db.ref("audios").on("value", snap=>{
 
-const lista = document.getElementById("listaAudios");
+const lista =
+document.getElementById("listaAudios");
+
 lista.innerHTML = "";
 
 const dados = snap.val();
 
 if(!dados){
-lista.innerHTML = "<p style='color:#aaa'>Nenhum áudio cadastrado</p>";
+
+lista.innerHTML =
+"<p style='color:#aaa'>Nenhum áudio cadastrado</p>";
+
 return;
+
 }
 
 for(let id in dados){
@@ -295,33 +481,54 @@ for(let id in dados){
 const a = dados[id];
 
 lista.innerHTML += `
-<div style="padding:10px;border-bottom:1px solid #222">
-<strong>${a.titulo}</strong> <br>
+
+<div class="audio-item">
+
+<strong>${a.titulo}</strong><br>
+
 <small>${a.tipo}</small>
 
-<button class="excluir" onclick="excluirAudio('${id}')">Excluir</button>
+<button class="excluir"
+onclick="excluirAudio('${id}')">
+
+Excluir
+
+</button>
+
 </div>
+
 `;
+
 }
+
 });
 
 /* ❌ EXCLUIR */
 function excluirAudio(id){
+
 if(confirm("Excluir este áudio?")){
+
 db.ref("audios/"+id).remove();
+
 setStatus("❌ Áudio removido");
+
 }
+
 }
 
 /* 🚪 LOGOUT */
 function logout(){
 
 firebase.auth().signOut()
+
 .then(()=>{
+
 window.location.href = "login.html";
+
 });
 
 }
+
 </script>
 
 </body>
