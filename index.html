@@ -491,7 +491,13 @@ document.getElementById("textoPalavraApp")
 <script>
 
 const messaging = firebase.messaging();
+// REGISTRA FIREBASE SERVICE WORKER
+navigator.serviceWorker.register("/app-maos-estendidas/firebase-messaging-sw.js")
+.then((registration)=>{
 
+messaging.useServiceWorker(registration);
+
+});
 async function ativarNotificacoes(){
 
 try{
