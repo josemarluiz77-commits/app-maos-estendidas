@@ -486,6 +486,49 @@ document.getElementById("textoPalavraApp")
 
 </script>
 
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging-compat.js"></script>
+
+<script>
+
+const messaging = firebase.messaging();
+
+async function ativarNotificacoes(){
+
+try{
+
+const permissao =
+await Notification.requestPermission();
+
+if(permissao === "granted"){
+
+const token = await messaging.getToken({
+
+vapidKey:
+"BPYkS6whepzInaszdqRuSerNcQHbhckv1PpOPWVVhOYhQUfZTcB7pTvcxeYWrycGoRou2g2R5Rw-sJ264F0VFI0"
+
+});
+
+console.log("TOKEN:", token);
+
+alert("🔔 Notificações ativadas!");
+
+}else{
+
+alert("Permissão negada");
+
+}
+
+}catch(e){
+
+console.log(e);
+
+}
+
+}
+
+ativarNotificacoes();
+
+</script>
 </body>
 </html>
   
