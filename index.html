@@ -486,18 +486,15 @@ document.getElementById("textoPalavraApp")
 
 </script>
 
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging-compat.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging-compat.js"></script>
 
 <script>
 
 const messaging = firebase.messaging();
+
 // REGISTRA FIREBASE SERVICE WORKER
-navigator.serviceWorker.register("/app-maos-estendidas/firebase-messaging-sw.js")
-.then((registration)=>{
+navigator.serviceWorker.register("/app-maos-estendidas/firebase-messaging-sw.js");
 
-messaging.useServiceWorker(registration);
-
-});
 async function ativarNotificacoes(){
 
 try{
@@ -535,6 +532,8 @@ console.log(e);
 ativarNotificacoes();
 
 </script>
+
+
 </body>
 </html>
   
