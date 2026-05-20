@@ -468,5 +468,24 @@ document.getElementById("videoDia").src = "https://www.youtube.com/embed/" + d.u
 });
 </script>
 
+  /* 📖 PALAVRA DO PASTOR */
+db.ref("palavraPastor").on("value", snap=>{
+
+let d = snap.val();
+
+if(d){
+
+document.getElementById("tituloPalavraApp")
+.innerText = d.titulo;
+
+document.getElementById("textoPalavraApp")
+.innerText = d.texto;
+
+}
+
+});
+  
+  </script>
+  
 </body>
 </html>
