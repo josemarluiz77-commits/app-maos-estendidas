@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Painel Admin - Comunidade Mãos Estendidas</title>
 
 <style>
@@ -115,6 +117,7 @@ color:#aaa;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -243,7 +246,7 @@ Adicionar Áudio
 
 </div>
 
-<!-- LISTA -->
+<!-- LISTA DE ÁUDIOS -->
 <div class="card">
 
 <h2>📋 Áudios Cadastrados</h2>
@@ -260,7 +263,7 @@ Adicionar Áudio
 
 const firebaseConfig = {
 
-apiKey: "SUA_API_KEY",
+apiKey: "AIzaSyChFlUeEs9OPtb8g-lhTiiNoDp_YegEI-s",
 
 authDomain: "comunidademaosestendidas.firebaseapp.com",
 
@@ -291,6 +294,7 @@ window.location.href = "./login.html";
 const db = firebase.database();
 
 /* STATUS */
+
 function setStatus(msg){
 
 const el = document.getElementById("status");
@@ -305,19 +309,16 @@ el.innerText = "";
 
 }
 
-/* 📖 VERSÍCULO */
+/* VERSÍCULO */
+
 function salvarVersiculo(){
-
-const texto =
-document.getElementById("versiculoTexto").value;
-
-const ref =
-document.getElementById("versiculoRef").value;
 
 db.ref("versiculoDoDia").set({
 
-texto,
-referencia: ref,
+texto: document.getElementById("versiculoTexto").value,
+
+referencia: document.getElementById("versiculoRef").value,
+
 data: Date.now()
 
 });
@@ -326,24 +327,24 @@ setStatus("✔ Versículo salvo!");
 
 }
 
-/* 🎧 ÁUDIO DO DIA */
-function salvarAudioDia(){
+/* ÁUDIO DO DIA */
 
-const url =
-document.getElementById("audioDia").value;
+function salvarAudioDia(){
 
 db.ref("audioDoDia").set({
 
-url,
+url: document.getElementById("audioDia").value,
+
 data: Date.now()
 
 });
 
-setStatus("✔ Áudio do dia salvo!");
+setStatus("✔ Áudio salvo!");
 
 }
 
-/* 📺 VÍDEO */
+/* VÍDEO */
+
 function salvarVideoDia(){
 
 let link =
@@ -368,7 +369,7 @@ id = link;
 db.ref("videoDoDia").set({
 
 url:id,
-data: Date.now()
+data:Date.now()
 
 });
 
@@ -376,15 +377,14 @@ setStatus("✔ Vídeo salvo!");
 
 }
 
-/* 💬 MENSAGEM */
-function salvarMensagem(){
+/* MENSAGEM */
 
-const msg =
-document.getElementById("mensagemDia").value;
+function salvarMensagem(){
 
 db.ref("mensagemDoDia").set({
 
-texto: msg,
+texto: document.getElementById("mensagemDia").value,
+
 data: Date.now()
 
 });
@@ -393,32 +393,28 @@ setStatus("✔ Mensagem salva!");
 
 }
 
-/* 📖 PALAVRA DO PASTOR */
+/* PALAVRA DO PASTOR */
+
 function salvarPalavra(){
-
-const titulo =
-document.getElementById("tituloPalavra").value;
-
-const texto =
-document.getElementById("textoPalavra").value;
 
 db.ref("palavraPastor").set({
 
-titulo,
-texto,
+titulo:
+document.getElementById("tituloPalavra").value,
+
+texto:
+document.getElementById("textoPalavra").value,
+
 data: Date.now()
 
 });
 
-document.getElementById("tituloPalavra").value = "";
-
-document.getElementById("textoPalavra").value = "";
-
-setStatus("📖 Palavra publicada!");
+setStatus("🔥 Palavra publicada!");
 
 }
 
-/* 🎧 ADICIONAR ÁUDIO */
+/* ADICIONAR ÁUDIO */
+
 function adicionarAudio(){
 
 const titulo =
@@ -432,32 +428,30 @@ document.getElementById("tipoAudio").value;
 
 if(!titulo || !url){
 
-setStatus("⚠ Preencha todos os campos");
+setStatus("⚠ Preencha tudo");
 
 return;
 
 }
 
-const novo = db.ref("audios").push();
-
-novo.set({
+db.ref("audios").push({
 
 titulo,
 url,
 tipo,
-data: Date.now()
+data:Date.now()
 
 });
 
 document.getElementById("tituloAudio").value = "";
-
 document.getElementById("linkAudio").value = "";
 
 setStatus("🔥 Áudio adicionado!");
 
 }
 
-/* 📋 LISTAR ÁUDIOS */
+/* LISTAR ÁUDIOS */
+
 db.ref("audios").on("value", snap=>{
 
 const lista =
@@ -503,10 +497,11 @@ Excluir
 
 });
 
-/* ❌ EXCLUIR */
+/* EXCLUIR */
+
 function excluirAudio(id){
 
-if(confirm("Excluir este áudio?")){
+if(confirm("Excluir áudio?")){
 
 db.ref("audios/"+id).remove();
 
@@ -516,14 +511,15 @@ setStatus("❌ Áudio removido");
 
 }
 
-/* 🚪 LOGOUT */
+/* LOGOUT */
+
 function logout(){
 
 firebase.auth().signOut()
 
 .then(()=>{
 
-window.location.href = "login.html";
+window.location.href = "./login.html";
 
 });
 
