@@ -12,6 +12,76 @@
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+/* AUDIO CARD PREMIUM */
+
+.audio-card{
+
+background:
+linear-gradient(
+180deg,
+rgba(255,255,255,0.05),
+rgba(255,255,255,0.02)
+);
+
+border:
+1px solid rgba(212,175,55,0.08);
+}
+
+.audio-topo{
+
+display:flex;
+align-items:center;
+gap:14px;
+
+margin-bottom:16px;
+}
+
+.audio-icone{
+
+width:60px;
+height:60px;
+
+border-radius:18px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:28px;
+
+background:
+linear-gradient(
+135deg,
+#d4af37,
+#1ebe5d
+);
+
+box-shadow:
+0 8px 20px rgba(0,0,0,0.3);
+}
+
+.audio-info h3{
+
+margin:0;
+font-size:18px;
+color:#fff;
+line-height:1.4;
+}
+
+.audio-info p{
+
+margin-top:6px;
+font-size:12px;
+letter-spacing:1px;
+color:#d4af37;
+font-weight:700;
+}
+
+.audio-card audio{
+
+margin-top:8px;
+}
+  
 <style>
 
 *{
@@ -874,24 +944,88 @@ for(let id in dados){
 
 let a = dados[id];
 
+let icone = "🎧";
+
+if(a.tipo === "pastor"){
+icone = "📖";
+}
+
+else if(a.tipo === "oracao"){
+icone = "🙏";
+}
+
+else if(a.tipo === "devocional"){
+icone = "🌅";
+}
+
+else if(a.tipo === "campanha"){
+icone = "🔥";
+}
+
 let html = `
-<div class="card">
-<p><strong>${a.titulo}</strong></p>
+
+<div class="card audio-card">
+
+<div class="audio-topo">
+
+<div class="audio-icone">
+${icone}
+</div>
+
+<div class="audio-info">
+
+<h3>
+${a.titulo}
+</h3>
+
+<p>
+${a.tipo.toUpperCase()}
+</p>
+
+</div>
+
+</div>
+
 <audio controls>
+
 <source src="${a.url}" type="audio/mpeg">
+
 </audio>
-</div>`;
+
+<button class="botao"
+onclick="this.previousElementSibling.play()">
+
+▶ Ouvir Agora
+
+</button>
+
+</div>
+`;
 
 function add(el){
-if(el) el.innerHTML += html;
+
+if(el){
+el.innerHTML += html;
 }
 
-if(a.tipo === "pastor") add(document.getElementById("lista-pastor"));
-else if(a.tipo === "oracao") add(document.getElementById("lista-oracoes"));
-else if(a.tipo === "devocional") add(document.getElementById("lista-devocionais"));
-else if(a.tipo === "campanha") add(document.getElementById("lista-campanhas"));
-
 }
+
+if(a.tipo === "pastor"){
+add(document.getElementById("lista-pastor"));
+}
+
+else if(a.tipo === "oracao"){
+add(document.getElementById("lista-oracoes"));
+}
+
+else if(a.tipo === "devocional"){
+add(document.getElementById("lista-devocionais"));
+}
+
+else if(a.tipo === "campanha"){
+add(document.getElementById("lista-campanhas"));
+}
+
 });
 
 /* 📖 VERSÍCULO */
