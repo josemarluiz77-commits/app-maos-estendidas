@@ -169,11 +169,62 @@ left:0;
 </div>
 
 <div class="card" style="text-align:center;">
-<h2>🎧 Palavra do Dia</h2>
-<audio id="audioDia" controls>
-<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+
+<h2 style="
+color:#d4af37;
+font-size:22px;
+margin-bottom:15px;
+">
+🎧 Palavra do Dia
+</h2>
+
+<div style="
+background:#111;
+padding:20px;
+border-radius:18px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+">
+
+<p style="
+color:#aaa;
+margin-bottom:15px;
+font-size:14px;
+">
+Mensagem diária da Comunidade Mãos Estendidas
+</p>
+
+<audio
+id="audioDia"
+controls
+style="
+width:100%;
+border-radius:12px;
+">
 </audio>
-<button class="botao" onclick="document.getElementById('audioDia').play()">▶ Ouvir Mensagem</button>
+
+<button
+class="botao"
+onclick="document.getElementById('audioDia').play()"
+style="
+margin-top:15px;
+background:linear-gradient(45deg,#d4af37,#f1c95a);
+color:#000;
+font-weight:bold;
+border:none;
+padding:14px;
+width:100%;
+border-radius:12px;
+font-size:16px;
+cursor:pointer;
+box-shadow:0 0 10px rgba(212,175,55,0.3);
+">
+
+▶ Ouvir Mensagem
+
+</button>
+
+</div>
+
 </div>
 
 <div class="card">
@@ -429,15 +480,26 @@ document.querySelector("#inicio strong").innerText = d.referencia;
 
 /* 🎧 ÁUDIO DO DIA */
 db.ref("audioDoDia").on("value", snap=>{
+
 let d = snap.val();
+
 if(d){
-let audio = document.getElementById("audioDia");
+
+let audio =
+document.getElementById("audioDia");
+
 if(audio){
-audio.querySelector("source").src = d.url;
+
+audio.src = d.url;
+
 audio.load();
+
 }
+
 }
+
 });
+
 
 /* 💬 MENSAGEM */
 db.ref("mensagemDoDia").on("value", snap=>{
