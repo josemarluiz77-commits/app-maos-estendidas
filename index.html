@@ -12,7 +12,110 @@
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
- <style>
+  <style>
+   
+/* PLAYER GLOBAL */
+
+#playerGlobal{
+
+position:fixed;
+
+bottom:15px;
+left:15px;
+right:15px;
+
+background:
+linear-gradient(
+135deg,
+#111,
+#1b1b1b
+);
+
+border:
+1px solid rgba(212,175,55,0.2);
+
+border-radius:22px;
+
+padding:14px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+z-index:99999;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.4);
+
+backdrop-filter:blur(10px);
+}
+
+#playerInfo{
+
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+#playerIcon{
+
+width:55px;
+height:55px;
+
+border-radius:16px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:24px;
+
+background:
+linear-gradient(
+135deg,
+#d4af37,
+#1ebe5d
+);
+}
+
+#playerTitulo{
+
+font-size:15px;
+font-weight:700;
+color:white;
+}
+
+#playerStatus{
+
+font-size:12px;
+color:#d4af37;
+
+margin-top:4px;
+}
+
+#btnPlayPause{
+
+width:55px;
+height:55px;
+
+border:none;
+
+border-radius:18px;
+
+font-size:22px;
+
+background:
+linear-gradient(
+135deg,
+#1ebe5d,
+#0d8f45
+);
+
+color:white;
+
+cursor:pointer;
+}
+ 
   /* AUDIO CARD PREMIUM */
 
 .audio-card{
@@ -1213,5 +1316,36 @@ audio.play();
 
 </script>
 
+ <!-- PLAYER GLOBAL -->
+
+<div id="playerGlobal">
+
+<div id="playerInfo">
+
+<div id="playerIcon">
+🎧
+</div>
+
+<div>
+
+<div id="playerTitulo">
+Nenhum áudio tocando
+</div>
+
+<div id="playerStatus">
+Pronto para ouvir
+</div>
+
+</div>
+
+</div>
+
+<button id="btnPlayPause">
+
+⏸
+
+</button>
+
+</div>
 </body>
 </html>
