@@ -992,7 +992,11 @@ ${a.tipo.toUpperCase()}
 </audio>
 
 <button class="botao"
-onclick="this.previousElementSibling.play()">
+onclick="this.parentElement.querySelector('audio').play()">
+
+▶ Ouvir Agora
+
+</button>
 
 ▶ Ouvir Agora
 
