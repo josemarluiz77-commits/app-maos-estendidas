@@ -1347,5 +1347,69 @@ Pronto para ouvir
 </button>
 
 </div>
+
+<script>
+
+let audioAtual = null;
+
+function playAudio(btn){
+
+const card =
+btn.closest(".audio-card");
+
+const audio =
+card.querySelector(".player-audio");
+
+const titulo =
+card.querySelector("h3").innerText;
+
+if(audioAtual && audioAtual !== audio){
+
+audioAtual.pause();
+
+}
+
+audio.play();
+
+audioAtual = audio;
+
+document.getElementById(
+"playerTitulo"
+).innerText = titulo;
+
+document.getElementById(
+"playerStatus"
+).innerText = "Reproduzindo agora";
+
+document.getElementById(
+"btnPlayPause"
+).innerText = "⏸";
+
+}
+
+document.getElementById(
+"btnPlayPause"
+).onclick = function(){
+
+if(!audioAtual) return;
+
+if(audioAtual.paused){
+
+audioAtual.play();
+
+this.innerText = "⏸";
+
+}else{
+
+audioAtual.pause();
+
+this.innerText = "▶";
+
+}
+
+};
+
+</script>
+  
 </body>
 </html>
