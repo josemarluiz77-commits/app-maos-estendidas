@@ -932,8 +932,6 @@ db.ref("audios").on("value", snap=>{
 
 let dados = snap.val();
 
-if(!dados) return;
-
 document.getElementById("lista-pastor").innerHTML = "";
 document.getElementById("lista-oracoes").innerHTML = "";
 document.getElementById("lista-devocionais").innerHTML = "";
@@ -999,28 +997,41 @@ onclick="playAudio(this)">
 </div>
 
 `;
+
 function add(el){
 
 if(el){
+
 el.innerHTML += html;
+
 }
 
 }
 
 if(a.tipo === "pastor"){
+
 add(document.getElementById("lista-pastor"));
+
 }
 
 else if(a.tipo === "oracao"){
+
 add(document.getElementById("lista-oracoes"));
+
 }
 
 else if(a.tipo === "devocional"){
+
 add(document.getElementById("lista-devocionais"));
+
 }
 
 else if(a.tipo === "campanha"){
+
 add(document.getElementById("lista-campanhas"));
+
+}
+
 }
 
 });
