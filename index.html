@@ -973,38 +973,32 @@ ${icone}
 
 <div class="audio-info">
 
-<h3>
-${a.titulo}
-</h3>
+<h3>${a.titulo}</h3>
 
-<p>
-${a.tipo.toUpperCase()}
-</p>
+<p>${a.tipo.toUpperCase()}</p>
 
 </div>
 
 </div>
 
-<audio controls>
+<audio controls class="player-audio">
 
 <source src="${a.url}" type="audio/mpeg">
+
+Seu navegador não suporta áudio.
 
 </audio>
 
 <button class="botao"
-onclick="this.parentElement.querySelector('audio').play()">
-
-▶ Ouvir Agora
-
-</button>
+onclick="playAudio(this)">
 
 ▶ Ouvir Agora
 
 </button>
 
 </div>
-`;
 
+`;
 function add(el){
 
 if(el){
