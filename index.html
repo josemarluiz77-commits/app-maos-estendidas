@@ -990,7 +990,7 @@ Seu navegador não suporta áudio.
 
 <button class="botao"
 type="button"
-onclick="playAudio(this)">
+onclick="const audio=this.parentElement.querySelector('audio'); audio.paused ? audio.play() : audio.pause();">
 
 ▶ Ouvir Agora
 
