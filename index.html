@@ -1291,6 +1291,86 @@ botao.innerText = "▶ Ouvir Agora";
 }
 
 }
+
+<script>
+
+/* outras funções que já existem */
+
+function toggleAudioDia(){
+
+const audio =
+document.getElementById("audioDia");
+
+if(audio.paused){
+
+audio.play();
+
+}else{
+
+audio.pause();
+
+}
+
+}
+
+
+/* PEDIDO DE ORAÇÃO */
+
+function enviarPedido(){
+
+const nome =
+document.getElementById(
+"nomeOracao"
+).value;
+
+const tipo =
+document.getElementById(
+"tipoOracao"
+).value;
+
+const pedido =
+document.getElementById(
+"pedidoOracao"
+).value;
+
+if(!pedido){
+
+alert(
+"Digite seu pedido de oração"
+);
+
+return;
+
+}
+
+db.ref("pedidosOracao")
+.push({
+
+nome:nome,
+
+tipo:tipo,
+
+pedido:pedido,
+
+data:
+new Date().toLocaleString()
+
+});
+
+alert(
+"🙏 Pedido enviado com sucesso!"
+);
+
+document.getElementById(
+"nomeOracao"
+).value="";
+
+document.getElementById(
+"pedidoOracao"
+).value="";
+
+}
+
   
 </script>
 
