@@ -1398,8 +1398,12 @@ function playAudio(btn){
 const card =
 btn.closest(".audio-card");
 
+if(!card) return;
+
 const audio =
 card.querySelector(".player-audio");
+
+if(!audio) return;
 
 const titulo =
 card.querySelector("h3").innerText;
@@ -1410,9 +1414,10 @@ audioAtual.pause();
 
 }
 
-audio.play();
-
 audioAtual = audio;
+
+audioAtual.play()
+.then(()=>{
 
 document.getElementById(
 "playerTitulo"
@@ -1426,6 +1431,13 @@ document.getElementById(
 "btnPlayPause"
 ).innerText = "⏸";
 
+})
+.catch((e)=>{
+
+console.log(e);
+
+});
+
 }
 
 document.getElementById(
@@ -1438,18 +1450,25 @@ if(audioAtual.paused){
 
 audioAtual.play();
 
+document.getElementById(
+"playerStatus"
+).innerText = "Reproduzindo agora";
+
 this.innerText = "⏸";
 
 }else{
 
 audioAtual.pause();
 
+document.getElementById(
+"playerStatus"
+).innerText = "Pausado";
+
 this.innerText = "▶";
 
 }
 
 };
-
 
 let audioAtual = null;
 
