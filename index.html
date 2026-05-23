@@ -9,61 +9,47 @@
 
 <link rel="manifest" href="manifest.json">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <style>
-    
- /* AUDIO CARD PREMIUM */
+<style>
+
+/* AUDIO CARD PREMIUM */
 
 .audio-card{
-
 background:
 linear-gradient(
 180deg,
 rgba(255,255,255,0.05),
 rgba(255,255,255,0.02)
 );
-
-border:
-1px solid rgba(212,175,55,0.08);
+border:1px solid rgba(212,175,55,0.08);
 }
 
 .audio-topo{
-
 display:flex;
 align-items:center;
 gap:14px;
-
 margin-bottom:16px;
 }
 
 .audio-icone{
-
 width:60px;
 height:60px;
-
 border-radius:18px;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
 font-size:28px;
-
 background:
 linear-gradient(
 135deg,
 #d4af37,
 #1ebe5d
 );
-
-box-shadow:
-0 8px 20px rgba(0,0,0,0.3);
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
 }
 
 .audio-info h3{
-
 margin:0;
 font-size:18px;
 color:#fff;
@@ -71,7 +57,6 @@ line-height:1.4;
 }
 
 .audio-info p{
-
 margin-top:6px;
 font-size:12px;
 letter-spacing:1px;
@@ -80,7 +65,6 @@ font-weight:700;
 }
 
 .audio-card audio{
-
 margin-top:8px;
 }
 
@@ -140,7 +124,7 @@ display:none;
 padding:20px;
 max-width:700px;
 margin:auto;
-animation:fade 0.3s ease;
+animation:fade .3s ease;
 }
 
 .section.active{
@@ -148,35 +132,35 @@ display:block;
 }
 
 @keyframes fade{
+
 from{
 opacity:0;
 transform:translateY(10px);
 }
+
 to{
 opacity:1;
 transform:translateY(0);
 }
+
 }
 
 /* CARDS */
 
 .card{
-background:
-rgba(255,255,255,0.06);
-border:1px solid rgba(255,255,255,0.05);
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.05);
 padding:22px;
 border-radius:22px;
 margin-bottom:22px;
 backdrop-filter:blur(10px);
-box-shadow:
-0 8px 25px rgba(0,0,0,0.35);
-transition:0.25s ease;
+box-shadow:0 8px 25px rgba(0,0,0,.35);
+transition:.25s ease;
 }
 
 .card:hover{
 transform:translateY(-2px);
-box-shadow:
-0 12px 28px rgba(0,0,0,0.45);
+box-shadow:0 12px 28px rgba(0,0,0,.45);
 }
 
 .card h2{
@@ -193,7 +177,12 @@ display:block;
 width:100%;
 text-align:center;
 background:
-linear-gradient(135deg,#d4af37,#f1d16a);
+linear-gradient(
+135deg,
+#d4af37,
+#f1d16a
+);
+
 color:#111;
 padding:15px;
 border-radius:18px;
@@ -201,24 +190,24 @@ margin-top:15px;
 text-decoration:none;
 font-weight:700;
 font-size:15px;
-letter-spacing:0.4px;
+letter-spacing:.4px;
 border:none;
 cursor:pointer;
-transition:0.25s ease;
+transition:.25s ease;
 box-shadow:
-0 8px 18px rgba(212,175,55,0.25);
+0 8px 18px rgba(212,175,55,.25);
 }
 
 .botao:hover{
 transform:translateY(-2px);
 box-shadow:
-0 10px 22px rgba(212,175,55,0.35);
+0 10px 22px rgba(212,175,55,.35);
 }
 
 .botao:active{
-transform:scale(0.98);
+transform:scale(.98);
 }
-
+  
 /* BOTÃO SECUNDÁRIO */
 
 .botao-secundario{
@@ -226,18 +215,20 @@ display:block;
 width:100%;
 background:#181818;
 color:#d4af37;
-border:1px solid #d4af37;
+border:1px solid rgba(212,175,55,.8);
 padding:15px;
 border-radius:18px;
 margin-top:14px;
 text-align:center;
-font-weight:600;
-transition:0.2s;
+font-weight:700;
+text-decoration:none;
+transition:.25s ease;
 }
 
 .botao-secundario:hover{
 background:#d4af37;
 color:#111;
+transform:translateY(-2px);
 }
 
 /* INPUTS */
@@ -254,14 +245,13 @@ background:#151515;
 color:white;
 font-size:15px;
 outline:none;
-transition:0.2s;
+transition:.25s ease;
 }
 
 input:focus,
 textarea:focus,
 select:focus{
-box-shadow:
-0 0 0 2px rgba(212,175,55,0.4);
+box-shadow:0 0 0 2px rgba(212,175,55,.4);
 }
 
 /* PLAYER */
@@ -278,8 +268,7 @@ iframe{
 width:100%;
 border-radius:18px;
 margin-top:12px;
-box-shadow:
-0 8px 20px rgba(0,0,0,0.4);
+box-shadow:0 8px 20px rgba(0,0,0,.4);
 }
 
 /* IMAGENS */
@@ -294,104 +283,71 @@ margin-top:12px;
 width:140px;
 border-radius:24px;
 margin-bottom:12px;
-box-shadow:
-0 8px 20px rgba(0,0,0,0.4);
+box-shadow:0 8px 20px rgba(0,0,0,.4);
 }
 
 /* MENU PREMIUM */
 
 .menu{
-
 position:fixed;
 top:0;
 left:-320px;
-
 width:300px;
 height:100%;
-
 background:
 linear-gradient(
 180deg,
-rgba(8,17,13,0.98),
-rgba(16,29,22,0.98)
+rgba(8,17,13,.98),
+rgba(16,29,22,.98)
 );
-
 backdrop-filter:blur(12px);
-
 padding-top:80px;
-
-transition:0.35s ease;
-
+transition:.35s ease;
 z-index:99999;
-
-box-shadow:
-0 0 40px rgba(0,0,0,0.6);
-
-border-right:
-1px solid rgba(212,175,55,0.15);
-
+box-shadow:0 0 40px rgba(0,0,0,.6);
+border-right:1px solid rgba(212,175,55,.15);
 overflow-y:auto;
 }
-
-/* MENU ATIVO */
 
 .menu.ativo{
 left:0;
 }
 
-/* LINKS */
-
 .menu a{
-
 display:flex;
 align-items:center;
 gap:14px;
-
 color:#fff;
-
 padding:18px 22px;
-
 text-decoration:none;
-
 font-size:16px;
 font-weight:600;
-
-border-bottom:
-1px solid rgba(255,255,255,0.04);
-
-transition:0.25s ease;
-
-letter-spacing:0.3px;
+border-bottom:1px solid rgba(255,255,255,.04);
+transition:.25s ease;
+letter-spacing:.3px;
 }
-
-/* HOVER */
+  
+/* HOVER MENU */
 
 .menu a:hover{
-
 background:
 linear-gradient(
 90deg,
-rgba(212,175,55,0.18),
-rgba(30,190,93,0.12)
+rgba(212,175,55,.18),
+rgba(30,190,93,.12)
 );
-
 padding-left:30px;
-
 color:#d4af37;
 }
 
-/* ÍCONES */
-
 .menu a i{
-
 font-size:18px;
 width:22px;
 text-align:center;
-
 color:#d4af37;
 }
 
-/* SCROLL */
+/* SCROLL MENU */
 
 .menu::-webkit-scrollbar{
 width:5px;
@@ -402,123 +358,81 @@ background:#d4af37;
 border-radius:10px;
 }
 
-
 /* SPLASH SCREEN */
 
 #splash{
-
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-
 background:
 linear-gradient(180deg,#08110d,#0d1712,#111);
-
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-
 z-index:99999;
-
 transition:1s;
 }
 
 #splash img{
-
 width:150px;
 border-radius:30px;
-
-box-shadow:
-0 0 30px rgba(212,175,55,0.25);
-
+box-shadow:0 0 30px rgba(212,175,55,.25);
 animation:pulse 2s infinite;
 }
 
 #splash h1{
-
 margin-top:25px;
 color:#d4af37;
-
 font-size:28px;
 font-weight:700;
-
 text-align:center;
-
-text-shadow:
-0 0 20px rgba(212,175,55,0.25);
+text-shadow:0 0 20px rgba(212,175,55,.25);
 }
 
 #splash p{
-
 margin-top:10px;
 color:#aaa;
 font-size:15px;
 }
 
 .loader{
-
 margin-top:25px;
-
 width:45px;
 height:45px;
-
-border:4px solid rgba(255,255,255,0.08);
+border:4px solid rgba(255,255,255,.08);
 border-top:4px solid #d4af37;
-
 border-radius:50%;
-
 animation:spin 1s linear infinite;
 }
 
 @keyframes spin{
-
-0%{
-transform:rotate(0deg);
-}
-
-100%{
-transform:rotate(360deg);
-}
-
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
 }
 
 @keyframes pulse{
-
-0%{
-transform:scale(1);
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
 }
 
-50%{
-transform:scale(1.05);
-}
-
-100%{
-transform:scale(1);
-}
-
-}
-  /* SEÇÕES PREMIUM */
+/* SEÇÕES PREMIUM */
 
 .secao-premium{
-
 position:relative;
 overflow:hidden;
 }
 
 .secao-premium::before{
-
 content:"";
-
 position:absolute;
 top:0;
 left:0;
-
 width:100%;
 height:4px;
-
 background:
 linear-gradient(
 90deg,
@@ -528,21 +442,17 @@ linear-gradient(
 }
 
 .topo-secao{
-
 display:flex;
 align-items:center;
 gap:12px;
-
 margin-bottom:10px;
 }
 
 .topo-secao span{
-
 font-size:28px;
 }
 
 .topo-secao h2{
-
 margin:0;
 font-size:24px;
 color:#d4af37;
@@ -550,19 +460,17 @@ font-weight:700;
 }
 
 .subtitulo-secao{
-
 color:#bdbdbd;
 font-size:14px;
 line-height:1.6;
 margin-bottom:18px;
 }
 
-
 </style>
 </head>
 
 <body>
-
+  
 <!-- SPLASH SCREEN -->
 
 <div id="splash">
@@ -582,38 +490,93 @@ Seja fortalecido pela presença de Deus
 
 </div>
 
+
 <header>
+
 <span onclick="toggleMenu()">☰</span>
+
 <h1>🙏 Comunidade Mãos Estendidas</h1>
+
 </header>
 
+
 <div id="menuLateral" class="menu">
+
 <a href="#" onclick="show('inicio')">🏠 Início</a>
+
 <a href="#" onclick="show('live')">📡 Live</a>
+
 <a href="#" onclick="show('audio')">🎧 Áudio</a>
+
 <a href="#" onclick="show('videos')">🎥 Vídeos</a>
+
 <a href="#" onclick="show('radio')">📻 Rádio</a>
+
 <a href="#" onclick="show('oracao')">🙏 Oração</a>
-<a href="#" onclick="show('palavra')">📖 Palavra do Pastor</a>
+
 <a href="#" onclick="show('sobre')">ℹ️ Sobre</a>
+
 </div>
+
 
 <div id="inicio" class="section active">
 
-<div class="card" style="text-align:center; padding:25px;">
-<h2 style="color:#d4af37;">🙏 Bem-vindo à Comunidade</h2>
-<p style="opacity:0.8;">Um lugar de fé, restauração e presença de Deus</p>
+<div class="card" style="text-align:center;padding:25px;">
+
+<h2 style="color:#d4af37;">
+
+🙏 Bem-vindo à Comunidade
+
+</h2>
+
+<p style="opacity:.8;">
+
+Um lugar de fé, restauração e presença de Deus
+
+</p>
+
 </div>
+
 
 <div class="card">
-<img src="banner.jpg" style="width:100%; border-radius:14px;">
+
+<img
+src="banner.jpg"
+style="
+width:100%;
+border-radius:14px;
+"
+>
+
 </div>
 
+
 <div class="card" style="text-align:center;">
-<h2 style="color:#d4af37;">📖 Versículo do Dia</h2>
-<p><em>“Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele.”</em></p>
-<strong>Salmos 118:24</strong>
+
+<h2 style="color:#d4af37;">
+
+📖 Versículo do Dia
+
+</h2>
+
+<p>
+
+<em>
+
+“Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele.”
+
+</em>
+
+</p>
+
+<strong>
+
+Salmos 118:24
+
+</strong>
+
 </div>
+
 
 <div class="card" style="text-align:center;">
 
@@ -622,14 +585,16 @@ color:#d4af37;
 font-size:22px;
 margin-bottom:15px;
 ">
+
 🎧 Palavra do Dia
+
 </h2>
 
 <div style="
 background:#111;
 padding:20px;
 border-radius:18px;
-box-shadow:0 0 20px rgba(0,0,0,0.4);
+box-shadow:0 0 20px rgba(0,0,0,.4);
 ">
 
 <p style="
@@ -637,8 +602,11 @@ color:#aaa;
 margin-bottom:15px;
 font-size:14px;
 ">
+
 Mensagem diária da Comunidade Mãos Estendidas
+
 </p>
+
 
 <audio
 id="audioDia"
@@ -647,24 +615,13 @@ style="
 width:100%;
 border-radius:12px;
 ">
+
 </audio>
+
 
 <button
 class="botao"
-onclick="toggleAudioDia()"
-style="
-margin-top:15px;
-background:linear-gradient(45deg,#d4af37,#f1c95a);
-color:#000;
-font-weight:bold;
-border:none;
-padding:14px;
-width:100%;
-border-radius:12px;
-font-size:16px;
-cursor:pointer;
-box-shadow:0 0 10px rgba(212,175,55,0.3);
-">
+onclick="toggleAudioDia()">
 
 ▶ Ouvir Mensagem
 
@@ -674,44 +631,77 @@ box-shadow:0 0 10px rgba(212,175,55,0.3);
 
 </div>
 
+
 <div class="card">
-<h2 style="text-align:center;">⚡ Acessos Rápidos</h2>
-<a class="botao" onclick="show('audio')">🎧 Áudios</a>
-<a class="botao" onclick="show('palavra')">📖 Palavra do Pastor</a>
-<a class="botao" onclick="show('live')">📡 Live</a>
-<a class="botao" onclick="show('oracao')">🙏 Oração</a>
+
+<h2 style="text-align:center;">
+
+⚡ Acessos Rápidos
+
+</h2>
+
+<a class="botao" onclick="show('audio')">
+
+🎧 Áudios
+
+</a>
+
+<a class="botao" onclick="show('live')">
+
+📡 Live
+
+</a>
+
+<a class="botao" onclick="show('oracao')">
+
+🙏 Oração
+
+</a>
+
 </div>
 
 </div>
+
 
 <div id="live" class="section">
+
 <div class="card">
-<h2>🔴 Manhã com Deus</h2>
-<a href="https://www.facebook.com/Pastormissionariojosemar.pettenon" target="_blank" class="botao">Assistir ao Vivo</a>
+
+<h2>
+
+🔴 Manhã com Deus
+
+</h2>
+
+<a
+href="https://www.facebook.com/Pastormissionariojosemar.pettenon"
+target="_blank"
+class="botao">
+
+Assistir ao Vivo
+
+</a>
+
 </div>
+
 </div>
+
 
 <div id="audio" class="section">
 
 <div class="card" style="text-align:center;">
-<h2 style="color:#d4af37;">🎧 Central de Áudios</h2>
-<p>Mensagens e conteúdos espirituais</p>
-</div>
 
-<!-- PALAVRA DO PASTOR -->
+<h2 style="color:#d4af37;">
 
-<div class="card secao-premium">
+🎧 Central de Áudios
 
-<div class="topo-secao">
-<span>📖</span>
-<h2>Palavra do Pastor</h2>
-</div>
+</h2>
 
-<p class="subtitulo-secao">
-Direção espiritual diária para fortalecer sua fé
+<p>
+
+Mensagens e conteúdos espirituais
+
 </p>
-
-<div id="lista-pastor"></div>
 
 </div>
 
@@ -720,13 +710,30 @@ Direção espiritual diária para fortalecer sua fé
 <div class="card secao-premium">
 
 <div class="topo-secao">
+
 <span>🙏</span>
+
 <h2>Orações</h2>
+
 </div>
 
 <p class="subtitulo-secao">
+
 Momentos de clamor, intercessão e busca pela presença de Deus
+
 </p>
+
+<div style="
+background:rgba(212,175,55,.08);
+padding:12px;
+border-radius:14px;
+margin-bottom:15px;
+border-left:4px solid #d4af37;
+">
+
+✨ Reserve alguns minutos do seu dia para buscar a presença de Deus.
+
+</div>
 
 <div id="lista-oracoes"></div>
 
@@ -737,30 +744,65 @@ Momentos de clamor, intercessão e busca pela presença de Deus
 <div class="card secao-premium">
 
 <div class="topo-secao">
+
 <span>🌅</span>
+
 <h2>Devocionais</h2>
+
 </div>
 
 <p class="subtitulo-secao">
+
 Palavras edificantes para iniciar o dia na presença do Senhor
+
 </p>
+
+<div style="
+background:rgba(212,175,55,.08);
+padding:12px;
+border-radius:14px;
+margin-bottom:15px;
+border-left:4px solid #d4af37;
+">
+
+☀️ Comece o dia alimentando sua fé e fortalecendo seu espírito na presença de Deus.
+
+</div>
 
 <div id="lista-devocionais"></div>
 
 </div>
+
 
 <!-- CAMPANHAS -->
 
 <div class="card secao-premium">
 
 <div class="topo-secao">
+
 <span>🔥</span>
+
 <h2>Campanhas</h2>
+
 </div>
 
 <p class="subtitulo-secao">
+
 Campanhas de fé, milagres, libertação e fortalecimento espiritual
+
 </p>
+
+<div style="
+background:rgba(212,175,55,.08);
+padding:12px;
+border-radius:14px;
+margin-bottom:15px;
+border-left:4px solid #d4af37;
+">
+
+🔥 Participe dos propósitos e campanhas proféticas para fortalecer sua caminhada com Deus.
+
+</div>
 
 <div id="lista-campanhas"></div>
 
@@ -798,72 +840,70 @@ Campanhas de fé, milagres, libertação e fortalecimento espiritual
 
 <div class="card">
 
-<h2>🙏 Pedido de Oração</h2>
+<h2 style="color:#d4af37;">
 
-<p style="margin:15px 0;color:#bbb;">
+🙏 Pedido de Oração
+
+</h2>
+
+<p style="
+margin:15px 0;
+color:#bbb;
+line-height:1.7;
+">
 
 Envie seu pedido. Estaremos orando por você e sua família.
 
 </p>
 
-<input
-id="nomeOracao"
-type="text"
-placeholder="Seu nome"
-style="
-width:100%;
+<div style="
+background:rgba(212,175,55,.08);
 padding:14px;
-margin-bottom:12px;
-border:none;
-border-radius:12px;
+border-radius:14px;
+margin-bottom:18px;
+border-left:4px solid #d4af37;
 ">
 
-<select
-id="tipoOracao"
-style="
-width:100%;
-padding:14px;
-margin-bottom:12px;
-border:none;
-border-radius:12px;
-">
+✨ Seu pedido será recebido com carinho e colocado diante de Deus em oração.
+
+</div>
+
+<input
+id="nomePedido"
+type="text"
+placeholder="Seu nome">
+
+<select id="tipoPedido">
 
 <option>Família</option>
+
 <option>Saúde</option>
-<option>Libertação</option>
+
 <option>Vida Espiritual</option>
+
+<option>Libertação</option>
+
 <option>Emprego</option>
+
 <option>Finanças</option>
+
 <option>Outros</option>
 
 </select>
 
 <textarea
-id="pedidoOracao"
+id="textoPedido"
 placeholder="Escreva seu pedido..."
-style="
-width:100%;
-height:120px;
-padding:14px;
-border:none;
-border-radius:12px;
-margin-bottom:15px;
-"></textarea>
+style="height:120px;">
+</textarea>
 
 <button
 class="botao"
-onclick="enviarPedido()">
+onclick="enviarWhatsPedido()">
 
-🙏 Enviar Pedido
+💬 Enviar Pedido
 
 </button>
-
-<a href="https://wa.me/5555999157014"
-class="botao-secundario">
-
-💬 Atendimento WhatsApp
-
-</a>
 
 </div>
 
@@ -872,29 +912,15 @@ class="botao-secundario">
 <div id="palavra" class="section">
 
 <div class="card" style="text-align:center;">
-
-<h2 style="color:#d4af37;">
-📖 Palavra do Pastor
-</h2>
-
-<p id="subtituloPalavra">
-Direção espiritual diária
-</p>
-
+<h2 style="color:#d4af37;">📖 Palavra do Pastor</h2>
+<p id="subtituloPalavra">Direção espiritual diária</p>
 </div>
 
 <div class="card">
-
-<h2 id="tituloPalavraApp"
-style="color:#d4af37;">
-Carregando...
-</h2>
-
-<p id="textoPalavraApp"
-style="white-space:pre-line; line-height:1.7;">
+<h2 id="tituloPalavraApp" style="color:#d4af37;">Carregando...</h2>
+<p id="textoPalavraApp" style="white-space:pre-line; line-height:1.7;">
 Aguardando publicação...
 </p>
-
 </div>
 
 </div>
@@ -902,80 +928,162 @@ Aguardando publicação...
 <div id="sobre" class="section">
 
 <div class="card" style="text-align:center;">
+
 <img src="logo.png" class="foto-ministerio">
-<h2 style="color:#d4af37;">Comunidade Mãos Estendidas</h2>
-<p><strong>Pastor Josemar Luiz</strong></p>
+
+<h2 style="color:#d4af37;">
+Comunidade Mãos Estendidas
+</h2>
+
+<p style="color:#bbb;line-height:1.6;">
+Um movimento de fé, oração, restauração e esperança.
+</p>
+
+<p style="margin-top:10px;">
+<strong>Pastor Josemar Luiz</strong>
+</p>
+
 </div>
 
-<div class="card">
-<h2>🔥 Nossa Visão</h2>
-<p>
+<div class="card secao-premium">
+
+<div class="topo-secao">
+<span>🔥</span>
+<h2>Nossa Visão</h2>
+</div>
+
+<p style="line-height:1.7;color:#ddd;">
 Não somos apenas uma comunidade online. Somos um movimento espiritual levantado para alcançar vidas, restaurar famílias e reacender a fé.
 <br><br>
 Onde muitos veem fim, Deus está escrevendo recomeço.
 </p>
+
 </div>
 
-<div class="card">
-<h2>🎯 Nossa Missão</h2>
-<p>
+<div class="card secao-premium">
+
+<div class="topo-secao">
+<span>🎯</span>
+<h2>Nossa Missão</h2>
+</div>
+
+<p style="line-height:1.7;color:#ddd;">
 Levar fé onde existe vazio.<br>
 Levar esperança onde existe dor.<br>
-Levar Deus onde parece não haver saída.<br><br>
+Levar Deus onde parece não haver saída.
+<br><br>
 Ser instrumento de transformação espiritual para esta geração.
 </p>
+
 </div>
 
-<div class="card">
-<h2>⚡ O Que Cremos</h2>
-<p>
+<div class="card secao-premium">
+
+<div class="topo-secao">
+<span>⚡</span>
+<h2>O Que Cremos</h2>
+</div>
+
+<p style="line-height:1.7;color:#ddd;">
 Cremos em um Deus vivo, presente e transformador.<br>
 Cremos na Palavra como direção para a vida.<br>
 Cremos que nenhuma história está perdida quando Deus entra em ação.
 </p>
+
 </div>
 
-<div class="card">
-<h2>📅 Nossos Encontros</h2>
-<p>
+<div class="card secao-premium">
+
+<div class="topo-secao">
+<span>📅</span>
+<h2>Nossos Encontros</h2>
+</div>
+
+<p style="line-height:1.8;color:#ddd;">
 • Manhã com Deus<br>
 • Orações online<br>
 • Campanhas proféticas<br>
-• Ministrações digitais
+• Ministrações digitais<br>
+• Palavra diária de fé
 </p>
+
 </div>
 
 <div class="card">
-<h2>🎥 Mensagem Institucional</h2>
+
+<h2 style="color:#d4af37;">
+🎥 Mensagem Institucional
+</h2>
+
 <iframe src="https://www.youtube.com/embed/LHI2DksDveY" allowfullscreen></iframe>
+
+</div>
+
+<div class="card secao-premium">
+
+<div class="topo-secao">
+<span>📖</span>
+<h2>Palavra Base</h2>
+</div>
+
+<p style="line-height:1.7;color:#ddd;">
+<em>“Ide por todo o mundo e pregai o evangelho a toda criatura.”</em>
+</p>
+
+<strong style="color:#d4af37;">
+Marcos 16:15
+</strong>
+
 </div>
 
 <div class="card">
-<h2>📖 Palavra Base</h2>
-<p><em>“Ide por todo o mundo e pregai o evangelho a toda criatura.”</em></p>
-<strong>Marcos 16:15</strong>
-</div>
 
-<div class="card">
-<h2>📞 Contato</h2>
-<a href="https://wa.me/5555999157014" class="botao">WhatsApp</a>
+<h2 style="color:#d4af37;">
+📞 Contato
+</h2>
+
+<p style="color:#bbb;line-height:1.6;margin-bottom:15px;">
+Precisa de oração, orientação ou deseja conhecer mais sobre a Comunidade Mãos Estendidas?
+</p>
+
+<a href="https://wa.me/5555999157014" class="botao">
+💬 Falar no WhatsApp
+</a>
+
+<a href="https://www.facebook.com/Pastormissionariojosemar.pettenon" target="_blank" class="botao-secundario">
+📡 Acompanhar no Facebook
+</a>
+
 </div>
 
 </div>
 
 <script>
 function show(id){
-document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-document.getElementById("menuLateral").classList.remove("ativo");
+
+document.querySelectorAll('.section')
+.forEach(s=>s.classList.remove('active'));
+
+document.getElementById(id)
+.classList.add('active');
+
+document.getElementById("menuLateral")
+.classList.remove("ativo");
+
 }
 
 function toggleMenu(){
-document.getElementById("menuLateral").classList.toggle("ativo");
+
+document.getElementById("menuLateral")
+.classList.toggle("ativo");
+
 }
 
 if ('serviceWorker' in navigator) {
-navigator.serviceWorker.register('sw.js');
+
+navigator.serviceWorker
+.register('sw.js');
+
 }
 </script>
 
@@ -984,16 +1092,17 @@ navigator.serviceWorker.register('sw.js');
 
 <script>
 const firebaseConfig = {
-  apiKey: "AIzaSy...",
-  authDomain: "comunidademaosestendidas.firebaseapp.com",
-  databaseURL: "https://comunidademaosestendidas-default-rtdb.firebaseio.com",
-  projectId: "comunidademaosestendidas",
-  storageBucket: "comunidademaosestendidas.firebasestorage.app",
-  messagingSenderId: "115001016227",
-  appId: "1:115001016227:web:0df485d449944fea496416"
+apiKey: "AIzaSyChFlUeEs9OPtb8g-lhTiiNoDp_YegEI-s",
+authDomain: "comunidademaosestendidas.firebaseapp.com",
+databaseURL: "https://comunidademaosestendidas-default-rtdb.firebaseio.com",
+projectId: "comunidademaosestendidas",
+storageBucket: "comunidademaosestendidas.firebasestorage.app",
+messagingSenderId: "115001016227",
+appId: "1:115001016227:web:0df485d449944fea496416"
 };
 
 firebase.initializeApp(firebaseConfig);
+
 const db = firebase.database();
 
 /* 🎧 BIBLIOTECA DE ÁUDIOS */
@@ -1005,6 +1114,10 @@ document.getElementById("lista-pastor").innerHTML = "";
 document.getElementById("lista-oracoes").innerHTML = "";
 document.getElementById("lista-devocionais").innerHTML = "";
 document.getElementById("lista-campanhas").innerHTML = "";
+
+if(!dados){
+return;
+}
 
 for(let id in dados){
 
@@ -1067,35 +1180,25 @@ Seu navegador não suporta áudio.
 function add(el){
 
 if(el){
-
 el.innerHTML += html;
-
 }
 
 }
 
 if(a.tipo === "pastor"){
-
 add(document.getElementById("lista-pastor"));
-
 }
 
 else if(a.tipo === "oracao"){
-
 add(document.getElementById("lista-oracoes"));
-
 }
 
 else if(a.tipo === "devocional"){
-
 add(document.getElementById("lista-devocionais"));
-
 }
 
 else if(a.tipo === "campanha"){
-
 add(document.getElementById("lista-campanhas"));
-
 }
 
 }
@@ -1104,11 +1207,19 @@ add(document.getElementById("lista-campanhas"));
 
 /* 📖 VERSÍCULO */
 db.ref("versiculoDoDia").on("value", snap=>{
+
 let d = snap.val();
+
 if(d){
-document.querySelector("#inicio em").innerText = d.texto;
-document.querySelector("#inicio strong").innerText = d.referencia;
+
+document.querySelector("#inicio em")
+.innerText = d.texto;
+
+document.querySelector("#inicio strong")
+.innerText = d.referencia;
+
 }
+
 });
 
 /* 🎧 ÁUDIO DO DIA */
@@ -1133,35 +1244,64 @@ audio.load();
 
 });
 
-
 /* 💬 MENSAGEM */
 db.ref("mensagemDoDia").on("value", snap=>{
+
 let d = snap.val();
+
 if(d){
+
 if(!document.getElementById("mensagemDia")){
-let div = document.createElement("div");
-div.className="card";
-div.innerHTML = "<h2>💬 Mensagem do Dia</h2><p id='mensagemDia'></p>";
-document.getElementById("inicio").appendChild(div);
+
+let div =
+document.createElement("div");
+
+div.className = "card";
+
+div.innerHTML =
+"<h2>💬 Mensagem do Dia</h2><p id='mensagemDia'></p>";
+
+document.getElementById("inicio")
+.appendChild(div);
+
 }
-document.getElementById("mensagemDia").innerText = d.texto;
+
+document.getElementById("mensagemDia")
+.innerText = d.texto;
+
 }
+
 });
 
 /* 📺 VÍDEO */
 db.ref("videoDoDia").on("value", snap=>{
-let d = snap.val();
-if(d){
-if(!document.getElementById("videoDia")){
-let div = document.createElement("div");
-div.className="card";
-div.innerHTML = "<h2>📺 Vídeo do Dia</h2><iframe id='videoDia' allowfullscreen></iframe>";
-document.getElementById("inicio").appendChild(div);
-}
-document.getElementById("videoDia").src = "https://www.youtube.com/embed/" + d.url;
-}
-});
 
+let d = snap.val();
+
+if(d){
+
+if(!document.getElementById("videoDia")){
+
+let div =
+document.createElement("div");
+
+div.className = "card";
+
+div.innerHTML =
+"<h2>📺 Vídeo do Dia</h2><iframe id='videoDia' allowfullscreen></iframe>";
+
+document.getElementById("inicio")
+.appendChild(div);
+
+}
+
+document.getElementById("videoDia")
+.src = "https://www.youtube.com/embed/" + d.url;
+
+}
+
+});
+  
 /* 📖 PALAVRA DO PASTOR */
 db.ref("palavraPastor").on("value", snap=>{
 
@@ -1169,11 +1309,8 @@ let d = snap.val();
 
 if(d){
 
-document.getElementById("tituloPalavraApp")
-.innerText = d.titulo;
-
-document.getElementById("textoPalavraApp")
-.innerText = d.texto;
+document.getElementById("tituloPalavraApp").innerText = d.titulo;
+document.getElementById("textoPalavraApp").innerText = d.texto;
 
 }
 
@@ -1181,65 +1318,7 @@ document.getElementById("textoPalavraApp")
 
 </script>
 
- <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging-compat.js"></script>
-
-<script>
-
-const messaging = firebase.messaging();
-
-<script>
-
-// REGISTRA FIREBASE SERVICE WORKER
-
-navigator.serviceWorker.register(
-"/app-maos-estendidas/firebase-messaging-sw.js"
-);
-
-async function ativarNotificacoes(){
-
-try{
-
-const permissao =
-await Notification.requestPermission();
-
-if(permissao === "granted"){
-
-const token =
-await messaging.getToken({
-
-vapidKey:
-"BPYkS6whepzInaszdqRuSerNcQHbhckv1PpOPWVVhOYhQUfZTcB7pTvcxeYWrycGoRou2g2R5Rw-sJ264F0VFI0"
-
-});
-
-console.log("TOKEN:", token);
-
-alert(
-"🔔 Notificações ativadas com sucesso!"
-);
-
-}else{
-
-alert(
-"Permissão negada"
-);
-
-}
-
-}catch(e){
-
-console.log(e);
-
-}
-
-}
-
-ativarNotificacoes();
-
-</script>
-
-
-<!-- SPLASH SCREEN -->
+<!-- SPLASH SCREEN E FUNÇÕES DE ÁUDIO -->
 
 <script>
 
@@ -1292,86 +1371,6 @@ botao.innerText = "▶ Ouvir Agora";
 
 }
 
-<script>
-
-/* outras funções que já existem */
-
-function toggleAudioDia(){
-
-const audio =
-document.getElementById("audioDia");
-
-if(audio.paused){
-
-audio.play();
-
-}else{
-
-audio.pause();
-
-}
-
-}
-
-
-/* PEDIDO DE ORAÇÃO */
-
-function enviarPedido(){
-
-const nome =
-document.getElementById(
-"nomeOracao"
-).value;
-
-const tipo =
-document.getElementById(
-"tipoOracao"
-).value;
-
-const pedido =
-document.getElementById(
-"pedidoOracao"
-).value;
-
-if(!pedido){
-
-alert(
-"Digite seu pedido de oração"
-);
-
-return;
-
-}
-
-db.ref("pedidosOracao")
-.push({
-
-nome:nome,
-
-tipo:tipo,
-
-pedido:pedido,
-
-data:
-new Date().toLocaleString()
-
-});
-
-alert(
-"🙏 Pedido enviado com sucesso!"
-);
-
-document.getElementById(
-"nomeOracao"
-).value="";
-
-document.getElementById(
-"pedidoOracao"
-).value="";
-
-}
-
-  
 </script>
 
 </body>
