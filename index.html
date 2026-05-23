@@ -988,12 +988,8 @@ Seu navegador não suporta áudio.
 
 </audio>
 
-<button class="botao"
-type="button"
-onclick="const audio=this.parentElement.querySelector('audio'); audio.paused ? audio.play() : audio.pause();">
-
+<button class="botao" type="button" onclick="tocarAudioBotao(this)">
 ▶ Ouvir Agora
-
 </button>
 
 </div>
@@ -1213,6 +1209,21 @@ audio.pause();
 
 }
 
+function tocarAudioBotao(botao){
+
+var card = botao.closest(".audio-card");
+var audio = card.querySelector("audio");
+
+if(audio.paused){
+audio.play();
+botao.innerText = "⏸ Pausar Áudio";
+}else{
+audio.pause();
+botao.innerText = "▶ Ouvir Agora";
+}
+
+}
+  
 </script>
 
 </body>
