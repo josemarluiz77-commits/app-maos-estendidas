@@ -636,10 +636,6 @@ onclick="toggleAudioDia()">
 
 <h2 style="text-align:center;">
 
-<div class="card">
-
-<h2 style="text-align:center;">
-
 ⚡ Acessos Rápidos
 
 </h2>
@@ -656,13 +652,20 @@ onclick="toggleAudioDia()">
 🙏 Oração
 </a>
 
+<a class="botao" onclick="show('sobre')">
+ℹ️ Sobre Nós
+</a>
+
+</div>
+
+</div>
+
+
 <div id="live" class="section">
 
 <div class="card">
 
-<h2>
-🔴 Manhã com Deus
-</h2>
+<h2>🔴 Manhã com Deus</h2>
 
 <a
 href="https://www.facebook.com/Pastormissionariojosemar.pettenon"
@@ -691,22 +694,49 @@ Mensagens e conteúdos espirituais
 </p>
 
 </div>
+
+
+<!-- PALAVRA DO PASTOR -->
+
+<div class="card secao-premium">
+
+<div class="topo-secao">
+<span>📖</span>
+<h2>Palavra do Pastor</h2>
+</div>
+
+<p class="subtitulo-secao">
+Direção espiritual diária para fortalecer sua fé
+</p>
+
+<div style="
+background:rgba(212,175,55,.08);
+padding:12px;
+border-radius:14px;
+margin-bottom:15px;
+border-left:4px solid #d4af37;
+">
+
+🔥 Receba uma palavra de direção, fortalecimento e encorajamento para sua caminhada com Deus.
+
+</div>
+
+<div id="lista-pastor"></div>
+
+</div>
+
+
 <!-- ORAÇÕES -->
 
 <div class="card secao-premium">
 
 <div class="topo-secao">
-
 <span>🙏</span>
-
 <h2>Orações</h2>
-
 </div>
 
 <p class="subtitulo-secao">
-
 Momentos de clamor, intercessão e busca pela presença de Deus
-
 </p>
 
 <div style="
@@ -725,22 +755,18 @@ border-left:4px solid #d4af37;
 
 </div>
 
+
 <!-- DEVOCIONAIS -->
 
 <div class="card secao-premium">
 
 <div class="topo-secao">
-
 <span>🌅</span>
-
 <h2>Devocionais</h2>
-
 </div>
 
 <p class="subtitulo-secao">
-
 Palavras edificantes para iniciar o dia na presença do Senhor
-
 </p>
 
 <div style="
@@ -765,17 +791,12 @@ border-left:4px solid #d4af37;
 <div class="card secao-premium">
 
 <div class="topo-secao">
-
 <span>🔥</span>
-
 <h2>Campanhas</h2>
-
 </div>
 
 <p class="subtitulo-secao">
-
 Campanhas de fé, milagres, libertação e fortalecimento espiritual
-
 </p>
 
 <div style="
@@ -796,8 +817,11 @@ border-left:4px solid #d4af37;
 
 </div>
 
+
 <div id="videos" class="section">
+
 <div class="card">
+
 <h2>📺 Vídeos</h2>
 
 <a href="https://www.youtube.com/watch?v=txW7x3CQSVg" target="_blank">
@@ -813,14 +837,28 @@ border-left:4px solid #d4af37;
 </a>
 
 </div>
+
 </div>
 
+
 <div id="radio" class="section">
+
 <div class="card">
+
 <h2>📻 Rádio Gospel</h2>
-<a href="https://www.youtube.com/results?search_query=louvores+gospel+24h" class="botao">Ouvir Rádio</a>
+
+<a
+href="https://www.youtube.com/results?search_query=louvores+gospel+24h"
+class="botao">
+
+Ouvir Rádio
+
+</a>
+
 </div>
+
 </div>
+
 
 <div id="oracao" class="section">
 
@@ -828,8 +866,13 @@ border-left:4px solid #d4af37;
 
 <h2 style="color:#d4af37;">
 
-🙏 Pedido de Oração
 
+<div id="oracao" class="section">
+
+<div class="card">
+
+<h2 style="color:#d4af37;">
+🙏 Pedido de Oração
 </h2>
 
 <p style="
@@ -862,17 +905,11 @@ placeholder="Seu nome">
 <select id="tipoPedido">
 
 <option>Família</option>
-
 <option>Saúde</option>
-
 <option>Vida Espiritual</option>
-
 <option>Libertação</option>
-
 <option>Emprego</option>
-
 <option>Finanças</option>
-
 <option>Outros</option>
 
 </select>
@@ -895,21 +932,6 @@ onclick="enviarWhatsPedido()">
 
 </div>
 
-<div id="palavra" class="section">
-
-<div class="card" style="text-align:center;">
-<h2 style="color:#d4af37;">📖 Palavra do Pastor</h2>
-<p id="subtituloPalavra">Direção espiritual diária</p>
-</div>
-
-<div class="card">
-<h2 id="tituloPalavraApp" style="color:#d4af37;">Carregando...</h2>
-<p id="textoPalavraApp" style="white-space:pre-line; line-height:1.7;">
-Aguardando publicação...
-</p>
-</div>
-
-</div>
 
 <div id="sobre" class="section">
 
@@ -931,6 +953,7 @@ Um movimento de fé, oração, restauração e esperança.
 
 </div>
 
+
 <div class="card secao-premium">
 
 <div class="topo-secao">
@@ -945,6 +968,7 @@ Onde muitos veem fim, Deus está escrevendo recomeço.
 </p>
 
 </div>
+
 
 <div class="card secao-premium">
 
@@ -963,64 +987,6 @@ Ser instrumento de transformação espiritual para esta geração.
 
 </div>
 
-<div class="card secao-premium">
-
-<div class="topo-secao">
-<span>⚡</span>
-<h2>O Que Cremos</h2>
-</div>
-
-<p style="line-height:1.7;color:#ddd;">
-Cremos em um Deus vivo, presente e transformador.<br>
-Cremos na Palavra como direção para a vida.<br>
-Cremos que nenhuma história está perdida quando Deus entra em ação.
-</p>
-
-</div>
-
-<div class="card secao-premium">
-
-<div class="topo-secao">
-<span>📅</span>
-<h2>Nossos Encontros</h2>
-</div>
-
-<p style="line-height:1.8;color:#ddd;">
-• Manhã com Deus<br>
-• Orações online<br>
-• Campanhas proféticas<br>
-• Ministrações digitais<br>
-• Palavra diária de fé
-</p>
-
-</div>
-
-<div class="card">
-
-<h2 style="color:#d4af37;">
-🎥 Mensagem Institucional
-</h2>
-
-<iframe src="https://www.youtube.com/embed/LHI2DksDveY" allowfullscreen></iframe>
-
-</div>
-
-<div class="card secao-premium">
-
-<div class="topo-secao">
-<span>📖</span>
-<h2>Palavra Base</h2>
-</div>
-
-<p style="line-height:1.7;color:#ddd;">
-<em>“Ide por todo o mundo e pregai o evangelho a toda criatura.”</em>
-</p>
-
-<strong style="color:#d4af37;">
-Marcos 16:15
-</strong>
-
-</div>
 
 <div class="card">
 
@@ -1028,78 +994,53 @@ Marcos 16:15
 📞 Contato
 </h2>
 
-<p style="color:#bbb;line-height:1.6;margin-bottom:15px;">
+<p style="
+color:#bbb;
+line-height:1.6;
+margin-bottom:15px;
+">
+
 Precisa de oração, orientação ou deseja conhecer mais sobre a Comunidade Mãos Estendidas?
+
 </p>
 
-<a href="https://wa.me/5555999157014" class="botao">
+<a
+href="https://wa.me/5555999157014"
+class="botao">
+
 💬 Falar no WhatsApp
+
 </a>
 
-<a href="https://www.facebook.com/Pastormissionariojosemar.pettenon" target="_blank" class="botao-secundario">
+<a
+href="https://www.facebook.com/Pastormissionariojosemar.pettenon"
+target="_blank"
+class="botao-secundario">
+
 📡 Acompanhar no Facebook
+
 </a>
 
 </div>
 
 </div>
 
-<script>
-function show(id){
-
-document.querySelectorAll('.section')
-.forEach(s=>s.classList.remove('active'));
-
-document.getElementById(id)
-.classList.add('active');
-
-document.getElementById("menuLateral")
-.classList.remove("ativo");
-
-}
-
-function toggleMenu(){
-
-document.getElementById("menuLateral")
-.classList.toggle("ativo");
-
-}
-
-if ('serviceWorker' in navigator) {
-
-navigator.serviceWorker
-.register('sw.js');
-
-}
-</script>
-
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
-
-<script>
-const firebaseConfig = {
-apiKey: "AIzaSyChFlUeEs9OPtb8g-lhTiiNoDp_YegEI-s",
-authDomain: "comunidademaosestendidas.firebaseapp.com",
-databaseURL: "https://comunidademaosestendidas-default-rtdb.firebaseio.com",
-projectId: "comunidademaosestendidas",
-storageBucket: "comunidademaosestendidas.firebasestorage.app",
-messagingSenderId: "115001016227",
-appId: "1:115001016227:web:0df485d449944fea496416"
-};
-
-firebase.initializeApp(firebaseConfig);
-
-const db = firebase.database();
+ <script>
 
 /* 🎧 BIBLIOTECA DE ÁUDIOS */
 db.ref("audios").on("value", snap=>{
 
 let dados = snap.val();
 
-document.getElementById("lista-pastor").innerHTML = "";
-document.getElementById("lista-oracoes").innerHTML = "";
-document.getElementById("lista-devocionais").innerHTML = "";
-document.getElementById("lista-campanhas").innerHTML = "";
+const listaPastor = document.getElementById("lista-pastor");
+const listaOracoes = document.getElementById("lista-oracoes");
+const listaDevocionais = document.getElementById("lista-devocionais");
+const listaCampanhas = document.getElementById("lista-campanhas");
+
+if(listaPastor) listaPastor.innerHTML = "";
+if(listaOracoes) listaOracoes.innerHTML = "";
+if(listaDevocionais) listaDevocionais.innerHTML = "";
+if(listaCampanhas) listaCampanhas.innerHTML = "";
 
 if(!dados){
 return;
@@ -1172,19 +1113,19 @@ el.innerHTML += html;
 }
 
 if(a.tipo === "pastor"){
-add(document.getElementById("lista-pastor"));
+add(listaPastor);
 }
 
 else if(a.tipo === "oracao"){
-add(document.getElementById("lista-oracoes"));
+add(listaOracoes);
 }
 
 else if(a.tipo === "devocional"){
-add(document.getElementById("lista-devocionais"));
+add(listaDevocionais);
 }
 
 else if(a.tipo === "campanha"){
-add(document.getElementById("lista-campanhas"));
+add(listaCampanhas);
 }
 
 }
@@ -1287,12 +1228,37 @@ document.getElementById("videoDia")
 }
 
 });
-  
 
-<!-- SPLASH SCREEN E FUNÇÕES DE ÁUDIO -->
+/* WHATSAPP PEDIDO DE ORAÇÃO */
+function enviarWhatsPedido(){
 
-<script>
+let nome =
+document.getElementById("nomePedido").value;
 
+let tipo =
+document.getElementById("tipoPedido").value;
+
+let pedido =
+document.getElementById("textoPedido").value;
+
+let mensagem =
+`🙏 PEDIDO DE ORAÇÃO
+
+Nome: ${nome}
+
+Área: ${tipo}
+
+Pedido:
+${pedido}`;
+
+window.open(
+`https://wa.me/5555999157014?text=${encodeURIComponent(mensagem)}`,
+"_blank"
+);
+
+}
+
+/* SPLASH SCREEN E FUNÇÕES DE ÁUDIO */
 window.addEventListener("load", ()=>{
 
 setTimeout(()=>{
@@ -1342,7 +1308,8 @@ botao.innerText = "▶ Ouvir Agora";
 
 }
 
-  let deferredPrompt;
+/* BOTÃO INSTALAR APP */
+let deferredPrompt;
 
 window.addEventListener(
 "beforeinstallprompt",
@@ -1353,9 +1320,7 @@ e.preventDefault();
 deferredPrompt = e;
 
 const btn =
-document.getElementById(
-"btnInstalar"
-);
+document.getElementById("btnInstalar");
 
 if(btn){
 
@@ -1365,7 +1330,6 @@ btn.onclick=async()=>{
 
 deferredPrompt.prompt();
 
-const escolha =
 await deferredPrompt.userChoice;
 
 deferredPrompt=null;
