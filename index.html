@@ -1506,6 +1506,74 @@ this.innerText = "▶";
 
 };
 
+  /* BARRA TEMPO REAL */
+
+setInterval(()=>{
+
+if(audioAtual){
+
+const progresso =
+(audioAtual.currentTime /
+audioAtual.duration) * 100;
+
+document.getElementById(
+"barraProgresso"
+).value = progresso || 0;
+
+const atual =
+formatarTempo(
+audioAtual.currentTime
+);
+
+const duracao =
+formatarTempo(
+audioAtual.duration
+);
+
+document.getElementById(
+"tempoAtual"
+).innerText = atual;
+
+document.getElementById(
+"tempoDuracao"
+).innerText = duracao;
+
+}
+
+},500);
+
+function formatarTempo(seg){
+
+if(!seg) return "0:00";
+
+const min =
+Math.floor(seg / 60);
+
+const sec =
+Math.floor(seg % 60);
+
+return `${min}:${sec
+.toString()
+.padStart(2,"0")}`;
+
+}
+
+document.getElementById(
+"barraProgresso"
+).addEventListener(
+"input",
+function(){
+
+if(audioAtual){
+
+audioAtual.currentTime =
+(this.value / 100)
+* audioAtual.duration;
+
+}
+
+});
+  
 </script>
   
 </body>
