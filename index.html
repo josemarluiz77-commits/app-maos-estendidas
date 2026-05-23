@@ -1296,28 +1296,6 @@ splash.style.display = "none";
 
 <!-- PLAYER GLOBAL -->
 
-<script>
-
-function playAudio(btn){
-
-const card =
-btn.closest(".audio-card");
-
-const audio =
-card.querySelector(".player-audio");
-
-if(audio){
-
-audio.play();
-
-}
-
-}
-
-</script>
-
- <!-- PLAYER GLOBAL -->
-
 <div id="playerGlobal">
 
 <div id="playerInfo">
@@ -1346,9 +1324,92 @@ Pronto para ouvir
 
 </button>
 
+<div id="barraContainer">
+
+<input
+type="range"
+id="barraProgresso"
+value="0"
+min="0"
+max="100">
+
+<div id="tempoAudio">
+
+<span id="tempoAtual">
+0:00
+</span>
+
+<span id="tempoDuracao">
+0:00
+</span>
+
+</div>
+
+</div>
+
 </div>
 
 <script>
+
+let audioAtual = null;
+
+function playAudio(btn){
+
+const card =
+btn.closest(".audio-card");
+
+const audio =
+card.querySelector(".player-audio");
+
+const titulo =
+card.querySelector("h3").innerText;
+
+if(audioAtual && audioAtual !== audio){
+
+audioAtual.pause();
+
+}
+
+audio.play();
+
+audioAtual = audio;
+
+document.getElementById(
+"playerTitulo"
+).innerText = titulo;
+
+document.getElementById(
+"playerStatus"
+).innerText = "Reproduzindo agora";
+
+document.getElementById(
+"btnPlayPause"
+).innerText = "⏸";
+
+}
+
+document.getElementById(
+"btnPlayPause"
+).onclick = function(){
+
+if(!audioAtual) return;
+
+if(audioAtual.paused){
+
+audioAtual.play();
+
+this.innerText = "⏸";
+
+}else{
+
+audioAtual.pause();
+
+this.innerText = "▶";
+
+}
+
+};
+
 
 let audioAtual = null;
 
