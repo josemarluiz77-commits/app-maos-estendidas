@@ -14,9 +14,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
   <style>
     
-
- 
-  /* AUDIO CARD PREMIUM */
+ /* AUDIO CARD PREMIUM */
 
 .audio-card{
 
@@ -984,6 +982,8 @@ ${icone}
 
 <audio controls class="player-audio">
 
+<source src="${a.url}" type="audio/mpeg">
+
 Seu navegador não suporta áudio.
 
 </audio>
@@ -1191,205 +1191,7 @@ splash.style.display = "none";
 
 });
 
-</script>
 
-<!-- PLAYER GLOBAL -->
-
-<div id="playerGlobal">
-
-<div id="playerInfo">
-
-<div id="playerIcon">
-🎧
-</div>
-
-<div>
-
-<div id="playerTitulo">
-Nenhum áudio tocando
-</div>
-
-<div id="playerStatus">
-Pronto para ouvir
-</div>
-
-</div>
-
-</div>
-
-<button id="btnPlayPause">
-
-⏸
-
-</button>
-
-<div id="barraContainer">
-
-<input
-type="range"
-id="barraProgresso"
-value="0"
-min="0"
-max="100">
-
-<div id="tempoAudio">
-
-<span id="tempoAtual">
-0:00
-</span>
-
-<span id="tempoDuracao">
-0:00
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-<script>
-
-let audioAtual = null;
-
-function playAudio(btn){
-
-const card =
-btn.closest(".audio-card");
-
-if(!card) return;
-
-const audio =
-card.querySelector(".player-audio");
-
-if(!audio) return;
-
-const titulo =
-card.querySelector("h3").innerText;
-
-if(audioAtual && audioAtual !== audio){
-
-audioAtual.pause();
-
-}
-
-audioAtual = audio;
-
-audioAtual.play()
-.then(()=>{
-
-document.getElementById(
-"playerTitulo"
-).innerText = titulo;
-
-document.getElementById(
-"playerStatus"
-).innerText = "Reproduzindo agora";
-
-document.getElementById(
-"btnPlayPause"
-).innerText = "⏸";
-
-})
-.catch((e)=>{
-
-console.log(e);
-
-});
-
-}
-
-document.getElementById(
-"btnPlayPause"
-).onclick = function(){
-
-if(!audioAtual) return;
-
-if(audioAtual.paused){
-
-audioAtual.play();
-
-document.getElementById(
-"playerStatus"
-).innerText = "Reproduzindo agora";
-
-this.innerText = "⏸";
-
-}else{
-
-audioAtual.pause();
-
-document.getElementById(
-"playerStatus"
-).innerText = "Pausado";
-
-this.innerText = "▶";
-
-}
-
-};
-
-let audioAtual = null;
-
-function playAudio(btn){
-
-const card =
-btn.closest(".audio-card");
-
-const audio =
-card.querySelector(".player-audio");
-
-const titulo =
-card.querySelector("h3").innerText;
-
-if(audioAtual && audioAtual !== audio){
-
-audioAtual.pause();
-
-}
-
-audio.play();
-
-audioAtual = audio;
-
-document.getElementById(
-"playerTitulo"
-).innerText = titulo;
-
-document.getElementById(
-"playerStatus"
-).innerText = "Reproduzindo agora";
-
-document.getElementById(
-"btnPlayPause"
-).innerText = "⏸";
-
-}
-
-document.getElementById(
-"btnPlayPause"
-).onclick = function(){
-
-if(!audioAtual) return;
-
-if(audioAtual.paused){
-
-audioAtual.play();
-
-this.innerText = "⏸";
-
-}else{
-
-audioAtual.pause();
-
-this.innerText = "▶";
-
-}
-
-};
-
- 
-  
 </script>
   
 </body>
