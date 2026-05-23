@@ -1183,16 +1183,15 @@ window.addEventListener("load", ()=>{
 
 setTimeout(()=>{
 
-const splash =
-document.getElementById("splash");
+const splash = document.getElementById("splash");
 
 if(splash){
 
-splash.style.opacity="0";
+splash.style.opacity = "0";
 
 setTimeout(()=>{
 
-splash.style.display="none";
+splash.style.display = "none";
 
 },1000);
 
@@ -1202,22 +1201,14 @@ splash.style.display="none";
 
 });
 
-
 function toggleAudioDia(){
 
-const audio =
-document.getElementById(
-"audioDia"
-);
+const audio = document.getElementById("audioDia");
 
 if(audio.paused){
-
 audio.play();
-
 }else{
-
 audio.pause();
-
 }
 
 }
