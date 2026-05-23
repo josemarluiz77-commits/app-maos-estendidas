@@ -642,6 +642,34 @@ onclick="toggleAudioDia()">
 
 <a class="botao" onclick="show('audio')">
 
+  <div class="card" style="text-align:center;">
+
+<h2 style="color:#d4af37;">
+
+  📲 Instalar Aplicativo
+</h2>
+
+<p style="
+color:#bbb;
+margin-bottom:15px;
+line-height:1.6;
+">
+
+Instale o aplicativo da Comunidade Mãos Estendidas no seu celular.
+
+</p>
+
+<button
+id="btnInstalar"
+class="botao"
+style="display:none;">
+
+📥 Instalar Agora
+
+</button>
+
+</div>
+
 🎧 Áudios
 
 </a>
@@ -1371,6 +1399,41 @@ botao.innerText = "▶ Ouvir Agora";
 
 }
 
+  let deferredPrompt;
+
+window.addEventListener(
+"beforeinstallprompt",
+(e)=>{
+
+e.preventDefault();
+
+deferredPrompt = e;
+
+const btn =
+document.getElementById(
+"btnInstalar"
+);
+
+if(btn){
+
+btn.style.display="block";
+
+btn.onclick=async()=>{
+
+deferredPrompt.prompt();
+
+const escolha =
+await deferredPrompt.userChoice;
+
+deferredPrompt=null;
+
+btn.style.display="none";
+
+};
+
+}
+
+});
 </script>
 
 </body>
