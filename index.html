@@ -1118,9 +1118,9 @@ ${icone}
 
 </div>
 
-<audio controls class="player-audio">
-
-<source src="${a.url}" type="audio/mpeg">
+<audio controls
+class="player-audio"
+onplay="sincronizarPlayer(this)">
 
 Seu navegador não suporta áudio.
 
@@ -1593,6 +1593,32 @@ audioAtual.currentTime =
 }
 
 });
+
+function sincronizarPlayer(audio){
+
+audioAtual = audio;
+
+const card =
+audio.closest(".audio-card");
+
+if(!card) return;
+
+const titulo =
+card.querySelector("h3").innerText;
+
+document.getElementById(
+"playerTitulo"
+).innerText = titulo;
+
+document.getElementById(
+"playerStatus"
+).innerText = "Reproduzindo agora";
+
+document.getElementById(
+"btnPlayPause"
+).innerText = "⏸";
+
+}
   
 </script>
   
