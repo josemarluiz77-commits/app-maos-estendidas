@@ -1060,30 +1060,22 @@ Precisa de oração, orientação ou deseja conhecer mais sobre a Comunidade Mã
 
 <script>
 function show(id){
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
 
-document.querySelectorAll('.section')
-.forEach(s=>s.classList.remove('active'));
+const secao = document.getElementById(id);
+if(secao){
+secao.classList.add('active');
+}
 
-document.getElementById(id)
-.classList.add('active');
-
-document.getElementById("menuLateral")
-.classList.remove("ativo");
-
+document.getElementById("menuLateral").classList.remove("ativo");
 }
 
 function toggleMenu(){
-
-document.getElementById("menuLateral")
-.classList.toggle("ativo");
-
+document.getElementById("menuLateral").classList.toggle("ativo");
 }
 
 if ('serviceWorker' in navigator) {
-
-navigator.serviceWorker
-.register('sw.js');
-
+navigator.serviceWorker.register('sw.js');
 }
 </script>
 
@@ -1102,7 +1094,6 @@ appId: "1:115001016227:web:0df485d449944fea496416"
 };
 
 firebase.initializeApp(firebaseConfig);
-
 const db = firebase.database();
 
 /* 🎧 BIBLIOTECA DE ÁUDIOS */
@@ -1110,96 +1101,57 @@ db.ref("audios").on("value", snap=>{
 
 let dados = snap.val();
 
-document.getElementById("lista-pastor").innerHTML = "";
-document.getElementById("lista-oracoes").innerHTML = "";
-document.getElementById("lista-devocionais").innerHTML = "";
-document.getElementById("lista-campanhas").innerHTML = "";
+const listaPastor = document.getElementById("lista-pastor");
+const listaOracoes = document.getElementById("lista-oracoes");
+const listaDevocionais = document.getElementById("lista-devocionais");
+const listaCampanhas = document.getElementById("lista-campanhas");
 
-if(!dados){
-return;
-}
+if(listaPastor) listaPastor.innerHTML = "";
+if(listaOracoes) listaOracoes.innerHTML = "";
+if(listaDevocionais) listaDevocionais.innerHTML = "";
+if(listaCampanhas) listaCampanhas.innerHTML = "";
+
+if(!dados) return;
 
 for(let id in dados){
 
 let a = dados[id];
 
 let icone = "🎧";
-
-if(a.tipo === "pastor"){
-icone = "📖";
-}
-
-else if(a.tipo === "oracao"){
-icone = "🙏";
-}
-
-else if(a.tipo === "devocional"){
-icone = "🌅";
-}
-
-else if(a.tipo === "campanha"){
-icone = "🔥";
-}
+if(a.tipo === "pastor") icone = "📖";
+else if(a.tipo === "oracao") icone = "🙏";
+else if(a.tipo === "devocional") icone = "🌅";
+else if(a.tipo === "campanha") icone = "🔥";
 
 let html = `
-
 <div class="card audio-card">
-
 <div class="audio-topo">
-
-<div class="audio-icone">
-${icone}
-</div>
-
+<div class="audio-icone">${icone}</div>
 <div class="audio-info">
-
 <h3>${a.titulo}</h3>
-
 <p>${a.tipo.toUpperCase()}</p>
-
 </div>
-
 </div>
 
 <audio controls class="player-audio">
-
 <source src="${a.url}" type="audio/mpeg">
-
 Seu navegador não suporta áudio.
-
 </audio>
 
 <button class="botao" type="button" onclick="tocarAudioBotao(this)">
 ▶ Ouvir Agora
 </button>
-
 </div>
-
 `;
 
 function add(el){
-
-if(el){
-el.innerHTML += html;
+if(el) el.innerHTML += html;
 }
 
-}
-
-if(a.tipo === "pastor"){
-add(document.getElementById("lista-pastor"));
-}
-
-else if(a.tipo === "oracao"){
-add(document.getElementById("lista-oracoes"));
-}
-
-else if(a.tipo === "devocional"){
-add(document.getElementById("lista-devocionais"));
-}
-
-else if(a.tipo === "campanha"){
-add(document.getElementById("lista-campanhas"));
-}
+if(a.tipo === "pastor") add(listaPastor);
+else if(a.tipo === "oracao") add(listaOracoes);
+else if(a.tipo === "devocional") add(listaDevocionais);
+else if(a.tipo === "campanha") add(listaCampanhas);
 
 }
 
@@ -1207,157 +1159,88 @@ add(document.getElementById("lista-campanhas"));
 
 /* 📖 VERSÍCULO */
 db.ref("versiculoDoDia").on("value", snap=>{
-
 let d = snap.val();
-
 if(d){
-
-document.querySelector("#inicio em")
-.innerText = d.texto;
-
-document.querySelector("#inicio strong")
-.innerText = d.referencia;
-
+document.querySelector("#inicio em").innerText = d.texto;
+document.querySelector("#inicio strong").innerText = d.referencia;
 }
-
 });
 
 /* 🎧 ÁUDIO DO DIA */
 db.ref("audioDoDia").on("value", snap=>{
-
 let d = snap.val();
-
 if(d){
-
-let audio =
-document.getElementById("audioDia");
-
+let audio = document.getElementById("audioDia");
 if(audio){
-
 audio.src = d.url;
-
 audio.load();
-
 }
-
 }
-
 });
 
 /* 💬 MENSAGEM */
 db.ref("mensagemDoDia").on("value", snap=>{
-
 let d = snap.val();
-
 if(d){
-
 if(!document.getElementById("mensagemDia")){
-
-let div =
-document.createElement("div");
-
+let div = document.createElement("div");
 div.className = "card";
-
-div.innerHTML =
-"<h2>💬 Mensagem do Dia</h2><p id='mensagemDia'></p>";
-
-document.getElementById("inicio")
-.appendChild(div);
-
+div.innerHTML = "<h2>💬 Mensagem do Dia</h2><p id='mensagemDia'></p>";
+document.getElementById("inicio").appendChild(div);
 }
-
-document.getElementById("mensagemDia")
-.innerText = d.texto;
-
+document.getElementById("mensagemDia").innerText = d.texto;
 }
-
 });
 
 /* 📺 VÍDEO */
 db.ref("videoDoDia").on("value", snap=>{
-
 let d = snap.val();
-
 if(d){
-
 if(!document.getElementById("videoDia")){
-
-let div =
-document.createElement("div");
-
+let div = document.createElement("div");
 div.className = "card";
-
-div.innerHTML =
-"<h2>📺 Vídeo do Dia</h2><iframe id='videoDia' allowfullscreen></iframe>";
-
-document.getElementById("inicio")
-.appendChild(div);
-
+div.innerHTML = "<h2>📺 Vídeo do Dia</h2><iframe id='videoDia' allowfullscreen></iframe>";
+document.getElementById("inicio").appendChild(div);
 }
-
-document.getElementById("videoDia")
-.src = "https://www.youtube.com/embed/" + d.url;
-
+document.getElementById("videoDia").src = "https://www.youtube.com/embed/" + d.url;
 }
-
 });
-  
+
 /* 📖 PALAVRA DO PASTOR */
 db.ref("palavraPastor").on("value", snap=>{
-
 let d = snap.val();
-
 if(d){
+const titulo = document.getElementById("tituloPalavraApp");
+const texto = document.getElementById("textoPalavraApp");
 
-document.getElementById("tituloPalavraApp").innerText = d.titulo;
-document.getElementById("textoPalavraApp").innerText = d.texto;
-
+if(titulo) titulo.innerText = d.titulo;
+if(texto) texto.innerText = d.texto;
 }
-
 });
 
-</script>
-
-<!-- SPLASH SCREEN E FUNÇÕES DE ÁUDIO -->
-
-<script>
-
+/* SPLASH */
 window.addEventListener("load", ()=>{
-
 setTimeout(()=>{
-
 const splash = document.getElementById("splash");
-
 if(splash){
-
 splash.style.opacity = "0";
-
 setTimeout(()=>{
-
 splash.style.display = "none";
-
 },1000);
-
 }
-
 },2500);
-
 });
 
 function toggleAudioDia(){
-
 const audio = document.getElementById("audioDia");
-
 if(audio.paused){
 audio.play();
 }else{
 audio.pause();
 }
-
 }
 
 function tocarAudioBotao(botao){
-
 var card = botao.closest(".audio-card");
 var audio = card.querySelector("audio");
 
@@ -1368,9 +1251,28 @@ botao.innerText = "⏸ Pausar Áudio";
 audio.pause();
 botao.innerText = "▶ Ouvir Agora";
 }
-
 }
 
+function enviarWhatsPedido(){
+let nome = document.getElementById("nomePedido").value;
+let tipo = document.getElementById("tipoPedido").value;
+let pedido = document.getElementById("textoPedido").value;
+
+let mensagem =
+`🙏 PEDIDO DE ORAÇÃO
+
+Nome: ${nome}
+
+Área: ${tipo}
+
+Pedido:
+${pedido}`;
+
+window.open(
+`https://wa.me/5555999157014?text=${encodeURIComponent(mensagem)}`,
+"_blank"
+);
+}
 </script>
 
 </body>
