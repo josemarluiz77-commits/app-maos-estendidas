@@ -651,7 +651,7 @@ border-radius:12px;
 
 <button
 class="botao"
-onclick="document.getElementById('audioDia').play()"
+onclick="toggleAudioDia()"
 style="
 margin-top:15px;
 background:linear-gradient(45deg,#d4af37,#f1c95a);
@@ -1190,8 +1190,25 @@ splash.style.display = "none";
 },2500);
 
 });
+  <script>
 
+function toggleAudioDia(){
 
+const audio =
+document.getElementById("audioDia");
+
+if(audio.paused){
+
+audio.play();
+
+}else{
+
+audio.pause();
+
+}
+
+}
+  
 </script>
   
 </body>
