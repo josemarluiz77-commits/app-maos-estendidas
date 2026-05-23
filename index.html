@@ -1321,21 +1321,6 @@ document.getElementById("videoDia")
 
 });
   
-/* 📖 PALAVRA DO PASTOR */
-db.ref("palavraPastor").on("value", snap=>{
-
-let d = snap.val();
-
-if(d){
-
-document.getElementById("tituloPalavraApp").innerText = d.titulo;
-document.getElementById("textoPalavraApp").innerText = d.texto;
-
-}
-
-});
-
-</script>
 
 <!-- SPLASH SCREEN E FUNÇÕES DE ÁUDIO -->
 
