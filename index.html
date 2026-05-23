@@ -882,17 +882,30 @@ Cremos que nenhuma história está perdida quando Deus entra em ação.
 
 <script>
 function show(id){
-document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-document.getElementById("menuLateral").classList.remove("ativo");
+
+document.querySelectorAll('.section')
+.forEach(s=>s.classList.remove('active'));
+
+document.getElementById(id)
+.classList.add('active');
+
+document.getElementById("menuLateral")
+.classList.remove("ativo");
+
 }
 
 function toggleMenu(){
-document.getElementById("menuLateral").classList.toggle("ativo");
+
+document.getElementById("menuLateral")
+.classList.toggle("ativo");
+
 }
 
 if ('serviceWorker' in navigator) {
-navigator.serviceWorker.register('sw.js');
+
+navigator.serviceWorker
+.register('sw.js');
+
 }
 </script>
 
@@ -901,16 +914,17 @@ navigator.serviceWorker.register('sw.js');
 
 <script>
 const firebaseConfig = {
-  apiKey: "AIzaSy...",
-  authDomain: "comunidademaosestendidas.firebaseapp.com",
-  databaseURL: "https://comunidademaosestendidas-default-rtdb.firebaseio.com",
-  projectId: "comunidademaosestendidas",
-  storageBucket: "comunidademaosestendidas.firebasestorage.app",
-  messagingSenderId: "115001016227",
-  appId: "1:115001016227:web:0df485d449944fea496416"
+apiKey: "AIzaSyChFlUeEs9OPtb8g-lhTiiNoDp_YegEI-s",
+authDomain: "comunidademaosestendidas.firebaseapp.com",
+databaseURL: "https://comunidademaosestendidas-default-rtdb.firebaseio.com",
+projectId: "comunidademaosestendidas",
+storageBucket: "comunidademaosestendidas.firebasestorage.app",
+messagingSenderId: "115001016227",
+appId: "1:115001016227:web:0df485d449944fea496416"
 };
 
 firebase.initializeApp(firebaseConfig);
+
 const db = firebase.database();
 
 /* 🎧 BIBLIOTECA DE ÁUDIOS */
@@ -922,6 +936,10 @@ document.getElementById("lista-pastor").innerHTML = "";
 document.getElementById("lista-oracoes").innerHTML = "";
 document.getElementById("lista-devocionais").innerHTML = "";
 document.getElementById("lista-campanhas").innerHTML = "";
+
+if(!dados){
+return;
+}
 
 for(let id in dados){
 
@@ -984,35 +1002,25 @@ Seu navegador não suporta áudio.
 function add(el){
 
 if(el){
-
 el.innerHTML += html;
-
 }
 
 }
 
 if(a.tipo === "pastor"){
-
 add(document.getElementById("lista-pastor"));
-
 }
 
 else if(a.tipo === "oracao"){
-
 add(document.getElementById("lista-oracoes"));
-
 }
 
 else if(a.tipo === "devocional"){
-
 add(document.getElementById("lista-devocionais"));
-
 }
 
 else if(a.tipo === "campanha"){
-
 add(document.getElementById("lista-campanhas"));
-
 }
 
 }
@@ -1021,11 +1029,19 @@ add(document.getElementById("lista-campanhas"));
 
 /* 📖 VERSÍCULO */
 db.ref("versiculoDoDia").on("value", snap=>{
+
 let d = snap.val();
+
 if(d){
-document.querySelector("#inicio em").innerText = d.texto;
-document.querySelector("#inicio strong").innerText = d.referencia;
+
+document.querySelector("#inicio em")
+.innerText = d.texto;
+
+document.querySelector("#inicio strong")
+.innerText = d.referencia;
+
 }
+
 });
 
 /* 🎧 ÁUDIO DO DIA */
@@ -1050,35 +1066,64 @@ audio.load();
 
 });
 
-
 /* 💬 MENSAGEM */
 db.ref("mensagemDoDia").on("value", snap=>{
+
 let d = snap.val();
+
 if(d){
+
 if(!document.getElementById("mensagemDia")){
-let div = document.createElement("div");
-div.className="card";
-div.innerHTML = "<h2>💬 Mensagem do Dia</h2><p id='mensagemDia'></p>";
-document.getElementById("inicio").appendChild(div);
+
+let div =
+document.createElement("div");
+
+div.className = "card";
+
+div.innerHTML =
+"<h2>💬 Mensagem do Dia</h2><p id='mensagemDia'></p>";
+
+document.getElementById("inicio")
+.appendChild(div);
+
 }
-document.getElementById("mensagemDia").innerText = d.texto;
+
+document.getElementById("mensagemDia")
+.innerText = d.texto;
+
 }
+
 });
 
 /* 📺 VÍDEO */
 db.ref("videoDoDia").on("value", snap=>{
-let d = snap.val();
-if(d){
-if(!document.getElementById("videoDia")){
-let div = document.createElement("div");
-div.className="card";
-div.innerHTML = "<h2>📺 Vídeo do Dia</h2><iframe id='videoDia' allowfullscreen></iframe>";
-document.getElementById("inicio").appendChild(div);
-}
-document.getElementById("videoDia").src = "https://www.youtube.com/embed/" + d.url;
-}
-});
 
+let d = snap.val();
+
+if(d){
+
+if(!document.getElementById("videoDia")){
+
+let div =
+document.createElement("div");
+
+div.className = "card";
+
+div.innerHTML =
+"<h2>📺 Vídeo do Dia</h2><iframe id='videoDia' allowfullscreen></iframe>";
+
+document.getElementById("inicio")
+.appendChild(div);
+
+}
+
+document.getElementById("videoDia")
+.src = "https://www.youtube.com/embed/" + d.url;
+
+}
+
+});
+  
 /* 📖 PALAVRA DO PASTOR */
 db.ref("palavraPastor").on("value", snap=>{
 
