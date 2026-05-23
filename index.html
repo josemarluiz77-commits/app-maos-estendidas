@@ -879,18 +879,76 @@ border-left:4px solid #d4af37;
 </div>
 
 <div id="oracao" class="section">
-<div class="card">
-<h2>🙏 Pedido de Oração</h2>
 
-<p style="margin:15px 0;color:#bbb;line-height:1.6;">
+<div class="card">
+
+<h2 style="color:#d4af37;">
+
+🙏 Pedido de Oração
+
+</h2>
+
+<p style="
+margin:15px 0;
+color:#bbb;
+line-height:1.7;
+">
+
 Envie seu pedido. Estaremos orando por você e sua família.
+
 </p>
 
-<a href="https://wa.me/5555999157014" class="botao">
-💬 Enviar Pedido pelo WhatsApp
-</a>
+<div style="
+background:rgba(212,175,55,.08);
+padding:14px;
+border-radius:14px;
+margin-bottom:18px;
+border-left:4px solid #d4af37;
+">
+
+✨ Seu pedido será recebido com carinho e colocado diante de Deus em oração.
 
 </div>
+
+<input
+id="nomePedido"
+type="text"
+placeholder="Seu nome">
+
+<select id="tipoPedido">
+
+<option>Família</option>
+
+<option>Saúde</option>
+
+<option>Vida Espiritual</option>
+
+<option>Libertação</option>
+
+<option>Emprego</option>
+
+<option>Finanças</option>
+
+<option>Outros</option>
+
+</select>
+
+<textarea
+id="textoPedido"
+placeholder="Escreva seu pedido..."
+style="height:120px;">
+</textarea>
+
+<button
+class="botao"
+onclick="enviarWhatsPedido()">
+
+💬 Enviar Pedido
+
+</button>
+
+</div>
+
 </div>
 
 <div id="palavra" class="section">
