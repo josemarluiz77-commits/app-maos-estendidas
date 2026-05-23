@@ -9,61 +9,47 @@
 
 <link rel="manifest" href="manifest.json">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <style>
-    
- /* AUDIO CARD PREMIUM */
+<style>
+
+/* AUDIO CARD PREMIUM */
 
 .audio-card{
-
 background:
 linear-gradient(
 180deg,
 rgba(255,255,255,0.05),
 rgba(255,255,255,0.02)
 );
-
-border:
-1px solid rgba(212,175,55,0.08);
+border:1px solid rgba(212,175,55,0.08);
 }
 
 .audio-topo{
-
 display:flex;
 align-items:center;
 gap:14px;
-
 margin-bottom:16px;
 }
 
 .audio-icone{
-
 width:60px;
 height:60px;
-
 border-radius:18px;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
 font-size:28px;
-
 background:
 linear-gradient(
 135deg,
 #d4af37,
 #1ebe5d
 );
-
-box-shadow:
-0 8px 20px rgba(0,0,0,0.3);
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
 }
 
 .audio-info h3{
-
 margin:0;
 font-size:18px;
 color:#fff;
@@ -71,7 +57,6 @@ line-height:1.4;
 }
 
 .audio-info p{
-
 margin-top:6px;
 font-size:12px;
 letter-spacing:1px;
@@ -80,7 +65,6 @@ font-weight:700;
 }
 
 .audio-card audio{
-
 margin-top:8px;
 }
 
@@ -140,7 +124,7 @@ display:none;
 padding:20px;
 max-width:700px;
 margin:auto;
-animation:fade 0.3s ease;
+animation:fade .3s ease;
 }
 
 .section.active{
@@ -148,35 +132,35 @@ display:block;
 }
 
 @keyframes fade{
+
 from{
 opacity:0;
 transform:translateY(10px);
 }
+
 to{
 opacity:1;
 transform:translateY(0);
 }
+
 }
 
 /* CARDS */
 
 .card{
-background:
-rgba(255,255,255,0.06);
-border:1px solid rgba(255,255,255,0.05);
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.05);
 padding:22px;
 border-radius:22px;
 margin-bottom:22px;
 backdrop-filter:blur(10px);
-box-shadow:
-0 8px 25px rgba(0,0,0,0.35);
-transition:0.25s ease;
+box-shadow:0 8px 25px rgba(0,0,0,.35);
+transition:.25s ease;
 }
 
 .card:hover{
 transform:translateY(-2px);
-box-shadow:
-0 12px 28px rgba(0,0,0,0.45);
+box-shadow:0 12px 28px rgba(0,0,0,.45);
 }
 
 .card h2{
@@ -193,7 +177,12 @@ display:block;
 width:100%;
 text-align:center;
 background:
-linear-gradient(135deg,#d4af37,#f1d16a);
+linear-gradient(
+135deg,
+#d4af37,
+#f1d16a
+);
+
 color:#111;
 padding:15px;
 border-radius:18px;
@@ -201,24 +190,24 @@ margin-top:15px;
 text-decoration:none;
 font-weight:700;
 font-size:15px;
-letter-spacing:0.4px;
+letter-spacing:.4px;
 border:none;
 cursor:pointer;
-transition:0.25s ease;
+transition:.25s ease;
 box-shadow:
-0 8px 18px rgba(212,175,55,0.25);
+0 8px 18px rgba(212,175,55,.25);
 }
 
 .botao:hover{
 transform:translateY(-2px);
 box-shadow:
-0 10px 22px rgba(212,175,55,0.35);
+0 10px 22px rgba(212,175,55,.35);
 }
 
 .botao:active{
-transform:scale(0.98);
+transform:scale(.98);
 }
-
+  
 /* BOTÃO SECUNDÁRIO */
 
 .botao-secundario{
