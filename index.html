@@ -795,14 +795,12 @@ Campanhas de fé, milagres, libertação e fortalecimento espiritual
 </div>
 
 <div id="oracao" class="section">
-
 <div class="card">
-
 <h2>🙏 Pedido de Oração</h2>
-
-<p style="margin:15px 0;color:#bbb;">
-
+<a href="https://wa.me/5555999157014" class="botao">Enviar Pedido</a>
 Envie seu pedido. Estaremos orando por você e sua família.
+</div>
+</div>
 
 </p>
 
@@ -1313,64 +1311,6 @@ audio.pause();
 
 }
 
-<script>
-  
-/* PEDIDO DE ORAÇÃO */
-
-function enviarPedido(){
-
-const nome =
-document.getElementById(
-"nomeOracao"
-).value;
-
-const tipo =
-document.getElementById(
-"tipoOracao"
-).value;
-
-const pedido =
-document.getElementById(
-"pedidoOracao"
-).value;
-
-if(!pedido){
-
-alert(
-"Digite seu pedido de oração"
-);
-
-return;
-
-}
-
-db.ref("pedidosOracao")
-.push({
-
-nome:nome,
-
-tipo:tipo,
-
-pedido:pedido,
-
-data:
-new Date().toLocaleString()
-
-});
-
-alert(
-"🙏 Pedido enviado com sucesso!"
-);
-
-document.getElementById(
-"nomeOracao"
-).value="";
-
-document.getElementById(
-"pedidoOracao"
-).value="";
-
-}
 
   </script>
 
