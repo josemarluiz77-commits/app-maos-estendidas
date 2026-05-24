@@ -231,7 +231,23 @@ Adicionar Áudio
 <!-- LISTA DE ÁUDIOS -->
 <div class="card">
 
-<h2>📋 Áudios Cadastrados</h2>
+<h2>
+📋 Áudios Cadastrados
+
+<span id="totalAudios" style="
+background:gold;
+color:black;
+padding:4px 10px;
+border-radius:20px;
+font-size:12px;
+margin-left:10px;
+">
+
+0
+
+</span>
+
+</h2>
 
 <div id="listaAudios"></div>
 
@@ -448,6 +464,7 @@ d.url || "";
 db.ref("videoDoDia").on("value", snap=>{
 
 const d = snap.val();
+  
 
 if(d){
 
