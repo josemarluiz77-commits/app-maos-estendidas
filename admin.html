@@ -479,7 +479,13 @@ lista.innerHTML += `
 
 <strong>${a.titulo}</strong><br>
 
-<small>${a.tipo}</small>
+<small>
+
+${a.tipo}<br>
+
+📅 ${new Date(a.data).toLocaleDateString("pt-BR")}
+
+</small>
 
 <audio controls style="width:100%; margin-top:10px;">
 <source src="${a.url}" type="audio/mpeg">
