@@ -191,24 +191,6 @@ Salvar Mensagem
 
 </div>
 
-<!-- PALAVRA DO PASTOR -->
-<div class="card">
-
-<h2>📖 Palavra do Pastor</h2>
-
-<input id="tituloPalavra"
-placeholder="Título da Palavra">
-
-<textarea id="textoPalavra"
-placeholder="Escreva a Palavra do Pastor"
-style="height:220px;"></textarea>
-
-<button onclick="salvarPalavra()">
-Publicar Palavra
-</button>
-
-</div>
-
 <!-- ÁUDIO LISTA -->
 <div class="card">
 
@@ -393,25 +375,6 @@ setStatus("✔ Mensagem salva!");
 
 }
 
-/* PALAVRA DO PASTOR */
-
-function salvarPalavra(){
-
-db.ref("palavraPastor").set({
-
-titulo:
-document.getElementById("tituloPalavra").value,
-
-texto:
-document.getElementById("textoPalavra").value,
-
-data: Date.now()
-
-});
-
-setStatus("🔥 Palavra publicada!");
-
-}
 
 /* ADICIONAR ÁUDIO */
 
@@ -450,6 +413,63 @@ setStatus("🔥 Áudio adicionado!");
 
 }
 
+  /* CARREGAR DADOS ATUAIS */
+
+db.ref("versiculoDoDia").on("value", snap=>{
+
+const d = snap.val();
+
+if(d){
+
+document.getElementById("versiculoTexto").value =
+d.texto || "";
+
+document.getElementById("versiculoRef").value =
+d.referencia || "";
+
+}
+
+});
+
+db.ref("audioDoDia").on("value", snap=>{
+
+const d = snap.val();
+
+if(d){
+
+document.getElementById("audioDia").value =
+d.url || "";
+
+}
+
+});
+
+db.ref("videoDoDia").on("value", snap=>{
+
+const d = snap.val();
+
+if(d){
+
+document.getElementById("videoDia").value =
+d.url || "";
+
+}
+
+});
+
+db.ref("mensagemDoDia").on("value", snap=>{
+
+const d = snap.val();
+
+if(d){
+
+document.getElementById("mensagemDia").value =
+d.texto || "";
+
+}
+
+});
+  
 /* LISTAR ÁUDIOS */
 
 db.ref("audios").on("value", snap=>{
