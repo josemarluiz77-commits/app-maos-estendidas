@@ -472,28 +472,6 @@ d.texto || "";
   
 /* LISTAR ÁUDIOS */
 
-db.ref("audios").on("value", snap=>{
-
-const lista =
-document.getElementById("listaAudios");
-
-lista.innerHTML = "";
-
-const dados = snap.val();
-
-if(!dados){
-
-lista.innerHTML =
-"<p style='color:#aaa'>Nenhum áudio cadastrado</p>";
-
-return;
-
-}
-
-for(let id in dados){
-
-const a = dados[id];
-
 lista.innerHTML += `
 
 <div class="audio-item">
@@ -501,6 +479,11 @@ lista.innerHTML += `
 <strong>${a.titulo}</strong><br>
 
 <small>${a.tipo}</small>
+
+<audio controls style="width:100%; margin-top:10px;">
+<source src="${a.url}" type="audio/mpeg">
+Seu navegador não suporta áudio.
+</audio>
 
 <button class="excluir"
 onclick="excluirAudio('${id}')">
