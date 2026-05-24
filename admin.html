@@ -430,6 +430,35 @@ setStatus("🔥 Áudio adicionado!");
 
 }
 
+  /* LISTAR ÁUDIOS */
+
+db.ref("audios").on("value", snap=>{
+
+const lista =
+document.getElementById("listaAudios");
+
+lista.innerHTML = "";
+
+const dados = snap.val();
+
+let total = dados ? Object.keys(dados).length : 0;
+
+document.getElementById("totalAudios")
+.innerText = total;
+
+if(!dados){
+
+lista.innerHTML =
+"<p style='color:#aaa'>Nenhum áudio cadastrado</p>";
+
+return;
+
+}
+
+for(let id in dados){
+
+const a = dados[id];
+  
   /* CARREGAR DADOS ATUAIS */
 
 db.ref("versiculoDoDia").on("value", snap=>{
