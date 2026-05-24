@@ -455,9 +455,11 @@ return;
 
 }
 
-for(let id in dados){
+const listaOrdenada =
+Object.entries(dados)
+.sort((a,b)=> b[1].data - a[1].data);
 
-const a = dados[id];
+for(let [id,a] of listaOrdenada){
   
   /* CARREGAR DADOS ATUAIS */
 
