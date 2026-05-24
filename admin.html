@@ -487,7 +487,7 @@ Seu navegador não suporta áudio.
 </audio>
 
 <button class="excluir"
-onclick="excluirAudio('${id}')">
+onclick="excluirAudio('${id}', '${a.titulo}')">
 
 Excluir
 
@@ -503,18 +503,18 @@ Excluir
 
 /* EXCLUIR */
 
-function excluirAudio(id){
+function excluirAudio(id, titulo){
 
-if(confirm("Excluir áudio?")){
+if(confirm("Tem certeza que deseja excluir este áudio?\n\n" + titulo)){
 
 db.ref("audios/"+id).remove();
 
-setStatus("❌ Áudio removido");
+setStatus("❌ Áudio removido: " + titulo);
 
 }
 
 }
-
+  
 /* LOGOUT */
 
 function logout(){
