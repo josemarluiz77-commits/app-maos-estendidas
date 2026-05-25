@@ -253,7 +253,7 @@ margin-left:10px;
 
 </div>
 
-<!-- PEDIDOS DE ORAÇÃO -->
+  <!-- PEDIDOS DE ORAÇÃO -->
 
 <div class="card">
 
@@ -263,6 +263,22 @@ margin-left:10px;
 
 <p style="color:#aaa">
 Nenhum pedido recebido ainda
+</p>
+
+</div>
+
+</div>
+
+  <!-- TESTEMUNHOS RECEBIDOS -->
+
+<div class="card">
+
+<h2>✨ Testemunhos Recebidos</h2>
+
+<div id="listaTestemunhos">
+
+<p style="color:#aaa">
+Nenhum testemunho recebido ainda
 </p>
 
 </div>
@@ -305,7 +321,6 @@ window.location.href = "./login.html";
 
 });
 
-  
 
 const db = firebase.database();
 
@@ -643,6 +658,7 @@ Excluir Pedido
 
 });
 
+  
 /* EXCLUIR PEDIDO */
 
 function excluirPedido(id){
@@ -656,6 +672,12 @@ setStatus("🙏 Pedido removido");
 }
 
 }
+
+  }
+
+  /* LOGOUT */
+
+function logout(){
   
 /* LOGOUT */
 
@@ -671,6 +693,7 @@ window.location.href = "./login.html";
 
 }
 
+  
 </script>
 
 </body>
