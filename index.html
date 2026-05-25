@@ -1166,8 +1166,24 @@ onclick="enviarTestemunho()">
 
 ✨ Enviar Testemunho
 
-</button>
+</button>                                                                                                                                        
 
+  <hr style="
+margin:25px 0;
+border:1px solid rgba(255,255,255,.1);
+">
+
+<h2 style="color:#d4af37;">
+🌟 Testemunhos Compartilhados
+</h2>
+
+<div id="listaTestemunhosApp">
+
+<p style="color:#aaa;">
+Nenhum testemunho disponível
+</p>
+
+</div>
 </div>
 
 </div>
@@ -1588,6 +1604,61 @@ alert("Erro ao enviar: " + erro.message);
 });
 
 }
+
+  /* TESTEMUNHOS NO APP */
+
+db.ref("testemunhos").on("value", snap=>{
+
+const lista =
+document.getElementById("listaTestemunhosApp");
+
+if(!lista){
+return;
+}
+
+lista.innerHTML="";
+
+const dados = snap.val();
+
+if(!dados){
+
+lista.innerHTML =
+"<p style='color:#aaa'>Nenhum testemunho disponível</p>";
+
+return;
+
+}
+
+const testemunhosOrdenados =
+Object.entries(dados)
+.sort((a,b)=> b[1].data - a[1].data);
+
+for(let [id,t] of testemunhosOrdenados){
+
+lista.innerHTML += `
+
+<div class="card">
+
+<h3 style="color:#d4af37;">
+✨ ${t.nome || "Anônimo"}
+</h3>
+
+<p style="
+line-height:1.7;
+margin-top:10px;
+">
+
+${t.testemunho}
+
+</p>
+
+</div>
+
+`;
+
+}
+
+});
   </script>
 
 </body> 
