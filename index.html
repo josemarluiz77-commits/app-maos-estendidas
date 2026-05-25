@@ -1137,6 +1137,41 @@ Aguardando publicação...
 
 </div>
 
+  <div id="testemunhos" class="section">
+
+<div class="card">
+
+<h2 style="color:#d4af37;">
+✨ Enviar Testemunho
+</h2>
+
+<p style="margin:15px 0;color:#bbb;line-height:1.7;">
+Conte o que Deus fez na sua vida. Seu testemunho pode fortalecer outras pessoas.
+</p>
+
+<input
+id="nomeTestemunho"
+type="text"
+placeholder="Seu nome">
+
+<textarea
+id="textoTestemunho"
+placeholder="Escreva seu testemunho..."
+style="height:140px;">
+</textarea>
+
+<button
+class="botao"
+onclick="enviarTestemunho()">
+
+✨ Enviar Testemunho
+
+</button>
+
+</div>
+
+</div>
+
 <div id="sobre" class="section">
 
 <div class="card" style="text-align:center;">
@@ -1510,6 +1545,45 @@ alert(
 );
 
 console.log(erro);
+
+});
+
+}
+
+  function enviarTestemunho(){
+
+let nome =
+document.getElementById("nomeTestemunho").value;
+
+let testemunho =
+document.getElementById("textoTestemunho").value;
+
+if(!testemunho){
+
+alert("Digite seu testemunho");
+
+return;
+
+}
+
+db.ref("testemunhos").push({
+
+nome:nome,
+testemunho:testemunho,
+data:Date.now()
+
+})
+.then(()=>{
+
+alert("✨ Testemunho enviado com sucesso!");
+
+document.getElementById("nomeTestemunho").value="";
+document.getElementById("textoTestemunho").value="";
+
+})
+.catch((erro)=>{
+
+alert("Erro ao enviar: " + erro.message);
 
 });
 
