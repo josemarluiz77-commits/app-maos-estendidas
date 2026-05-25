@@ -1489,7 +1489,8 @@ tipo:tipo,
 pedido:pedido,
 data:Date.now()
 
-});
+})
+.then(()=>{
 
 alert(
 "🙏 Pedido enviado com sucesso!"
@@ -1499,8 +1500,19 @@ document.getElementById("nomePedido").value="";
 document.getElementById("textoPedido").value="";
 document.getElementById("tipoPedido").selectedIndex=0;
 
-}
-</script>
+})
+.catch((erro)=>{
 
-</body>
+alert(
+"Erro ao enviar: " + erro.message
+);
+
+console.log(erro);
+
+});
+
+}
+  </script>
+
+</body> 
 </html>
