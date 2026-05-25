@@ -19,7 +19,7 @@ self.registration.showNotification(
 payload.notification.title,
 {
 body: payload.notification.body,
-icon: 'icon.png'
+icon: 'icon-192.png'
 }
 );
 
