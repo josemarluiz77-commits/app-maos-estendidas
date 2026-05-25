@@ -627,6 +627,13 @@ lista.innerHTML += `
 ${p.pedido || ""}
 </p>
 
+<button
+onclick="aprovarTestemunho('${id}')">
+
+Aprovar
+
+</button>
+
 <button class="excluir"
 onclick="excluirPedido('${id}')">
 
@@ -645,6 +652,18 @@ Excluir Pedido
 
 /* EXCLUIR PEDIDO */
 
+  function aprovarTestemunho(id){
+
+db.ref("testemunhos/"+id).update({
+
+aprovado:true
+
+});
+
+setStatus("✨ Testemunho aprovado!");
+
+}
+  
 function excluirPedido(id){
 
 if(confirm("Excluir este pedido de oração?")){
