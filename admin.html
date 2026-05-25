@@ -789,17 +789,28 @@ setStatus("✨ Testemunho removido");
 
 function salvarAviso(){
 
+let titulo =
+document.getElementById("tituloAviso").value;
+
+let texto =
+document.getElementById("textoAviso").value;
+
+if(!titulo || !texto){
+
+setStatus("⚠ Preencha título e mensagem");
+
+return;
+
+}
+
 db.ref("avisoApp").set({
 
-titulo:
-document.getElementById("tituloAviso").value,
-
-texto:
-document.getElementById("textoAviso").value,
-
-data: Date.now()
+titulo:titulo,
+texto:texto,
+data:Date.now()
 
 })
+
 .then(()=>{
 
 setStatus("🔔 Aviso publicado!");
@@ -808,25 +819,12 @@ document.getElementById("tituloAviso").value="";
 document.getElementById("textoAviso").value="";
 
 })
+
 .catch((erro)=>{
 
-setStatus("Erro: " + erro.message);
+setStatus("❌ " + erro.message);
 
 console.log(erro);
-
-});
-
-}
-  
-/* LOGOUT */
-
-function logout(){
-
-firebase.auth().signOut()
-
-.then(()=>{
-
-window.location.href = "./login.html";
 
 });
 
