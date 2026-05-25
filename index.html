@@ -721,7 +721,7 @@ border-left:4px solid #d4af37;
 
 </div>
 
-  </div>
+</div>
 
 <!-- AVISO DO APP -->
 
@@ -753,11 +753,11 @@ text-align:center;
 <h2 style="text-align:center;color:#d4af37;">
 ⚡ Acessos Rápidos
 </h2>
-  
+
 <a class="botao" onclick="show('audio')">
 🎧 Áudios
 </a>
-
+  
 <a class="botao" onclick="show('live')">
 📡 Live
 </a>
@@ -1764,21 +1764,35 @@ db.ref("avisoApp").on("value", snap=>{
 
 const aviso = snap.val();
 
-if(!aviso){
+const card =
+document.getElementById("avisoApp");
+
+const titulo =
+document.getElementById("tituloAvisoApp");
+
+const texto =
+document.getElementById("textoAvisoApp");
+
+if(!card || !titulo || !texto){
 
 return;
 
 }
 
-document.getElementById("avisoApp")
-.style.display="block";
+if(!aviso){
 
-document.getElementById("tituloAvisoApp")
-.innerText =
+card.style.display="none";
+
+return;
+
+}
+
+card.style.display="block";
+
+titulo.innerText =
 aviso.titulo || "🔔 Aviso";
 
-document.getElementById("textoAvisoApp")
-.innerText =
+texto.innerText =
 aviso.texto || "";
 
 });
