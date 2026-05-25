@@ -463,37 +463,6 @@ setStatus("🔥 Áudio adicionado!");
 
 }
 
-  /* LISTAR ÁUDIOS */
-
-db.ref("audios").on("value", snap=>{
-
-const lista =
-document.getElementById("listaAudios");
-
-lista.innerHTML = "";
-
-const dados = snap.val();
-
-let total = dados ? Object.keys(dados).length : 0;
-
-document.getElementById("totalAudios")
-.innerText = total;
-
-if(!dados){
-
-lista.innerHTML =
-"<p style='color:#aaa'>Nenhum áudio cadastrado</p>";
-
-return;
-
-}
-
-const listaOrdenada =
-Object.entries(dados)
-.sort((a,b)=> b[1].data - a[1].data);
-
-for(let [id,a] of listaOrdenada){
-  
   /* CARREGAR DADOS ATUAIS */
 
 db.ref("versiculoDoDia").on("value", snap=>{
@@ -502,11 +471,8 @@ const d = snap.val();
 
 if(d){
 
-document.getElementById("versiculoTexto").value =
-d.texto || "";
-
-document.getElementById("versiculoRef").value =
-d.referencia || "";
+document.getElementById("versiculoTexto").value = d.texto || "";
+document.getElementById("versiculoRef").value = d.referencia || "";
 
 }
 
@@ -518,8 +484,7 @@ const d = snap.val();
 
 if(d){
 
-document.getElementById("audioDia").value =
-d.url || "";
+document.getElementById("audioDia").value = d.url || "";
 
 }
 
@@ -528,12 +493,10 @@ d.url || "";
 db.ref("videoDoDia").on("value", snap=>{
 
 const d = snap.val();
-  
 
 if(d){
 
-document.getElementById("videoDia").value =
-d.url || "";
+document.getElementById("videoDia").value = d.url || "";
 
 }
 
@@ -545,14 +508,39 @@ const d = snap.val();
 
 if(d){
 
-document.getElementById("mensagemDia").value =
-d.texto || "";
+document.getElementById("mensagemDia").value = d.texto || "";
 
 }
 
 });
-  
+
+
 /* LISTAR ÁUDIOS */
+
+db.ref("audios").on("value", snap=>{
+
+const lista = document.getElementById("listaAudios");
+
+lista.innerHTML = "";
+
+const dados = snap.val();
+
+let total = dados ? Object.keys(dados).length : 0;
+
+document.getElementById("totalAudios").innerText = total;
+
+if(!dados){
+
+lista.innerHTML = "<p style='color:#aaa'>Nenhum áudio cadastrado</p>";
+
+return;
+
+}
+
+const listaOrdenada =
+Object.entries(dados).sort((a,b)=> b[1].data - a[1].data);
+
+for(let [id,a] of listaOrdenada){
 
 lista.innerHTML += `
 
@@ -561,11 +549,8 @@ lista.innerHTML += `
 <strong>${a.titulo}</strong><br>
 
 <small>
-
 ${a.tipo}<br>
-
 📅 ${new Date(a.data).toLocaleDateString("pt-BR")}
-
 </small>
 
 <audio controls style="width:100%; margin-top:10px;">
@@ -588,7 +573,8 @@ Excluir
 
 });
 
-/* EXCLUIR */
+
+/* EXCLUIR ÁUDIO */
 
 function excluirAudio(id, titulo){
 
@@ -602,12 +588,12 @@ setStatus("❌ Áudio removido: " + titulo);
 
 }
 
+
 /* LISTAR PEDIDOS DE ORAÇÃO */
 
 db.ref("pedidosOracao").on("value", snap=>{
 
-const lista =
-document.getElementById("listaPedidos");
+const lista = document.getElementById("listaPedidos");
 
 lista.innerHTML = "";
 
@@ -615,16 +601,14 @@ const dados = snap.val();
 
 if(!dados){
 
-lista.innerHTML =
-"<p style='color:#aaa'>Nenhum pedido recebido ainda</p>";
+lista.innerHTML = "<p style='color:#aaa'>Nenhum pedido recebido ainda</p>";
 
 return;
 
 }
 
 const pedidosOrdenados =
-Object.entries(dados)
-.sort((a,b)=> b[1].data - a[1].data);
+Object.entries(dados).sort((a,b)=> b[1].data - a[1].data);
 
 for(let [id,p] of pedidosOrdenados){
 
@@ -658,14 +642,14 @@ Excluir Pedido
 
 });
 
-  
+
 /* EXCLUIR PEDIDO */
 
 function excluirPedido(id){
 
 if(confirm("Excluir este pedido de oração?")){
 
-db.ref("pedidosOracao/" + id).remove();
+db.ref("pedidosOracao/"+id).remove();
 
 setStatus("🙏 Pedido removido");
 
@@ -673,12 +657,75 @@ setStatus("🙏 Pedido removido");
 
 }
 
-  }
 
-  /* LOGOUT */
+/* LISTAR TESTEMUNHOS */
 
-function logout(){
-  
+db.ref("testemunhos").on("value", snap=>{
+
+const lista = document.getElementById("listaTestemunhos");
+
+lista.innerHTML = "";
+
+const dados = snap.val();
+
+if(!dados){
+
+lista.innerHTML = "<p style='color:#aaa'>Nenhum testemunho recebido ainda</p>";
+
+return;
+
+}
+
+const testemunhosOrdenados =
+Object.entries(dados).sort((a,b)=> b[1].data - a[1].data);
+
+for(let [id,t] of testemunhosOrdenados){
+
+lista.innerHTML += `
+
+<div class="audio-item">
+
+<strong>${t.nome || "Sem nome"}</strong><br>
+
+<small>
+📅 ${new Date(t.data).toLocaleString("pt-BR")}
+</small>
+
+<p style="line-height:1.6;">
+${t.testemunho || ""}
+</p>
+
+<button class="excluir"
+onclick="excluirTestemunho('${id}')">
+
+Excluir Testemunho
+
+</button>
+
+</div>
+
+`;
+
+}
+
+});
+
+
+/* EXCLUIR TESTEMUNHO */
+
+function excluirTestemunho(id){
+
+if(confirm("Excluir este testemunho?")){
+
+db.ref("testemunhos/"+id).remove();
+
+setStatus("✨ Testemunho removido");
+
+}
+
+}
+
+
 /* LOGOUT */
 
 function logout(){
@@ -693,7 +740,6 @@ window.location.href = "./login.html";
 
 }
 
-  
 </script>
 
 </body>
