@@ -1661,6 +1661,23 @@ ${t.testemunho}
 }
 
 });
+  
+/* PEDIR PERMISSÃO PARA NOTIFICAÇÕES */
+
+if("Notification" in window){
+
+Notification.requestPermission()
+.then(permission=>{
+
+console.log(
+"Permissão:",
+permission
+);
+
+});
+
+}
+  
   </script>
 
 </body> 
