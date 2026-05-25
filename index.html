@@ -1679,6 +1679,51 @@ permission
 });
 
 }
+
+/* CONFIGURAR FIREBASE MESSAGING */
+
+const messaging = firebase.messaging();
+
+navigator.serviceWorker.register("firebase-messaging-sw.js")
+
+.then((registration)=>{
+
+messaging.getToken({
+
+serviceWorkerRegistration: registration
+
+})
+
+.then((token)=>{
+
+if(token){
+
+db.ref("tokens").push({
+
+token: token,
+data: Date.now()
+
+});
+
+console.log(
+"Token salvo:",
+token
+);
+
+}
+
+})
+
+.catch((err)=>{
+
+console.log(
+"Erro token:",
+err
+);
+
+});
+
+});
   
   </script>
 
