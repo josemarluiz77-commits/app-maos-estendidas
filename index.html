@@ -743,6 +743,10 @@ border-left:4px solid #d4af37;
 ℹ️ Sobre Nós
 </a>
 
+<a class="botao" onclick="ativarNotificacoes()">
+🔔 Ativar Notificações
+</a>
+
 </div>
 
 </div>
@@ -1682,50 +1686,50 @@ permission
 
 /* CONFIGURAR FIREBASE MESSAGING */
 
+function ativarNotificacoes(){
+
+Notification.requestPermission().then(permission=>{
+
+if(permission !== "granted"){
+alert("Permissão de notificação negada.");
+return;
+}
+
 const messaging = firebase.messaging();
 
 navigator.serviceWorker.register("firebase-messaging-sw.js")
-
 .then((registration)=>{
 
-messaging.getToken({
-
+return messaging.getToken({
 vapidKey:"BPYkS6whepzInaszdqRuSerNcQHbhckv1PpOPWVVhOYhQUfZTcB7pTvcxeYWrycGoRou2g2R5Rw-sJ264F0VFI0",
-
 serviceWorkerRegistration: registration
+});
 
 })
-
 .then((token)=>{
 
 if(token){
 
 db.ref("tokens").push({
-
-token: token,
-data: Date.now()
-
+token:token,
+data:Date.now()
 });
 
-console.log(
-"Token salvo:",
-token
-);
+alert("🔔 Notificações ativadas com sucesso!");
 
 }
 
 })
+.catch((erro)=>{
 
-.catch((err)=>{
-
-console.log(
-"Erro token:",
-err
-);
+alert("Erro ao ativar notificações: " + erro.message);
+console.log(erro);
 
 });
 
 });
+
+}
   
   </script>
 
