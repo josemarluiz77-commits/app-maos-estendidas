@@ -1586,6 +1586,7 @@ db.ref("testemunhos").push({
 
 nome:nome,
 testemunho:testemunho,
+aprovado:false,
 data:Date.now()
 
 })
@@ -1633,7 +1634,8 @@ const testemunhosOrdenados =
 Object.entries(dados)
 .sort((a,b)=> b[1].data - a[1].data);
 
-for(let [id,t] of testemunhosOrdenados){
+for(let [id,t] of testemunhosOrdenados){ 
+if(!t.aprovado) continue;
 
 lista.innerHTML += `
 
