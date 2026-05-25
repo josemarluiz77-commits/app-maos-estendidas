@@ -676,12 +676,12 @@ setStatus("🙏 Pedido removido");
 
 }
 
-
 /* LISTAR TESTEMUNHOS */
 
 db.ref("testemunhos").on("value", snap=>{
 
-const lista = document.getElementById("listaTestemunhos");
+const lista =
+document.getElementById("listaTestemunhos");
 
 lista.innerHTML = "";
 
@@ -689,14 +689,16 @@ const dados = snap.val();
 
 if(!dados){
 
-lista.innerHTML = "<p style='color:#aaa'>Nenhum testemunho recebido ainda</p>";
+lista.innerHTML =
+"<p style='color:#aaa'>Nenhum testemunho recebido ainda</p>";
 
 return;
 
 }
 
 const testemunhosOrdenados =
-Object.entries(dados).sort((a,b)=> b[1].data - a[1].data);
+Object.entries(dados)
+.sort((a,b)=> b[1].data - a[1].data);
 
 for(let [id,t] of testemunhosOrdenados){
 
@@ -714,6 +716,13 @@ lista.innerHTML += `
 ${t.testemunho || ""}
 </p>
 
+<button
+onclick="aprovarTestemunho('${id}')">
+
+✅ Aprovar Testemunho
+
+</button>
+
 <button class="excluir"
 onclick="excluirTestemunho('${id}')">
 
@@ -730,6 +739,21 @@ Excluir Testemunho
 });
 
 
+/* APROVAR TESTEMUNHO */
+
+function aprovarTestemunho(id){
+
+db.ref("testemunhos/"+id).update({
+
+aprovado:true
+
+});
+
+setStatus("✨ Testemunho aprovado!");
+
+}
+
+
 /* EXCLUIR TESTEMUNHO */
 
 function excluirTestemunho(id){
@@ -743,7 +767,6 @@ setStatus("✨ Testemunho removido");
 }
 
 }
-
 
 /* LOGOUT */
 
