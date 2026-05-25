@@ -1464,24 +1464,41 @@ botao.innerText = "▶ Ouvir Agora";
 }
 
 function enviarWhatsPedido(){
-let nome = document.getElementById("nomePedido").value;
-let tipo = document.getElementById("tipoPedido").value;
-let pedido = document.getElementById("textoPedido").value;
 
-let mensagem =
-`🙏 PEDIDO DE ORAÇÃO
+let nome =
+document.getElementById("nomePedido").value;
 
-Nome: ${nome}
+let tipo =
+document.getElementById("tipoPedido").value;
 
-Área: ${tipo}
+let pedido =
+document.getElementById("textoPedido").value;
 
-Pedido:
-${pedido}`;
+if(!pedido){
 
-window.open(
-`https://wa.me/5555999157014?text=${encodeURIComponent(mensagem)}`,
-"_blank"
+alert("Digite um pedido");
+
+return;
+
+}
+
+db.ref("pedidosOracao").push({
+
+nome:nome,
+tipo:tipo,
+pedido:pedido,
+data:Date.now()
+
+});
+
+alert(
+"🙏 Pedido enviado com sucesso!"
 );
+
+document.getElementById("nomePedido").value="";
+document.getElementById("textoPedido").value="";
+document.getElementById("tipoPedido").selectedIndex=0;
+
 }
 </script>
 
