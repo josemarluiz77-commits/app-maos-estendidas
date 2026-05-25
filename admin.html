@@ -247,12 +247,28 @@ margin-left:10px;
 
 </span>
 
-</h2>
+</h2> 
 
 <div id="listaAudios"></div>
 
 </div>
 
+<!-- PEDIDOS DE ORAÇÃO -->
+
+<div class="card">
+
+<h2>🙏 Pedidos de Oração Recebidos</h2>
+
+<div id="listaPedidos">
+
+<p style="color:#aaa">
+Nenhum pedido recebido ainda
+</p>
+
+</div>
+
+</div>
+  
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
@@ -288,6 +304,8 @@ window.location.href = "./login.html";
 }
 
 });
+
+  
 
 const db = firebase.database();
 
@@ -564,6 +582,76 @@ if(confirm("Tem certeza que deseja excluir este áudio?\n\n" + titulo)){
 db.ref("audios/"+id).remove();
 
 setStatus("❌ Áudio removido: " + titulo);
+
+}
+
+}
+
+/* LISTAR PEDIDOS DE ORAÇÃO */
+
+db.ref("pedidosOracao").on("value", snap=>{
+
+const lista =
+document.getElementById("listaPedidos");
+
+lista.innerHTML = "";
+
+const dados = snap.val();
+
+if(!dados){
+
+lista.innerHTML =
+"<p style='color:#aaa'>Nenhum pedido recebido ainda</p>";
+
+return;
+
+}
+
+const pedidosOrdenados =
+Object.entries(dados)
+.sort((a,b)=> b[1].data - a[1].data);
+
+for(let [id,p] of pedidosOrdenados){
+
+lista.innerHTML += `
+
+<div class="audio-item">
+
+<strong>${p.nome || "Sem nome"}</strong><br>
+
+<small>
+Área: ${p.tipo || "Não informado"}<br>
+📅 ${new Date(p.data).toLocaleString("pt-BR")}
+</small>
+
+<p style="line-height:1.6;">
+${p.pedido || ""}
+</p>
+
+<button class="excluir"
+onclick="excluirPedido('${id}')">
+
+Excluir Pedido
+
+</button>
+
+</div>
+
+`;
+
+}
+
+});
+
+/* EXCLUIR PEDIDO */
+
+function excluirPedido(id){
+
+if(confirm("Excluir este pedido de oração?")){
+
+db.ref("pedidosOracao/" + id).remove();
+
+setStatus("🙏 Pedido removido");
 
 }
 
