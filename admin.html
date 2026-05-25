@@ -799,12 +799,22 @@ document.getElementById("textoAviso").value,
 
 data: Date.now()
 
-});
+})
+.then(()=>{
 
 setStatus("🔔 Aviso publicado!");
 
 document.getElementById("tituloAviso").value="";
 document.getElementById("textoAviso").value="";
+
+})
+.catch((erro)=>{
+
+setStatus("Erro: " + erro.message);
+
+console.log(erro);
+
+});
 
 }
   
