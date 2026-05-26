@@ -1,11 +1,18 @@
 {
   "name": "Comunidade Mãos Estendidas",
   "short_name": "Mãos Estendidas",
-  "start_url": "/app-maos-estendidas/",
+  "description": "Aplicativo oficial da Comunidade Mãos Estendidas",
+
+  "start_url": "./index.html",
+
   "display": "standalone",
+
   "background_color": "#0a0f0c",
+
   "theme_color": "#0d3b1e",
+
   "orientation": "portrait",
+
   "lang": "pt-BR",
 
   "icons": [
