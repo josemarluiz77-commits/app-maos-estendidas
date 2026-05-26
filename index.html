@@ -720,34 +720,7 @@ border-left:4px solid #d4af37;
 </div>
 
 </div>
-
-</div>
-
-<!-- AVISO DO APP -->
-
-<div id="avisoApp"
-class="card"
-style="display:none;">
-
-<h2 id="tituloAvisoApp"
-style="
-color:#d4af37;
-text-align:center;
-">
-
-🔔 Aviso Importante
-
-</h2>
-
-<p id="textoAvisoApp"
-style="
-line-height:1.7;
-text-align:center;
-">
-</p>
-
-</div>
-
+  
 <div class="card">
 
 <h2 style="text-align:center;color:#d4af37;">
@@ -758,14 +731,10 @@ text-align:center;
 🎧 Áudios
 </a>
 
-<a class="botao" onclick="show('radio')">
-📻 Rádio
-</a>
-
 <a class="botao" onclick="show('live')">
 📡 Live
 </a>
-  
+
 <a class="botao" onclick="show('oracao')">
 🙏 Oração
 </a>
@@ -1055,21 +1024,12 @@ font-weight:600;
 
 <div id="radio" class="section">
 
-<div class="card">
+<div class="card" style="text-align:center;">
 
-<h2 style="color:#d4af37;text-align:center;">
-📻 Rádio Comunidade Mãos Estendidas
-</h2>
+<h2 style="color:#d4af37;">📻 Rádio Gospel 24h</h2>
 
-<p style="
-color:#bbb;
-line-height:1.6;
-text-align:center;
-margin:15px 0;
-">
-
-Louvores, ministrações, orações e mensagens edificando vidas 24 horas.
-
+<p style="color:#bbb;line-height:1.6;margin:15px 0;">
+Ouça louvores, ministrações e momentos de fé durante o dia.
 </p>
 
 <div style="
@@ -1079,38 +1039,14 @@ border-radius:14px;
 margin-bottom:18px;
 border-left:4px solid #d4af37;
 ">
-
-🎶 Tocando agora:
-
-<p id="radioTitulo"
-style="
-margin-top:10px;
-font-weight:bold;
-color:#d4af37;
-">
-
-Carregando programação...
-
-</p>
-
+🎶 Em breve: Rádio Mãos Estendidas 24 horas no ar.
 </div>
 
-<audio
-id="radioPlayer"
-controls
-style="
-width:100%;
-margin-bottom:15px;
-">
-</audio>
-
-<button
-class="botao"
-onclick="proximoAudio()">
-
-⏭ Próximo Áudio
-
-</button>
+<a href="https://www.youtube.com/results?search_query=louvores+gospel+24h"
+target="_blank"
+class="botao">
+▶ Ouvir Louvores 24h
+</a>
 
 </div>
 
@@ -1794,117 +1730,6 @@ console.log(erro);
 });
 
 }
-
-/* CARREGAR AVISO */
-
-db.ref("avisoApp").on("value", snap=>{
-
-const aviso = snap.val();
-
-const card =
-document.getElementById("avisoApp");
-
-const titulo =
-document.getElementById("tituloAvisoApp");
-
-const texto =
-document.getElementById("textoAvisoApp");
-
-if(!card || !titulo || !texto){
-
-return;
-
-}
-
-if(!aviso){
-
-card.style.display="none";
-
-return;
-
-}
-
-card.style.display="block";
-
-titulo.innerText =
-aviso.titulo || "🔔 Aviso";
-
-texto.innerText =
-aviso.texto || "";
-
-});
-
-/* RÁDIO */
-
-let playlistRadio = [];
-
-let indiceRadio = 0;
-
-db.ref("audios").on("value", snap=>{
-
-const dados = snap.val();
-
-if(!dados){
-
-return;
-
-}
-
-playlistRadio =
-Object.values(dados);
-
-if(playlistRadio.length>0){
-
-tocarRadio(0);
-
-}
-
-});
-
-
-function tocarRadio(i){
-
-const player =
-document.getElementById("radioPlayer");
-
-const titulo =
-document.getElementById("radioTitulo");
-
-indiceRadio = i;
-
-player.src =
-playlistRadio[i].url;
-
-titulo.innerText =
-playlistRadio[i].titulo;
-
-player.play();
-
-}
-
-
-function proximoAudio(){
-
-indiceRadio++;
-
-if(indiceRadio >= playlistRadio.length){
-
-indiceRadio = 0;
-
-}
-
-tocarRadio(indiceRadio);
-
-}
-
-
-document
-.getElementById("radioPlayer")
-.addEventListener("ended", ()=>{
-
-proximoAudio();
-
-});
   
   </script>
 
