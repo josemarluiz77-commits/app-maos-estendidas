@@ -720,7 +720,34 @@ border-left:4px solid #d4af37;
 </div>
 
 </div>
-  
+
+</div>
+
+<!-- AVISO DO APP -->
+
+<div id="avisoApp"
+class="card"
+style="display:none;">
+
+<h2 id="tituloAvisoApp"
+style="
+color:#d4af37;
+text-align:center;
+">
+
+🔔 Aviso Importante
+
+</h2>
+
+<p id="textoAvisoApp"
+style="
+line-height:1.7;
+text-align:center;
+">
+</p>
+
+</div>
+
 <div class="card">
 
 <h2 style="text-align:center;color:#d4af37;">
@@ -730,7 +757,7 @@ border-left:4px solid #d4af37;
 <a class="botao" onclick="show('audio')">
 🎧 Áudios
 </a>
-
+  
 <a class="botao" onclick="show('live')">
 📡 Live
 </a>
@@ -1730,6 +1757,45 @@ console.log(erro);
 });
 
 }
+
+/* CARREGAR AVISO */
+
+db.ref("avisoApp").on("value", snap=>{
+
+const aviso = snap.val();
+
+const card =
+document.getElementById("avisoApp");
+
+const titulo =
+document.getElementById("tituloAvisoApp");
+
+const texto =
+document.getElementById("textoAvisoApp");
+
+if(!card || !titulo || !texto){
+
+return;
+
+}
+
+if(!aviso){
+
+card.style.display="none";
+
+return;
+
+}
+
+card.style.display="block";
+
+titulo.innerText =
+aviso.titulo || "🔔 Aviso";
+
+texto.innerText =
+aviso.texto || "";
+
+});
   
   </script>
 
