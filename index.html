@@ -757,11 +757,15 @@ text-align:center;
 <a class="botao" onclick="show('audio')">
 🎧 Áudios
 </a>
-  
+
+<a class="botao" onclick="show('radio')">
+📻 Rádio
+</a>
+
 <a class="botao" onclick="show('live')">
 📡 Live
 </a>
-
+  
 <a class="botao" onclick="show('oracao')">
 🙏 Oração
 </a>
@@ -1074,6 +1078,39 @@ target="_blank"
 class="botao">
 ▶ Ouvir Louvores 24h
 </a>
+
+</div>
+
+</div>
+
+  <div id="radio" class="section">
+
+<div class="card">
+
+<h2 style="color:#d4af37;text-align:center;">
+📻 Rádio Comunidade Mãos Estendidas
+</h2>
+
+<p id="radioTitulo"
+style="text-align:center;">
+
+Carregando programação...
+
+</p>
+
+<audio
+id="radioPlayer"
+controls
+style="width:100%;">
+</audio>
+
+<button
+class="botao"
+onclick="proximoAudio()">
+
+⏭ Próximo
+
+</button>
 
 </div>
 
@@ -1794,6 +1831,78 @@ aviso.titulo || "🔔 Aviso";
 
 texto.innerText =
 aviso.texto || "";
+
+});
+
+/* RÁDIO */
+
+let playlistRadio = [];
+
+let indiceRadio = 0;
+
+db.ref("audios").on("value", snap=>{
+
+const dados = snap.val();
+
+if(!dados){
+
+return;
+
+}
+
+playlistRadio =
+Object.values(dados);
+
+if(playlistRadio.length>0){
+
+tocarRadio(0);
+
+}
+
+});
+
+
+function tocarRadio(i){
+
+const player =
+document.getElementById("radioPlayer");
+
+const titulo =
+document.getElementById("radioTitulo");
+
+indiceRadio = i;
+
+player.src =
+playlistRadio[i].url;
+
+titulo.innerText =
+playlistRadio[i].titulo;
+
+player.play();
+
+}
+
+
+function proximoAudio(){
+
+indiceRadio++;
+
+if(indiceRadio >= playlistRadio.length){
+
+indiceRadio = 0;
+
+}
+
+tocarRadio(indiceRadio);
+
+}
+
+
+document
+.getElementById("radioPlayer")
+.addEventListener("ended", ()=>{
+
+proximoAudio();
 
 });
   
