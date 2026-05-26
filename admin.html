@@ -306,6 +306,28 @@ Publicar Aviso
 
 </button>
 
+</div> 
+
+  <!-- GALERIA -->
+
+<div class="card">
+
+<h2>🖼️ Galeria do App</h2>
+
+<input
+id="tituloFoto"
+placeholder="Título da foto">
+
+<input
+id="linkFoto"
+placeholder="Link da imagem">
+
+<button onclick="adicionarFoto()">
+
+Adicionar Foto
+
+</button>
+
 </div>
   
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -830,6 +852,51 @@ console.log(erro);
 
 }
 
+/* ADICIONAR FOTO */
+
+function adicionarFoto(){
+
+let titulo =
+document.getElementById("tituloFoto").value;
+
+let link =
+document.getElementById("linkFoto").value;
+
+if(!titulo || !link){
+
+setStatus("⚠ Preencha todos os campos");
+
+return;
+
+}
+
+db.ref("galeria").push({
+
+titulo:titulo,
+imagem:link,
+data:Date.now()
+
+})
+
+.then(()=>{
+
+setStatus("🖼️ Foto adicionada!");
+
+document.getElementById("tituloFoto").value="";
+document.getElementById("linkFoto").value="";
+
+})
+
+.catch((erro)=>{
+
+setStatus("❌ " + erro.message);
+
+console.log(erro);
+
+});
+
+}
+  
 </script>
 
 </body>
