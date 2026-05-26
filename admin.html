@@ -907,7 +907,108 @@ console.log(erro);
 });
 
 }
-  
+
+
+/* LISTAR FOTOS DA GALERIA */
+
+db.ref("galeria").on("value", snap=>{
+
+const lista =
+document.getElementById("listaGaleriaAdmin");
+
+if(!lista){
+return;
+}
+
+lista.innerHTML="";
+
+const dados = snap.val();
+
+if(!dados){
+
+lista.innerHTML=`
+<p style="color:#aaa;">
+Nenhuma foto cadastrada
+</p>
+`;
+
+return;
+
+}
+
+const fotosOrdenadas =
+Object.entries(dados)
+.sort((a,b)=> b[1].data - a[1].data);
+
+for(let [id,f] of fotosOrdenadas){
+
+lista.innerHTML += `
+
+<div class="audio-item">
+
+<img
+src="${f.imagem}"
+style="
+width:100%;
+height:120px;
+object-fit:cover;
+border-radius:10px;
+">
+
+<p style="
+margin-top:10px;
+font-weight:bold;
+">
+
+${f.titulo}
+
+</p>
+
+<button
+class="excluir"
+onclick="excluirFoto('${id}')">
+
+Excluir Foto
+
+</button>
+
+</div>
+
+`;
+
+}
+
+});
+
+
+/* EXCLUIR FOTO */
+
+function excluirFoto(id){
+
+if(confirm("Excluir esta foto?")){
+
+db.ref("galeria/"+id).remove();
+
+setStatus("🗑️ Foto removida");
+
+}
+
+}
+
+/* LOGOUT */
+
+function logout(){
+
+firebase.auth().signOut()
+
+.then(()=>{
+
+window.location.href="./login.html";
+
+});
+
+}
+
 </script>
 
 </body>
