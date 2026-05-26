@@ -1860,7 +1860,7 @@ Object.entries(dados)
 
 for(let [id,f] of fotosOrdenadas){
 
-lista.innerHTML += `
+ lista.innerHTML += `
 
 <div style="
 background:rgba(255,255,255,.05);
@@ -1870,11 +1870,15 @@ border-radius:12px;
 
 <img
 src="${f.imagem}"
+
+onclick="abrirFoto('${f.imagem}')"
+
 style="
 width:100%;
 height:150px;
 object-fit:cover;
 border-radius:10px;
+cursor:pointer;
 ">
 
 <p style="
@@ -1895,6 +1899,16 @@ ${f.titulo}
 
 });
   
+  /* ABRIR FOTO GRANDE */
+
+function abrirFoto(url){
+
+window.open(
+url,
+"_blank"
+);
+
+}
   </script>
 
 </body> 
