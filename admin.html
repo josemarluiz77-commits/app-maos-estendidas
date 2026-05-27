@@ -397,6 +397,28 @@ Publicar Live
 </button>
 
 </div>
+
+  <!-- GALERIA DE VÍDEOS -->
+
+<div class="card">
+
+<h2>🎥 Galeria de Vídeos</h2>
+
+<input
+id="tituloVideoGaleria"
+placeholder="Título do vídeo">
+
+<input
+id="linkVideoGaleria"
+placeholder="Link do YouTube">
+
+<button onclick="adicionarVideoGaleria()">
+
+Adicionar Vídeo
+
+</button>
+
+</div>
   
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
@@ -1146,6 +1168,51 @@ setStatus("🔴 Live publicada!");
 
 document.getElementById("tituloLive").value="";
 document.getElementById("linkLive").value="";
+
+})
+
+.catch((erro)=>{
+
+setStatus("❌ " + erro.message);
+
+console.log(erro);
+
+});
+
+}
+
+/* ADICIONAR VÍDEO NA GALERIA */
+
+function adicionarVideoGaleria(){
+
+let titulo =
+document.getElementById("tituloVideoGaleria").value;
+
+let link =
+document.getElementById("linkVideoGaleria").value;
+
+if(!titulo || !link){
+
+setStatus("⚠ Preencha título e link do vídeo");
+
+return;
+
+}
+
+db.ref("videosGaleria").push({
+
+titulo:titulo,
+link:link,
+data:Date.now()
+
+})
+
+.then(()=>{
+
+setStatus("🎥 Vídeo adicionado!");
+
+document.getElementById("tituloVideoGaleria").value="";
+document.getElementById("linkVideoGaleria").value="";
 
 })
 
