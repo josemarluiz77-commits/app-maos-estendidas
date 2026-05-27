@@ -2006,6 +2006,74 @@ ${e.descricao || ""}
 }
 
 });
+
+/* CARREGAR LIVE */
+
+db.ref("live").on("value", snap=>{
+
+const area =
+document.getElementById("liveConteudo");
+
+if(!area){
+return;
+}
+
+const live = snap.val();
+
+if(!live){
+
+area.innerHTML = `
+
+<p style="
+color:#aaa;
+line-height:1.7;
+">
+
+Nenhuma transmissão ativa no momento
+
+</p>
+
+`;
+
+return;
+
+}
+
+area.innerHTML = `
+
+<h3 style="
+color:#fff;
+margin-bottom:15px;
+">
+
+${live.titulo}
+
+</h3>
+
+<div style="
+background:rgba(255,0,0,.1);
+padding:14px;
+border-radius:14px;
+margin-bottom:15px;
+border-left:4px solid red;
+">
+
+🔴 AO VIVO AGORA
+
+</div>
+
+<a
+href="${live.link}"
+target="_blank"
+class="botao">
+
+▶ Assistir Agora
+
+</a>
+
+`;
+
+});
   
   </script>
 
