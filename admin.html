@@ -1032,6 +1032,66 @@ setStatus("🗑️ Foto removida");
 
 }
 
+/* ADICIONAR EVENTO */
+
+function adicionarEvento(){
+
+let titulo =
+document.getElementById("tituloEvento").value;
+
+let data =
+document.getElementById("dataEvento").value;
+
+let hora =
+document.getElementById("horaEvento").value;
+
+let local =
+document.getElementById("localEvento").value;
+
+let descricao =
+document.getElementById("descricaoEvento").value;
+
+if(!titulo || !data){
+
+setStatus("⚠ Preencha pelo menos título e data");
+
+return;
+
+}
+
+db.ref("agenda").push({
+
+titulo:titulo,
+data:data,
+hora:hora,
+local:local,
+descricao:descricao,
+criadoEm:Date.now()
+
+})
+
+.then(()=>{
+
+setStatus("📅 Evento adicionado!");
+
+document.getElementById("tituloEvento").value="";
+document.getElementById("dataEvento").value="";
+document.getElementById("horaEvento").value="";
+document.getElementById("localEvento").value="";
+document.getElementById("descricaoEvento").value="";
+
+})
+
+.catch((erro)=>{
+
+setStatus("❌ " + erro.message);
+
+console.log(erro);
+
+});
+
+}
+  
 /* LOGOUT */
 
 function logout(){
