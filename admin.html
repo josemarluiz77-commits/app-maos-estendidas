@@ -1194,48 +1194,80 @@ console.log(erro);
 
 }
 
-/* ADICIONAR VÍDEO NA GALERIA */
+/* LISTAR VÍDEOS */
 
-function adicionarVideoGaleria(){
+db.ref("videosGaleria").on("value", snap=>{
 
-let titulo =
-document.getElementById("tituloVideoGaleria").value;
+const lista =
+document.getElementById("listaVideosAdmin");
 
-let link =
-document.getElementById("linkVideoGaleria").value;
+if(!lista){
+return;
+}
 
-if(!titulo || !link){
+lista.innerHTML = "";
 
-setStatus("⚠ Preencha título e link do vídeo");
+const dados = snap.val();
+
+if(!dados){
+
+lista.innerHTML = `
+<p style="color:#aaa;">
+Nenhum vídeo cadastrado
+</p>
+`;
 
 return;
 
 }
 
-db.ref("videosGaleria").push({
+const videosOrdenados =
+Object.entries(dados)
+.sort((a,b)=> b[1].data - a[1].data);
 
-titulo:titulo,
-link:link,
-data:Date.now()
+for(let [id,v] of videosOrdenados){
 
-})
+lista.innerHTML += `
 
-.then(()=>{
+<div class="audio-item">
 
-setStatus("🎥 Vídeo adicionado!");
+<p style="
+font-weight:bold;
+margin-bottom:10px;
+">
 
-document.getElementById("tituloVideoGaleria").value="";
-document.getElementById("linkVideoGaleria").value="";
+${v.titulo}
 
-})
+</p>
 
-.catch((erro)=>{
+<button
+class="excluir"
+onclick="excluirVideo('${id}')">
 
-setStatus("❌ " + erro.message);
+Excluir Vídeo
 
-console.log(erro);
+</button>
+
+</div>
+
+`;
+
+}
 
 });
+
+
+/* EXCLUIR VÍDEO */
+
+function excluirVideo(id){
+
+if(confirm("Excluir este vídeo?")){
+
+db.ref("videosGaleria/"+id).remove();
+
+setStatus("🗑️ Vídeo removido");
+
+}
 
 }
   
