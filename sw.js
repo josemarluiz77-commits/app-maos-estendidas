@@ -1,4 +1,4 @@
-const CACHE_NAME = "maos-estendidas-v2";
+const CACHE_NAME = "maos-estendidas-v3";
 
 const urlsToCache = [
 
