@@ -2098,6 +2098,61 @@ class="botao">
 `;
 
 });
+
+  /* CARREGAR GALERIA DE VÍDEOS */
+
+db.ref("videosGaleria").on("value", snap=>{
+
+const lista =
+document.getElementById("listaVideosGaleria");
+
+if(!lista){
+return;
+}
+
+lista.innerHTML = "";
+
+const dados = snap.val();
+
+if(!dados){
+
+lista.innerHTML =
+"<p style='color:#aaa;text-align:center;'>Nenhum vídeo disponível</p>";
+
+return;
+
+}
+
+const videosOrdenados =
+Object.entries(dados)
+.sort((a,b)=> b[1].data - a[1].data);
+
+for(let [id,v] of videosOrdenados){
+
+lista.innerHTML += `
+
+<div class="card">
+
+<h2 style="color:#d4af37;">
+${v.titulo}
+</h2>
+
+<a
+href="${v.link}"
+target="_blank"
+class="botao">
+
+▶ Assistir Vídeo
+
+</a>
+
+</div>
+
+`;
+
+}
+
+});
   
   </script>
 
