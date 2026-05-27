@@ -1113,6 +1113,51 @@ console.log(erro);
 });
 
 }
+
+/* SALVAR LIVE */
+
+function salvarLive(){
+
+let titulo =
+document.getElementById("tituloLive").value;
+
+let link =
+document.getElementById("linkLive").value;
+
+if(!titulo || !link){
+
+setStatus("⚠ Preencha título e link da live");
+
+return;
+
+}
+
+db.ref("live").set({
+
+titulo:titulo,
+link:link,
+data:Date.now()
+
+})
+
+.then(()=>{
+
+setStatus("🔴 Live publicada!");
+
+document.getElementById("tituloLive").value="";
+document.getElementById("linkLive").value="";
+
+})
+
+.catch((erro)=>{
+
+setStatus("❌ " + erro.message);
+
+console.log(erro);
+
+});
+
+}
   
 /* LOGOUT */
 
