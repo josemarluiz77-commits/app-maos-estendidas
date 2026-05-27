@@ -1969,6 +1969,69 @@ function fecharFoto(){
 document.getElementById("modalFoto").style.display = "none";
 
 }
+
+/* CARREGAR AGENDA */
+
+db.ref("agenda").on("value", snap=>{
+
+const lista =
+document.getElementById("listaAgenda");
+
+if(!lista){
+return;
+}
+
+lista.innerHTML = "";
+
+const dados = snap.val();
+
+if(!dados){
+
+lista.innerHTML =
+"<p style='color:#aaa;text-align:center;'>Nenhum evento disponível</p>";
+
+return;
+
+}
+
+const eventosOrdenados =
+Object.entries(dados)
+.sort((a,b)=>{
+
+const dataA = (a[1].data || "") + " " + (a[1].hora || "");
+const dataB = (b[1].data || "") + " " + (b[1].hora || "");
+
+return dataA.localeCompare(dataB);
+
+});
+
+for(let [id,e] of eventosOrdenados){
+
+lista.innerHTML += `
+
+<div class="card">
+
+<h2 style="color:#d4af37;">
+${e.titulo}
+</h2>
+
+<p style="line-height:1.7;">
+📅 Data: ${e.data || "Não informado"}<br>
+⏰ Horário: ${e.hora || "Não informado"}<br>
+📍 Local: ${e.local || "Não informado"}
+</p>
+
+<p style="line-height:1.7;">
+${e.descricao || ""}
+</p>
+
+</div>
+
+`;
+
+}
+
+});
   
   </script>
 
