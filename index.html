@@ -272,62 +272,204 @@ font-weight:700;
 /* BOTÕES */
 
 .botao{
+
 display:block;
 width:100%;
 text-align:center;
+
 background:
 linear-gradient(
 135deg,
 #d4af37,
-#f1d16a
+#f7d774,
+#c89b1d
 );
 
 color:#111;
+
 padding:15px;
+
 border-radius:18px;
+
 margin-top:15px;
+
 text-decoration:none;
+
 font-weight:700;
+
 font-size:15px;
+
 letter-spacing:.4px;
+
 border:none;
+
 cursor:pointer;
-transition:.25s ease;
+
+transition:
+transform .18s ease,
+box-shadow .18s ease,
+filter .18s ease;
+
 box-shadow:
-0 8px 18px rgba(212,175,55,.25);
+0 10px 24px rgba(212,175,55,.28),
+0 0 12px rgba(212,175,55,.14);
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.botao::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-130%;
+
+width:80%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.35),
+transparent
+);
+
+transform:skewX(-20deg);
+
+transition:.7s;
+
+}
+
+.botao:hover::before{
+
+left:140%;
+
 }
 
 .botao:hover{
+
 transform:translateY(-2px);
+
 box-shadow:
-0 10px 22px rgba(212,175,55,.35);
+0 14px 30px rgba(212,175,55,.38),
+0 0 18px rgba(212,175,55,.2);
+
+filter:brightness(1.03);
+
 }
 
 .botao:active{
+
 transform:scale(.98);
+
 }
   
 /* BOTÃO SECUNDÁRIO */
 
 .botao-secundario{
+
 display:block;
 width:100%;
-background:#181818;
+
+background:
+linear-gradient(
+180deg,
+rgba(30,30,30,.95),
+rgba(15,15,15,.98)
+);
+
 color:#d4af37;
-border:1px solid rgba(212,175,55,.8);
+
+border:1px solid rgba(212,175,55,.35);
+
 padding:15px;
+
 border-radius:18px;
+
 margin-top:14px;
+
 text-align:center;
+
 font-weight:700;
+
 text-decoration:none;
-transition:.25s ease;
+
+transition:
+transform .18s ease,
+box-shadow .18s ease,
+background .18s ease,
+color .18s ease;
+
+box-shadow:
+0 8px 18px rgba(0,0,0,.28),
+0 0 10px rgba(212,175,55,.06);
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.botao-secundario::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-130%;
+
+width:80%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.12),
+transparent
+);
+
+transform:skewX(-20deg);
+
+transition:.7s;
+
+}
+
+.botao-secundario:hover::before{
+
+left:140%;
+
 }
 
 .botao-secundario:hover{
-background:#d4af37;
+
+background:
+linear-gradient(
+135deg,
+#d4af37,
+#f7d774
+);
+
 color:#111;
+
 transform:translateY(-2px);
+
+box-shadow:
+0 12px 26px rgba(212,175,55,.22);
+
+}
+
+.botao-secundario:active{
+
+transform:scale(.98);
+
 }
 
 /* INPUTS */
