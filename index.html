@@ -542,12 +542,13 @@ rgba(8,17,13,.98),
 rgba(16,29,22,.98)
 );
 backdrop-filter:blur(12px);
-padding-top:80px;
+padding:80px 12px 20px;
 transition:.35s ease;
 z-index:99999;
 box-shadow:0 0 40px rgba(0,0,0,.6);
 border-right:1px solid rgba(212,175,55,.15);
 overflow-y:auto;
+box-sizing:border-box;
 }
 
 .menu.ativo{
@@ -563,22 +564,48 @@ padding:18px 22px;
 text-decoration:none;
 font-size:16px;
 font-weight:600;
-border-bottom:1px solid rgba(255,255,255,.04);
-transition:.25s ease;
+border-bottom:1px solid rgba(255,255,255,.035);
+transition:all .22s ease;
 letter-spacing:.3px;
+border-radius:14px;
+margin-bottom:6px;
+position:relative;
+overflow:hidden;
 }
-  
-/* HOVER MENU */
+
+.menu a::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:70%;
+height:100%;
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.08),
+transparent
+);
+transform:skewX(-20deg);
+transition:.6s;
+}
+
+.menu a:hover::before{
+left:140%;
+}
 
 .menu a:hover{
 background:
 linear-gradient(
 90deg,
-rgba(212,175,55,.18),
-rgba(30,190,93,.12)
+rgba(212,175,55,.22),
+rgba(30,190,93,.14)
 );
 padding-left:30px;
 color:#d4af37;
+box-shadow:0 0 18px rgba(212,175,55,.08);
+transform:translateX(2px);
 }
 
 .menu a i{
@@ -587,8 +614,6 @@ width:22px;
 text-align:center;
 color:#d4af37;
 }
-
-/* SCROLL MENU */
 
 .menu::-webkit-scrollbar{
 width:5px;
