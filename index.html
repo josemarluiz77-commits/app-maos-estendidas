@@ -153,6 +153,67 @@ padding-bottom:90px;
 overflow-x:hidden;
 }
 
+  #splash{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+linear-gradient(
+180deg,
+#050805,
+#0d1b12,
+#050805
+);
+z-index:999999;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+transition:opacity 1s ease;
+}
+
+#splash img{
+width:130px;
+height:130px;
+border-radius:50%;
+object-fit:cover;
+box-shadow:
+0 0 30px rgba(212,175,55,.45),
+0 0 60px rgba(30,190,93,.18);
+margin-bottom:22px;
+}
+
+#splash h1{
+color:#d4af37;
+font-size:28px;
+margin-bottom:10px;
+text-shadow:0 0 20px rgba(212,175,55,.25);
+}
+
+#splash p{
+color:#ddd;
+letter-spacing:1px;
+margin-bottom:25px;
+}
+
+.loader{
+width:45px;
+height:45px;
+border:4px solid rgba(212,175,55,.2);
+border-top:4px solid #d4af37;
+border-radius:50%;
+animation:girar 1s linear infinite;
+}
+
+@keyframes girar{
+to{
+transform:rotate(360deg);
+}
+}
+  
 /* HEADER */
 
 header{
@@ -736,6 +797,18 @@ margin-bottom:18px;
 </head>
 
 <body>
+
+  <div id="splash">
+
+<img src="logo.png" alt="Comunidade Mãos Estendidas">
+
+<h1>Comunidade Mãos Estendidas</h1>
+
+<p>Fé • Oração • Restauração</p>
+
+<div class="loader"></div>
+
+</div>
   
 <!-- SPLASH SCREEN -->
 
@@ -2443,6 +2516,29 @@ margin-top:12px;
 `;
 
 }
+
+});
+
+window.addEventListener("load", ()=>{
+
+setTimeout(()=>{
+
+const splash =
+document.getElementById("splash");
+
+if(splash){
+
+splash.style.opacity="0";
+
+setTimeout(()=>{
+
+splash.style.display="none";
+
+},1000);
+
+}
+
+},2500);
 
 });
   
