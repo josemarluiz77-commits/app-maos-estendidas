@@ -1149,6 +1149,52 @@ console.log(erro);
 
 }
 
+/* ADICIONAR VÍDEO NA GALERIA */
+
+function adicionarVideoGaleria(){
+
+let titulo =
+document.getElementById("tituloVideoGaleria").value;
+
+let link =
+document.getElementById("linkVideoGaleria").value;
+
+if(!titulo || !link){
+
+setStatus("⚠ Preencha título e link do vídeo");
+
+return;
+
+}
+
+db.ref("videosGaleria").push({
+
+titulo:titulo,
+link:link,
+data:Date.now()
+
+})
+
+.then(()=>{
+
+setStatus("🎥 Vídeo adicionado!");
+
+document.getElementById("tituloVideoGaleria").value="";
+document.getElementById("linkVideoGaleria").value="";
+
+})
+
+.catch((erro)=>{
+
+setStatus("❌ " + erro.message);
+
+console.log(erro);
+
+});
+
+}
+
+
 /* SALVAR LIVE */
 
 function salvarLive(){
@@ -1193,6 +1239,7 @@ console.log(erro);
 });
 
 }
+
 
 /* LISTAR VÍDEOS */
 
@@ -1270,7 +1317,8 @@ setStatus("🗑️ Vídeo removido");
 }
 
 }
-  
+
+
 /* LOGOUT */
 
 function logout(){
