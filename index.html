@@ -2389,7 +2389,53 @@ class="botao">
 
 });
 
-  /* CARREGAR GALERIA DE VÍDEOS */
+/* PEGAR ID DO YOUTUBE */
+
+function pegarIdYoutube(link){
+
+if(!link){
+return "";
+}
+
+let videoId = "";
+
+if(link.includes("watch?v=")){
+
+videoId =
+link.split("watch?v=")[1].split("&")[0];
+
+}else if(link.includes("youtu.be/")){
+
+videoId =
+link.split("youtu.be/")[1].split("?")[0];
+
+}else if(link.includes("/shorts/")){
+
+videoId =
+link.split("/shorts/")[1].split("?")[0];
+
+}else if(link.includes("/live/")){
+
+videoId =
+link.split("/live/")[1].split("?")[0];
+
+}else if(link.includes("/embed/")){
+
+videoId =
+link.split("/embed/")[1].split("?")[0];
+
+}else{
+
+videoId = link;
+
+}
+
+return videoId;
+
+}
+
+
+/* CARREGAR GALERIA DE VÍDEOS */
 
 db.ref("videosGaleria").on("value", snap=>{
 
@@ -2419,6 +2465,16 @@ Object.entries(dados)
 
 for(let [id,v] of videosOrdenados){
 
+const videoId =
+pegarIdYoutube(v.link);
+
+if(!videoId){
+continue;
+}
+
+const embedUrl =
+"https://www.youtube.com/embed/" + videoId;
+
 lista.innerHTML += `
 
 <div class="card">
@@ -2428,7 +2484,7 @@ ${v.titulo}
 </h2>
 
 <iframe
-src="${v.link.replace("watch?v=", "embed/")}"
+src="${embedUrl}"
 allowfullscreen
 style="
 width:100%;
